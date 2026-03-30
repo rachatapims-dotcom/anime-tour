@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 700" role="img" aria-label="anime guide portrait">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#b8e6ff"/>
+      <stop offset="100%" stop-color="#fce0d2"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="700" fill="url(#bg)"/>
+  <circle cx="400" cy="250" r="125" fill="#ffd9be"/>
+  <path d="M285 220 Q400 90 515 220 L505 145 Q400 40 295 145 Z" fill="#1f2f5d"/>
+  <circle cx="355" cy="245" r="12" fill="#2f395f"/>
+  <circle cx="445" cy="245" r="12" fill="#2f395f"/>
+  <path d="M350 305 Q400 340 450 305" stroke="#c96f71" stroke-width="7" fill="none"/>
+  <path d="M220 610 Q400 430 580 610 L580 700 L220 700 Z" fill="#224a92"/>
+  <path d="M350 390 L450 390 L470 470 L330 470 Z" fill="#ffd9be"/>
+</svg>

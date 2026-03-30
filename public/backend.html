@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | AnimeTrails JP</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script src="supabase-client.js"></script>
+    <script src="audit-log.js"></script>
+    <script src="auth.js" defer></script>
+</head>
+<body>
+    <header class="top-nav">
+        <div class="nav-inner">
+            <a class="logo" href="index.html">AnimeTrails JP</a>
+            <nav class="menu">
+                <a href="index.html">หน้าแรก</a>
+                <a href="packages.html">แพ็กเกจทัวร์</a>
+                <a href="gallery.html">แกลลอรี่ & รีวิว</a>
+                <a href="contact.html">จอง & ติดต่อ</a>
+                <a href="team.html">ทีมไกด์</a>
+                <a class="active" href="backend.html">Dashboard</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container admin-shell">
+        <aside class="admin-sidebar section-shell">
+            <p class="eyebrow admin-eyebrow">Admin Panel</p>
+            <h2>Dashboard Menu</h2>
+            <nav class="admin-nav">
+                <a href="#overview">Overview</a>
+                <a href="#security">Security</a>
+                <a href="#performance">Performance</a>
+                <a href="#backup">Backup & DR</a>
+                <a href="#monitoring">Monitoring</a>
+                <a href="#roles">User Roles</a>
+            </nav>
+            <button id="admin-logout-btn" class="btn admin-logout-btn" type="button">Logout Admin</button>
+            <p id="admin-access-note" class="admin-note" style="margin-top:10px;"></p>
+        </aside>
+
+        <section class="admin-content">
+            <section id="overview" class="section-shell">
+                <h1>AnimeTrails Admin Dashboard</h1>
+                <p>ระบบจัดการหลังบ้านสำหรับการดูสถานะระบบและจัดการสิทธิ์ผู้ใช้งานจากฐานข้อมูลจริง</p>
+                <div class="grid three-col">
+                    <article class="admin-metric">
+                        <h3>Total Users</h3>
+                        <p class="admin-value" id="metric-users">-</p>
+                        <p class="admin-sub">ผู้ใช้ทั้งหมดใน profiles</p>
+                    </article>
+                    <article class="admin-metric">
+                        <h3>Admin Accounts</h3>
+                        <p class="admin-value" id="metric-admins">-</p>
+                        <p class="admin-sub">บทบาท admin</p>
+                    </article>
+                    <article class="admin-metric">
+                        <h3>Total Bookings</h3>
+                        <p class="admin-value" id="metric-bookings">-</p>
+                        <p class="admin-sub">จำนวนรายการจองในฐานข้อมูล</p>
+                    </article>
+                </div>
+            </section>
+
+            <section id="security" class="section-shell admin-card">
+                <h2>Security Hardening</h2>
+                <ul class="admin-list">
+                    <li><span class="pill ok">ENABLED</span> RLS บังคับตรวจสิทธิ์ระดับตารางใน Supabase</li>
+                    <li><span class="pill ok">ENABLED</span> แยก anon key และ service key (ฝั่งเว็บใช้ anon เท่านั้น)</li>
+                    <li><span class="pill ok">ENABLED</span> OAuth / Email Auth ผ่าน Supabase Auth</li>
+                    <li><span class="pill warn">CHECK</span> ตรวจทาน redirect URLs ก่อน deploy production</li>
+                </ul>
+            </section>
+
+            <section id="performance" class="section-shell admin-card">
+                <h2>Performance & Optimization</h2>
+                <div class="mini-bars" aria-label="performance bars">
+                    <div><span>TTFB</span><b id="perf-ttfb-bar" style="width:15%;">-</b></div>
+                    <div><span>LCP</span><b id="perf-lcp-bar" style="width:15%;">-</b></div>
+                    <div><span>CLS</span><b id="perf-cls-bar" style="width:15%;">-</b></div>
+                </div>
+                <p id="perf-note" class="admin-note">กำลังดึงค่า performance metrics จริงจากฐานข้อมูล...</p>
+            </section>
+
+            <section id="backup" class="section-shell admin-card">
+                <h2>Backup & Disaster Recovery</h2>
+                <div class="backup-actions">
+                    <button id="download-backup-json-btn" type="button" class="btn" style="background:#0d3b66; color:#fff;">Download Full Backup (JSON)</button>
+                    <button id="download-bookings-csv-btn" type="button" class="btn" style="background:#eef3ff; color:#0d3b66;">Download Bookings (CSV)</button>
+                </div>
+                <p id="backup-status" class="admin-note">คุณสามารถดาวน์โหลดข้อมูลล่าสุดจาก Supabase ได้จากปุ่มด้านบน</p>
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Asset</th>
+                            <th>Frequency</th>
+                            <th>Retention</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Bookings DB</td>
+                            <td>Every 6 hours</td>
+                            <td>30 days</td>
+                            <td><span class="pill ok">OK</span></td>
+                        </tr>
+                        <tr>
+                            <td>Config Snapshots</td>
+                            <td>On deploy</td>
+                            <td>20 versions</td>
+                            <td><span class="pill warn">CHECK</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="monitoring" class="section-shell admin-card">
+                <div class="admin-section-head">
+                    <h2>Monitoring & System Logs</h2>
+                    <button id="refresh-logs-btn" type="button" class="btn" style="background:#eef3ff; color:#0d3b66;">Refresh Logs</button>
+                </div>
+                <div class="log-feed" id="logs-container">
+                    <p><span class="log-time">--:--:--</span> [INFO] Loading logs...</p>
+                </div>
+            </section>
+
+            <section id="roles" class="section-shell admin-card">
+                <div class="admin-section-head">
+                    <h2>User Roles Management</h2>
+                    <button id="refresh-roles-btn" type="button" class="btn" style="background:#eef3ff; color:#0d3b66;">Refresh</button>
+                </div>
+                <p>หน้านี้แก้บทบาทผู้ใช้จริงในตาราง <strong>profiles</strong>. เลือก role แล้วกด Save.</p>
+                <p id="roles-message" class="admin-note" style="margin-bottom:10px;"></p>
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>User ID</th>
+                            <th>Name</th>
+                            <th>Role</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="roles-table-body">
+                        <tr>
+                            <td colspan="4">Loading users...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </section>
+    </main>
+
+    <footer>
+        Admin Dashboard เชื่อมต่อ Supabase profiles/bookings
+    </footer>
+
+    <script>
+        const rolesTableBody = document.getElementById('roles-table-body');
+        const rolesMessage = document.getElementById('roles-message');
+        const refreshRolesBtn = document.getElementById('refresh-roles-btn');
+        const refreshLogsBtn = document.getElementById('refresh-logs-btn');
+        const logsContainer = document.getElementById('logs-container');
+        const backupJsonBtn = document.getElementById('download-backup-json-btn');
+        const backupCsvBtn = document.getElementById('download-bookings-csv-btn');
+        const backupStatus = document.getElementById('backup-status');
+        const adminAccessNote = document.getElementById('admin-access-note');
+        const logoutBtn = document.getElementById('admin-logout-btn');
+
+        const metricUsers = document.getElementById('metric-users');
+        const metricAdmins = document.getElementById('metric-admins');
+        const metricBookings = document.getElementById('metric-bookings');
+        const perfTtfbBar = document.getElementById('perf-ttfb-bar');
+        const perfLcpBar = document.getElementById('perf-lcp-bar');
+        const perfClsBar = document.getElementById('perf-cls-bar');
+        const perfNote = document.getElementById('perf-note');
+
+        function setRolesMessage(message, isError) {
+            rolesMessage.textContent = message;
+            rolesMessage.style.color = isError ? '#b42318' : '#2b4c8d';
+        }
+
+        async function ensureAdminAccess() {
+            if (!window.sb) {
+                adminAccessNote.textContent = 'Supabase config ไม่พร้อมใช้งาน';
+                window.location.replace('login.html');
+                return null;
+            }
+
+            const { data: sessionData } = await window.sb.auth.getSession();
+            const user = sessionData?.session?.user;
+            if (!user) {
+                window.location.replace('login.html');
+                return null;
+            }
+
+            const { data: profile, error } = await window.sb
+                .from('profiles')
+                .select('role, full_name')
+                .eq('id', user.id)
+                .maybeSingle();
+
+            if (error || !profile || profile.role !== 'admin') {
+                window.location.replace('index.html');
+                return null;
+            }
+
+            localStorage.setItem('isLoggedIn', 'true');
+            localStorage.setItem('userRole', 'admin');
+            localStorage.setItem('userEmail', user.email || '');
+            localStorage.setItem('userName', profile.full_name || user.email || 'Admin');
+
+            adminAccessNote.textContent = 'Signed in as admin: ' + (profile.full_name || user.email || user.id);
+            return user;
+        }
+
+        async function loadMetrics() {
+            const [{ count: usersCount }, { count: adminsCount }, { count: bookingsCount }] = await Promise.all([
+                window.sb.from('profiles').select('*', { count: 'exact', head: true }),
+                window.sb.from('profiles').select('*', { count: 'exact', head: true }).eq('role', 'admin'),
+                window.sb.from('bookings').select('*', { count: 'exact', head: true })
+            ]);
+
+            metricUsers.textContent = (usersCount ?? 0).toString();
+            metricAdmins.textContent = (adminsCount ?? 0).toString();
+            metricBookings.textContent = (bookingsCount ?? 0).toString();
+        }
+
+        function avg(values) {
+            if (!values.length) return null;
+            return values.reduce((sum, value) => sum + value, 0) / values.length;
+        }
+
+        function clamp(num, min, max) {
+            return Math.min(Math.max(num, min), max);
+        }
+
+        function renderPerfBar(element, label, valueText, widthPercent) {
+            element.textContent = valueText;
+            element.style.width = `${clamp(widthPercent, 12, 100)}%`;
+            element.setAttribute('aria-label', `${label} ${valueText}`);
+        }
+
+        async function loadPerformanceMetrics() {
+            const { data, error } = await window.sb
+                .from('performance_metrics')
+                .select('ttfb_ms, lcp_ms, cls_value, created_at')
+                .order('created_at', { ascending: false })
+                .limit(80);
+
+            if (error) {
+                perfNote.textContent = 'ยังโหลด performance metrics ไม่ได้: ' + error.message;
+                return;
+            }
+
+            if (!data || data.length === 0) {
+                perfNote.textContent = 'ยังไม่มีข้อมูล metrics. เข้าใช้งานหน้าเว็บสักครู่เพื่อให้ระบบเก็บค่าอัตโนมัติ';
+                return;
+            }
+
+            const ttfbAvg = avg(data.map((row) => row.ttfb_ms).filter((value) => typeof value === 'number'));
+            const lcpAvg = avg(data.map((row) => row.lcp_ms).filter((value) => typeof value === 'number'));
+            const clsAvg = avg(data.map((row) => row.cls_value).filter((value) => typeof value === 'number'));
+
+            const ttfbText = ttfbAvg ? `${Math.round(ttfbAvg)}ms` : '-';
+            const lcpText = lcpAvg ? `${(lcpAvg / 1000).toFixed(2)}s` : '-';
+            const clsText = typeof clsAvg === 'number' ? clsAvg.toFixed(3) : '-';
+
+            renderPerfBar(perfTtfbBar, 'TTFB', ttfbText, ttfbAvg ? (1000 / ttfbAvg) * 42 : 12);
+            renderPerfBar(perfLcpBar, 'LCP', lcpText, lcpAvg ? (2500 / lcpAvg) * 46 : 12);
+            renderPerfBar(perfClsBar, 'CLS', clsText, typeof clsAvg === 'number' ? (0.25 / Math.max(clsAvg, 0.01)) * 28 : 12);
+
+            perfNote.textContent = `คำนวณจาก ${data.length} รายการล่าสุดในตาราง performance_metrics`;
+        }
+
+        function formatLogLine(log) {
+            const date = new Date(log.created_at || Date.now());
+            const time = date.toLocaleTimeString('th-TH', { hour12: false });
+            const level = (log.level || 'info').toUpperCase();
+            const message = log.message || '-';
+            return `<p><span class="log-time">${time}</span> [${level}] ${message}</p>`;
+        }
+
+        function tsForFile() {
+            const now = new Date();
+            const pad = (n) => String(n).padStart(2, '0');
+            return `${now.getFullYear()}${pad(now.getMonth() + 1)}${pad(now.getDate())}-${pad(now.getHours())}${pad(now.getMinutes())}${pad(now.getSeconds())}`;
+        }
+
+        function downloadTextFile(filename, content, mimeType) {
+            const blob = new Blob([content], { type: mimeType });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = filename;
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
+            URL.revokeObjectURL(url);
+        }
+
+        function toCsv(rows) {
+            if (!rows || !rows.length) return '';
+            const headers = Object.keys(rows[0]);
+            const escapeCell = (value) => {
+                const text = value == null ? '' : String(value);
+                if (text.includes(',') || text.includes('"') || text.includes('\n')) {
+                    return '"' + text.replace(/"/g, '""') + '"';
+                }
+                return text;
+            };
+
+            const lines = [headers.join(',')];
+            rows.forEach((row) => {
+                lines.push(headers.map((h) => escapeCell(row[h])).join(','));
+            });
+            return lines.join('\n');
+        }
+
+        function setBackupStatus(message, isError) {
+            backupStatus.textContent = message;
+            backupStatus.style.color = isError ? '#b42318' : '#2b4c8d';
+        }
+
+        async function exportFullBackupJson() {
+            setBackupStatus('กำลังสร้างไฟล์ backup JSON...', false);
+
+            const [profilesResult, bookingsResult, logsResult, perfResult] = await Promise.allSettled([
+                window.sb.from('profiles').select('id, full_name, role, created_at').order('created_at', { ascending: false }),
+                window.sb.from('bookings').select('*').order('created_at', { ascending: false }),
+                window.sb.from('system_logs').select('*').order('created_at', { ascending: false }).limit(1000),
+                window.sb.from('performance_metrics').select('*').order('created_at', { ascending: false }).limit(1000)
+            ]);
+
+            const backup = {
+                generated_at: new Date().toISOString(),
+                source: 'AnimeTrails Admin Dashboard',
+                tables: {},
+                errors: {}
+            };
+
+            const mapResult = (name, result) => {
+                if (result.status === 'fulfilled' && !result.value.error) {
+                    backup.tables[name] = result.value.data || [];
+                    return;
+                }
+
+                const msg = result.status === 'rejected'
+                    ? (result.reason?.message || 'unknown error')
+                    : (result.value.error?.message || 'unknown error');
+                backup.errors[name] = msg;
+            };
+
+            mapResult('profiles', profilesResult);
+            mapResult('bookings', bookingsResult);
+            mapResult('system_logs', logsResult);
+            mapResult('performance_metrics', perfResult);
+
+            const fileName = `animetrails-backup-${tsForFile()}.json`;
+            downloadTextFile(fileName, JSON.stringify(backup, null, 2), 'application/json');
+
+            await window.writeSystemLog?.(
+                'backup.download.json',
+                'info',
+                'Admin downloaded full backup JSON',
+                {
+                    filename: fileName,
+                    profiles: (backup.tables.profiles || []).length,
+                    bookings: (backup.tables.bookings || []).length
+                }
+            );
+
+            const errorCount = Object.keys(backup.errors).length;
+            setBackupStatus(
+                errorCount
+                    ? `ดาวน์โหลดสำเร็จ (มีบางตารางไม่พร้อม ${errorCount} รายการ)`
+                    : 'ดาวน์โหลด backup JSON สำเร็จ',
+                false
+            );
+        }
+
+        async function exportBookingsCsv() {
+            setBackupStatus('กำลังสร้างไฟล์ CSV ของ bookings...', false);
+            const { data, error } = await window.sb
+                .from('bookings')
+                .select('id, user_id, fullname, phone, tour_package, travel_date, note, created_at')
+                .order('created_at', { ascending: false });
+
+            if (error) {
+                setBackupStatus('ดาวน์โหลด CSV ไม่สำเร็จ: ' + error.message, true);
+                return;
+            }
+
+            const csv = toCsv(data || []);
+            const fileName = `animetrails-bookings-${tsForFile()}.csv`;
+            downloadTextFile(fileName, csv, 'text/csv;charset=utf-8;');
+
+            await window.writeSystemLog?.(
+                'backup.download.bookings_csv',
+                'info',
+                'Admin downloaded bookings CSV',
+                { filename: fileName, rows: (data || []).length }
+            );
+
+            setBackupStatus(`ดาวน์โหลด CSV สำเร็จ (${(data || []).length} แถว)`, false);
+        }
+
+        async function loadSystemLogs() {
+            const { data, error } = await window.sb
+                .from('system_logs')
+                .select('created_at, level, message')
+                .order('created_at', { ascending: false })
+                .limit(30);
+
+            if (error) {
+                logsContainer.innerHTML = `<p><span class="log-time">--:--:--</span> [ERROR] Cannot load logs: ${error.message}</p>`;
+                return;
+            }
+
+            if (!data || data.length === 0) {
+                logsContainer.innerHTML = '<p><span class="log-time">--:--:--</span> [INFO] No logs yet</p>';
+                return;
+            }
+
+            logsContainer.innerHTML = data.map(formatLogLine).join('');
+        }
+
+        function rowTemplate(profile) {
+            const fullName = profile.full_name || '-';
+            const role = profile.role || 'user';
+            return `
+                <tr data-user-id="${profile.id}">
+                    <td>${profile.id}</td>
+                    <td>${fullName}</td>
+                    <td>
+                        <select class="role-select" data-user-id="${profile.id}">
+                            <option value="user" ${role === 'user' ? 'selected' : ''}>user</option>
+                            <option value="admin" ${role === 'admin' ? 'selected' : ''}>admin</option>
+                        </select>
+                    </td>
+                    <td>
+                        <button class="btn role-save-btn" data-user-id="${profile.id}" style="background:#0d3b66; color:#fff; padding:6px 10px;">Save</button>
+                    </td>
+                </tr>
+            `;
+        }
+
+        async function loadRolesTable() {
+            setRolesMessage('Loading users...', false);
+            const { data, error } = await window.sb
+                .from('profiles')
+                .select('id, full_name, role')
+                .order('created_at', { ascending: false });
+
+            if (error) {
+                rolesTableBody.innerHTML = '<tr><td colspan="4">Cannot load users</td></tr>';
+                setRolesMessage('โหลดข้อมูลผู้ใช้ไม่สำเร็จ: ' + error.message, true);
+                return;
+            }
+
+            if (!data || data.length === 0) {
+                rolesTableBody.innerHTML = '<tr><td colspan="4">No users found</td></tr>';
+                setRolesMessage('ยังไม่มีผู้ใช้ในตาราง profiles', false);
+                return;
+            }
+
+            rolesTableBody.innerHTML = data.map(rowTemplate).join('');
+            setRolesMessage('พร้อมแก้ไข role ของผู้ใช้', false);
+        }
+
+        async function saveRole(userId) {
+            const select = document.querySelector(`.role-select[data-user-id="${userId}"]`);
+            if (!select) return;
+
+            const newRole = select.value;
+            const { error } = await window.sb
+                .from('profiles')
+                .update({ role: newRole })
+                .eq('id', userId);
+
+            if (error) {
+                setRolesMessage('อัปเดต role ไม่สำเร็จ: ' + error.message, true);
+                return;
+            }
+
+            await window.writeSystemLog?.(
+                'admin.role.update',
+                'warn',
+                'Admin changed user role',
+                { target_user_id: userId, new_role: newRole }
+            );
+
+            setRolesMessage('บันทึก role สำเร็จสำหรับ user ' + userId, false);
+            await loadMetrics();
+            await loadSystemLogs();
+        }
+
+        rolesTableBody.addEventListener('click', async function (event) {
+            const btn = event.target.closest('.role-save-btn');
+            if (!btn) return;
+            const userId = btn.getAttribute('data-user-id');
+            await saveRole(userId);
+        });
+
+        refreshRolesBtn.addEventListener('click', async function () {
+            await loadRolesTable();
+            await loadMetrics();
+        });
+
+        refreshLogsBtn.addEventListener('click', async function () {
+            await loadSystemLogs();
+        });
+
+        backupJsonBtn.addEventListener('click', async function () {
+            await exportFullBackupJson();
+        });
+
+        backupCsvBtn.addEventListener('click', async function () {
+            await exportBookingsCsv();
+        });
+
+        logoutBtn.addEventListener('click', async function () {
+            await window.writeSystemLog?.('admin.logout', 'info', 'Admin logout action', null);
+            if (window.sb && window.sb.auth) {
+                await window.sb.auth.signOut();
+            }
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('userRole');
+            localStorage.removeItem('userEmail');
+            localStorage.removeItem('userName');
+            window.location.href = 'login.html?logged_out=1';
+        });
+
+        (async function initAdminDashboard() {
+            const user = await ensureAdminAccess();
+            if (!user) return;
+
+            await loadRolesTable();
+            await loadMetrics();
+            await loadPerformanceMetrics();
+            await loadSystemLogs();
+        })();
+    </script>
+</body>
+</html>

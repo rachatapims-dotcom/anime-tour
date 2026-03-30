@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | AnimeTrails JP</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script src="supabase-client.js"></script>
+    <script src="audit-log.js"></script>
+    <script src="auth.js" defer></script>
+</head>
+<body>
+    <header class="top-nav">
+        <div class="nav-inner">
+            <a class="logo" href="index.html">AnimeTrails JP</a>
+            <nav class="menu">
+                <a href="index.html">หน้าแรก</a>
+                <a href="packages.html">แพ็กเกจทัวร์</a>
+                <a href="gallery.html">แกลลอรี่ & รีวิว</a>
+                <a href="contact.html">จอง & ติดต่อ</a>
+                <a href="team.html">ทีมไกด์</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="section-shell" style="max-width:560px; margin:22px auto 0;">
+            <p class="eyebrow" style="background:#e8f4ff; color:#0d3b66;">User Login</p>
+            <h1>เข้าสู่ระบบ</h1>
+            <p>ล็อกอินเข้าสู่บัญชีผู้ใช้ของคุณ</p>
+
+            <form id="login-form" class="booking-form" style="grid-template-columns:1fr; margin-top:18px;">
+                <div>
+                    <label for="login-email">อีเมล (Email)</label>
+                    <input id="login-email" type="email" placeholder="your@example.com" required>
+                </div>
+                <div>
+                    <label for="login-password">รหัสผ่าน (Password)</label>
+                    <input id="login-password" type="password" placeholder="••••••••" required>
+                </div>
+                <div>
+                    <button class="btn btn-primary" type="submit">เข้าสู่ระบบ</button>
+                </div>
+                <div>
+                    <button class="btn" id="google-login-btn" type="button" style="background:#fff; border:1px solid var(--line);">เข้าสู่ระบบด้วย Google</button>
+                </div>
+            </form>
+
+            <p id="login-error" style="display:none; color:#b42318; font-weight:600; margin-top:10px;"></p>
+            <p id="login-success" style="display:none; color:#0d5d22; font-weight:600; margin-top:10px;"></p>
+
+            <div style="margin-top:18px; padding-top:18px; border-top:1px solid var(--line); text-align:center;">
+                <p style="color:var(--muted); margin-bottom:8px; font-size:0.92rem;">ยังไม่มีบัญชี?</p>
+                <a class="btn btn-ghost" href="register.html" style="color:var(--brand); border-color:var(--brand); background:#fff;">สร้างบัญชีใหม่</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        AnimeTrails JP | Demo Login System
+    </footer>
+
+    <script>
+        const form = document.getElementById('login-form');
+        const googleBtn = document.getElementById('google-login-btn');
+        const emailInput = document.getElementById('login-email');
+        const passwordInput = document.getElementById('login-password');
+        const errorText = document.getElementById('login-error');
+        const successText = document.getElementById('login-success');
+
+        async function syncUserToLocalStorage(user) {
+            let role = 'user';
+            let userName = user.user_metadata?.full_name || user.email || 'User';
+
+            const { data: profile } = await window.sb
+                .from('profiles')
+                .select('role, full_name')
+                .eq('id', user.id)
+                .maybeSingle();
+
+            if (!profile) {
+                await window.sb.from('profiles').insert({
+                    id: user.id,
+                    full_name: userName,
+                    role: 'user'
+                });
+            } else {
+                role = profile.role || 'user';
+                userName = profile.full_name || userName;
+            }
+
+            localStorage.setItem('isLoggedIn', 'true');
+            localStorage.setItem('userRole', role);
+            localStorage.setItem('userEmail', user.email || '');
+            localStorage.setItem('userName', userName);
+        }
+
+        async function continueIfAlreadyLoggedIn() {
+            if (!window.sb) return;
+
+            const pendingSignOut = localStorage.getItem('pendingSupabaseSignOut') === 'true';
+            if (pendingSignOut) {
+                await window.sb.auth.signOut();
+                localStorage.removeItem('pendingSupabaseSignOut');
+                return;
+            }
+
+            const { data } = await window.sb.auth.getSession();
+            const sessionUser = data?.session?.user;
+            if (!sessionUser) return;
+
+            await syncUserToLocalStorage(sessionUser);
+            window.location.href = 'index.html';
+        }
+
+        continueIfAlreadyLoggedIn();
+
+        form.addEventListener('submit', async function (event) {
+            event.preventDefault();
+            errorText.style.display = 'none';
+            successText.style.display = 'none';
+
+            const email = (emailInput.value || '').trim().toLowerCase();
+            const password = (passwordInput.value || '').trim();
+
+            if (!window.sb) {
+                errorText.textContent = 'ยังไม่ได้ตั้งค่า Supabase URL/Key ในไฟล์ supabase-config.js';
+                errorText.style.display = 'block';
+                return;
+            }
+
+            const { data, error } = await window.sb.auth.signInWithPassword({ email, password });
+
+            if (error || !data.user) {
+                await window.writeSystemLog?.(
+                    'auth.login.failed',
+                    'warn',
+                    'Login failed',
+                    { email }
+                );
+                errorText.textContent = error?.message || 'เข้าสู่ระบบไม่สำเร็จ';
+                errorText.style.display = 'block';
+                passwordInput.value = '';
+                return;
+            }
+
+            await syncUserToLocalStorage(data.user);
+            localStorage.removeItem('pendingSupabaseSignOut');
+            await window.writeSystemLog?.(
+                'auth.login.success',
+                'info',
+                'User login success',
+                { email: data.user.email || email }
+            );
+            successText.textContent = 'เข้าสู่ระบบสำเร็จ กำลังพาไปหน้าแรก...';
+            successText.style.display = 'block';
+            window.location.href = 'index.html';
+        });
+
+        googleBtn.addEventListener('click', async function () {
+            errorText.style.display = 'none';
+            successText.style.display = 'none';
+
+            if (!window.sb) {
+                errorText.textContent = 'ยังไม่ได้ตั้งค่า Supabase URL/Key ในไฟล์ supabase-config.js';
+                errorText.style.display = 'block';
+                return;
+            }
+
+            const redirectTo = window.location.origin + '/login.html';
+            await window.writeSystemLog?.(
+                'auth.oauth.google.start',
+                'info',
+                'User started Google OAuth login',
+                { redirectTo }
+            );
+            await window.sb.auth.signInWithOAuth({
+                provider: 'google',
+                options: { redirectTo }
+            });
+        });
+    </script>
+</body>
+</html>

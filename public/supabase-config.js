@@ -1,0 +1,2 @@
+window.SUPABASE_URL = 'https://xixbewaqaqsxwaitiono.supabase.co';
+window.SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhpeGJld2FxYXFzeHdhaXRpb25vIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ4NTc1ODEsImV4cCI6MjA5MDQzMzU4MX0.NwqjY6LBh6XWBzx9ObyKfOwJGuvQrFnGCrTpxku44_0';

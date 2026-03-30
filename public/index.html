@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AnimeTrails | หน้าแรก</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="auth.js" defer></script>
+</head>
+<body>
+    <header class="top-nav">
+        <div class="nav-inner">
+            <a class="logo" href="index.html">AnimeTrails JP</a>
+            <nav class="menu">
+                <a class="active" href="index.html">หน้าแรก</a>
+                <a href="packages.html">แพ็กเกจทัวร์</a>
+                <a href="gallery.html">แกลลอรี่ & รีวิว</a>
+                <a href="contact.html">จอง & ติดต่อ</a>
+                <a href="team.html">ทีมไกด์</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="hero-banner">
+            <p class="eyebrow">Anime Pilgrimage Experience</p>
+            <h1>ทัวร์ญี่ปุ่นตามรอยฉากอนิเมะดัง<br>พาแฟนคลับไปถึงสถานที่จริง</h1>
+            <p class="lead">เลือกธีมได้ทั้ง One Piece, Dragon Ball Z และเส้นทางพิเศษที่ออกแบบโดยทีมไกด์สายโอตาคุตัวจริง</p>
+            <div class="cta-row">
+                <a class="btn btn-primary" href="packages.html">ดูแพ็กเกจทัวร์ไฮไลท์</a>
+                <a class="btn btn-ghost" href="gallery.html">ดูภาพเทียบฉากจริง</a>
+            </div>
+        </section>
+
+        <section class="search-panel">
+            <h2>ค้นหาทัวร์ที่ตรงใจ</h2>
+            <form class="search-form" action="packages.html" method="get">
+                <input type="search" name="q" placeholder="ค้นหา: โทเกียว, โอซาก้า, โจรสลัดหมวกฟาง..." aria-label="ค้นหาทัวร์">
+                <select name="category" aria-label="เลือกหมวดหมู่อนิเมะ">
+                    <option value="">เลือกหมวดหมู่อนิเมะ</option>
+                    <option value="one-piece">One Piece</option>
+                    <option value="dragon-ball-z">Dragon Ball Z</option>
+                    <option value="mystery">Mystery & School</option>
+                    <option value="jjk">Jujutsu Kaisen</option>
+                </select>
+                <button type="submit" class="btn btn-primary">ค้นหา</button>
+            </form>
+        </section>
+
+        <section class="grid two-col">
+            <article class="card promo-card">
+                <h3>โปรโมชันประจำเดือน</h3>
+                <p>จองทัวร์ธีม Dragon Ball Z ภายในวันที่ 15 นี้ รับส่วนลดทันที 12% และของที่ระลึก Capsule Corp จำกัดจำนวน</p>
+                <a class="text-link" href="contact.html">จองสิทธิ์ตอนนี้</a>
+            </article>
+            <article class="card promo-card">
+                <h3>ทำไมต้อง AnimeTrails?</h3>
+                <p>เราวางเส้นทางจากข้อมูลฉากจริง, เวลาแสงถ่ายรูป และการเดินทางที่ประหยัดเวลา เพื่อให้คุณได้ฟีลเหมือนอยู่ในอนิเมะจริง</p>
+                <a class="text-link" href="team.html">รู้จักทีมไกด์ผู้เชี่ยวชาญ</a>
+            </article>
+        </section>
+    </main>
+</body>
+</html>

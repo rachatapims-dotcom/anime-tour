@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>จองและติดต่อ | AnimeTrails JP</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script src="supabase-client.js"></script>
+    <script src="audit-log.js"></script>
+    <script src="auth.js" defer></script>
+</head>
+<body>
+    <header class="top-nav">
+        <div class="nav-inner">
+            <a class="logo" href="index.html">AnimeTrails JP</a>
+            <nav class="menu">
+                <a href="index.html">หน้าแรก</a>
+                <a href="packages.html">แพ็กเกจทัวร์</a>
+                <a href="gallery.html">แกลลอรี่ & รีวิว</a>
+                <a class="active" href="contact.html">จอง & ติดต่อ</a>
+                <a href="team.html">ทีมไกด์</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="section-shell">
+            <p class="eyebrow" style="background:#e8f4ff; color:#0d3b66;">Booking & Contact</p>
+            <h1>จองทริปในฝันของคุณ</h1>
+            <p>กรอกข้อมูลเบื้องต้นเพื่อรับรายละเอียดเส้นทางเต็มและราคาอัปเดตจากทีมงาน</p>
+        </section>
+
+        <section class="section-shell" id="selected-package-section">
+            <h2 id="selected-package-title">รายละเอียดแพ็กเกจที่เลือก</h2>
+            <p id="selected-package-hint">เลือกจากหน้าแพ็กเกจ แล้วระบบจะแสดงรายละเอียดเต็มของทัวร์ที่คุณกดมา</p>
+            <article class="package-card package-full-detail" data-package="one-piece" hidden>
+                <img src="assets/onepiece.jpg" alt="One Piece Tour" loading="lazy">
+                <div class="content">
+                    <h3>Straw Hat Voyage - One Piece Route</h3>
+                    <p class="meta">เริ่มต้น 39,900 บาท | 5 วัน 4 คืน</p>
+                    <p>เส้นทางโตเกียว - โยโกฮามา - โอไดบะ พร้อมจุดแลนด์มาร์กธีมโจรสลัดและมุมถ่ายภาพที่แฟน One Piece ห้ามพลาด</p>
+                    <p><strong>ลำดับเส้นทาง (Google Maps Style)</strong></p>
+                    <ol>
+                        <li>Day 1: Narita Airport -> Asakusa -> Tokyo Skytree</li>
+                        <li>Day 2: Akihabara -> Odaiba Seaside Park</li>
+                        <li>Day 3: Yokohama Red Brick Warehouse -> Yamashita Park</li>
+                        <li>Day 4: Kamakura Coast -> Enoshima</li>
+                        <li>Day 5: Tokyo Station -> Narita Airport</li>
+                    </ol>
+                    <a class="text-link" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&origin=Narita+International+Airport&destination=Tokyo+Station&travelmode=driving&waypoints=Asakusa%7CTokyo+Skytree%7CAkihabara%7COdaiba+Seaside+Park%7CYokohama+Red+Brick+Warehouse%7CYamashita+Park%7CKamakura+Coast%7CEnoshima">เปิดเส้นทางใน Google Maps</a>
+                </div>
+            </article>
+            <article class="package-card package-full-detail" data-package="dragon-ball-z" hidden>
+                <img src="assets/dbz.jpg" alt="Dragon Ball Z Tour" loading="lazy">
+                <div class="content">
+                    <h3>Capsule Road - Dragon Ball Z Tour</h3>
+                    <p class="meta">เริ่มต้น 44,500 บาท | 6 วัน 5 คืน</p>
+                    <p>ตามรอยโลก Dragon Ball Z ผ่านโลเคชันภูเขา เมืองชนบท และจุดแรงบันดาลใจที่ใช้สร้างฉากฝึกวิชาในตำนาน</p>
+                    <p><strong>ลำดับเส้นทาง (Google Maps Style)</strong></p>
+                    <ol>
+                        <li>Day 1: Haneda Airport -> Shinjuku -> Tokyo Metropolitan Building</li>
+                        <li>Day 2: Mount Takao -> Lake Sagami</li>
+                        <li>Day 3: Kawaguchiko -> Chureito Pagoda</li>
+                        <li>Day 4: Matsumoto Castle -> Kamikochi</li>
+                        <li>Day 5: Nagano Zenkoji -> Jigokudani Valley</li>
+                        <li>Day 6: Tokyo Station -> Haneda Airport</li>
+                    </ol>
+                    <a class="text-link" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&origin=Haneda+Airport&destination=Haneda+Airport&travelmode=driving&waypoints=Shinjuku%7CTokyo+Metropolitan+Government+Building%7CMount+Takao%7CLake+Sagami%7CKawaguchiko+Station%7CChureito+Pagoda%7CMatsumoto+Castle%7CKamikochi%7CZenkoji+Temple%7CJigokudani+Yaen+Koen">เปิดเส้นทางใน Google Maps</a>
+                </div>
+            </article>
+            <article class="package-card package-full-detail" data-package="jjk" hidden>
+                <img src="assets/jjk.jpg" alt="Jujutsu Kaisen Tour" loading="lazy">
+                <div class="content">
+                    <h3>Jujutsu Kaisen: Tokyo Curse Route</h3>
+                    <p class="meta">เริ่มต้น 35,900 บาท | 4 วัน 3 คืน</p>
+                    <p>ตามรอยโลเคชันบรรยากาศเข้มข้นในโตเกียว ทั้งชิบูยะ ชินจูกุ และจุดแลนด์มาร์กสายดาร์กแฟน JJK</p>
+                    <p><strong>ลำดับเส้นทาง (Google Maps Style)</strong></p>
+                    <ol>
+                        <li>Day 1: Tokyo Station -> Shibuya Crossing -> Hachiko Square</li>
+                        <li>Day 2: Shinjuku -> Kabukicho Gate -> Omoide Yokocho</li>
+                        <li>Day 3: Ikebukuro -> Sunshine City -> Nakano Broadway</li>
+                        <li>Day 4: Asakusa -> Sensoji Temple -> Tokyo Station</li>
+                    </ol>
+                    <a class="text-link" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&origin=Tokyo+Station&destination=Tokyo+Station&travelmode=driving&waypoints=Shibuya+Scramble+Crossing%7CHachiko+Memorial+Statue%7CShinjuku%7CKabukicho%7COmoide+Yokocho%7CIkebukuro+Station%7CSunshine+City%7CNakano+Broadway%7CAsakusa%7CSensoji+Temple">เปิดเส้นทางใน Google Maps</a>
+                </div>
+            </article>
+        </section>
+
+        <section class="contact-grid">
+            <article class="section-shell">
+                <h2>แบบฟอร์มจองแพ็กเกจ (UI จำลอง)</h2>
+                <ul class="booking-notes">
+                    <li>กรอกข้อมูลครบ แล้วทีมงานจะติดต่อกลับภายใน 24 ชั่วโมง</li>
+                    <li>สามารถเลือกธีมทัวร์ เพิ่มจุดแวะ และปรับแผนเดินทางได้</li>
+                    <li>ราคาสุดท้ายขึ้นกับช่วงเวลาเดินทางและจำนวนผู้ร่วมทริป</li>
+                </ul>
+                <form id="booking-form" class="booking-form">
+                    <div>
+                        <label for="fullname">ชื่อผู้จอง</label>
+                        <input id="fullname" name="fullname" type="text" placeholder="เช่น สมชาย ใจดี" required>
+                    </div>
+                    <div>
+                        <label for="phone">เบอร์โทร</label>
+                        <input id="phone" name="phone" type="tel" placeholder="08x-xxx-xxxx" required>
+                    </div>
+                    <div>
+                        <label for="tour-package">แพ็กเกจที่สนใจ</label>
+                        <select id="tour-package" name="tour-package" required>
+                            <option value="">เลือกแพ็กเกจ</option>
+                            <option value="one-piece">Straw Hat Voyage - One Piece</option>
+                            <option value="dragon-ball-z">Capsule Road - Dragon Ball Z</option>
+                            <option value="jjk">Jujutsu Kaisen: Tokyo Curse Route</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="travel-date">วันที่เดินทาง</label>
+                        <input id="travel-date" name="travel-date" type="date" required>
+                    </div>
+                    <div class="full">
+                        <label for="note">ความต้องการเพิ่มเติม</label>
+                        <textarea id="note" name="note" rows="4" placeholder="เช่น ต้องการห้องพักคู่ / แพ้อาหารทะเล"></textarea>
+                    </div>
+                    <div class="full">
+                        <button class="btn btn-primary" type="submit">สมัคร/ส่งข้อมูลการจอง</button>
+                    </div>
+                </form>
+                <p id="booking-message" style="display:none; margin-top:10px; font-weight:600;"></p>
+            </article>
+
+            <aside class="section-shell">
+                <h2>ข้อมูลติดต่อบริษัท</h2>
+                <div class="contact-anime-card">
+                    <img src="assets/anime-team.svg" alt="AnimeTrails Team" loading="lazy">
+                    <p>ทีมไกด์สายอนิเมะพร้อมช่วยออกแบบทริปให้ตรงเรื่องที่คุณชอบ</p>
+                </div>
+                <div class="contact-box">
+                    <div class="content">
+                        <p><strong>AnimeTrails JP (Demo)</strong></p>
+                        <p>โทร: 02-123-4567</p>
+                        <p>LINE: @animetrails</p>
+                        <p>อีเมล: booking@animetrails-demo.com</p>
+                        <p>ที่อยู่: 1-1-2 Oshiage, Sumida, Tokyo, Japan</p>
+                    </div>
+                </div>
+                <div class="map-wrap" style="margin-top:12px;">
+                    <iframe loading="lazy" allowfullscreen src="https://www.google.com/maps?q=Tokyo%20Skytree&output=embed" title="Google Maps - AnimeTrails JP"></iframe>
+                </div>
+            </aside>
+        </section>
+    </main>
+
+    <footer>
+        แบบฟอร์มนี้เป็น UI จำลองสำหรับโปรเจกต์เว็บไซต์ตัวอย่าง
+    </footer>
+
+    <script>
+        const packageMap = {
+            'one-piece': 'Straw Hat Voyage - One Piece Route',
+            'dragon-ball-z': 'Capsule Road - Dragon Ball Z Tour',
+            'jjk': 'Jujutsu Kaisen: Tokyo Curse Route'
+        };
+
+        const params = new URLSearchParams(window.location.search);
+        const selectedPackage = params.get('package');
+        const packageCards = document.querySelectorAll('.package-full-detail');
+        const packageTitle = document.getElementById('selected-package-title');
+        const packageHint = document.getElementById('selected-package-hint');
+        const packageSelect = document.getElementById('tour-package');
+        const bookingForm = document.getElementById('booking-form');
+        const bookingMessage = document.getElementById('booking-message');
+
+        if (selectedPackage && packageMap[selectedPackage]) {
+            packageCards.forEach((card) => {
+                card.hidden = card.dataset.package !== selectedPackage;
+            });
+
+            packageTitle.textContent = `รายละเอียดเต็ม: ${packageMap[selectedPackage]}`;
+            packageHint.textContent = 'แสดงเฉพาะแพ็กเกจที่คุณเลือกจากหน้าทัวร์';
+            packageSelect.value = selectedPackage;
+        } else {
+            packageCards.forEach((card) => {
+                card.hidden = false;
+            });
+            packageTitle.textContent = 'รายละเอียดแพ็กเกจทั้งหมด';
+            packageHint.textContent = 'หากต้องการดูเฉพาะแพ็กเกจ ให้กลับไปกดปุ่ม ดูรายละเอียด/จอง จากหน้าทัวร์';
+        }
+
+        bookingForm.addEventListener('submit', async function (event) {
+            event.preventDefault();
+
+            bookingMessage.style.display = 'none';
+            bookingMessage.style.color = '#b42318';
+
+            if (!window.sb) {
+                bookingMessage.textContent = 'ยังไม่ได้ตั้งค่า Supabase URL/Key ในไฟล์ supabase-config.js';
+                bookingMessage.style.display = 'block';
+                return;
+            }
+
+            const { data: sessionData } = await window.sb.auth.getSession();
+            const user = sessionData?.session?.user;
+
+            if (!user) {
+                bookingMessage.textContent = 'กรุณาเข้าสู่ระบบก่อนทำการจอง';
+                bookingMessage.style.display = 'block';
+                return;
+            }
+
+            const payload = {
+                user_id: user.id,
+                fullname: (document.getElementById('fullname').value || '').trim(),
+                phone: (document.getElementById('phone').value || '').trim(),
+                tour_package: (document.getElementById('tour-package').value || '').trim(),
+                travel_date: document.getElementById('travel-date').value,
+                note: (document.getElementById('note').value || '').trim() || null
+            };
+
+            const { error } = await window.sb.from('bookings').insert(payload);
+
+            if (error) {
+                await window.writeSystemLog?.(
+                    'booking.create.failed',
+                    'error',
+                    'Booking insert failed',
+                    { tour_package: payload.tour_package }
+                );
+                bookingMessage.textContent = 'บันทึกการจองไม่สำเร็จ: ' + error.message;
+                bookingMessage.style.display = 'block';
+                return;
+            }
+
+            await window.writeSystemLog?.(
+                'booking.create.success',
+                'info',
+                'Booking created successfully',
+                { tour_package: payload.tour_package, travel_date: payload.travel_date }
+            );
+
+            bookingMessage.style.color = '#0d5d22';
+            bookingMessage.textContent = 'บันทึกข้อมูลจองสำเร็จ กำลังพาไปหน้าสำเร็จ...';
+            bookingMessage.style.display = 'block';
+            window.location.href = 'booking-success.html';
+        });
+    </script>
+</body>
+</html>
