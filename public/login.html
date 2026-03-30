@@ -43,9 +43,6 @@
                 <div>
                     <button class="btn btn-primary" type="submit">เข้าสู่ระบบ</button>
                 </div>
-                <div>
-                    <button class="btn" id="google-login-btn" type="button" style="background:#fff; border:1px solid var(--line);">เข้าสู่ระบบด้วย Google</button>
-                </div>
             </form>
 
             <p id="login-error" style="display:none; color:#b42318; font-weight:600; margin-top:10px;"></p>
@@ -64,7 +61,6 @@
 
     <script>
         const form = document.getElementById('login-form');
-        const googleBtn = document.getElementById('google-login-btn');
         const emailInput = document.getElementById('login-email');
         const passwordInput = document.getElementById('login-password');
         const errorText = document.getElementById('login-error');
@@ -157,29 +153,6 @@
             successText.textContent = 'เข้าสู่ระบบสำเร็จ กำลังพาไปหน้าแรก...';
             successText.style.display = 'block';
             window.location.href = 'index.html';
-        });
-
-        googleBtn.addEventListener('click', async function () {
-            errorText.style.display = 'none';
-            successText.style.display = 'none';
-
-            if (!window.sb) {
-                errorText.textContent = 'ยังไม่ได้ตั้งค่า Supabase URL/Key ในไฟล์ supabase-config.js';
-                errorText.style.display = 'block';
-                return;
-            }
-
-            const redirectTo = window.location.origin + '/login.html';
-            await window.writeSystemLog?.(
-                'auth.oauth.google.start',
-                'info',
-                'User started Google OAuth login',
-                { redirectTo }
-            );
-            await window.sb.auth.signInWithOAuth({
-                provider: 'google',
-                options: { redirectTo }
-            });
         });
     </script>
 </body>
