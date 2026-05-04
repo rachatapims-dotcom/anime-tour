@@ -4,9 +4,7 @@
         return;
     }
 
-    if (!window.SUPABASE_URL || !window.SUPABASE_ANON_KEY ||
-        window.SUPABASE_URL.includes('PASTE_YOUR_SUPABASE_URL_HERE') ||
-        window.SUPABASE_ANON_KEY.includes('PASTE_YOUR_SUPABASE_ANON_KEY_HERE')) {
+    if (!window.SUPABASE_URL || !window.SUPABASE_ANON_KEY) {
         console.warn('Supabase URL/Key not configured yet in supabase-config.js');
         return;
     }

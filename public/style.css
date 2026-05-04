@@ -543,21 +543,76 @@ h2 {
 }
 
 .log-feed {
-    background: #0f172b;
-    color: #d9f7ff;
-    border-radius: 10px;
-    padding: 12px;
-    font-family: Consolas, 'Courier New', monospace;
-    font-size: 0.84rem;
+    background: #0f172a;
+    color: #e2e8f0;
+    border-radius: 12px;
+    padding: 16px;
+    font-family: 'JetBrains Mono', Consolas, monospace;
+    font-size: 0.82rem;
     margin-bottom: 12px;
+    max-height: 500px;
+    overflow-y: auto;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.log-feed p {
-    margin: 0 0 5px;
+.log-item {
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: background 0.2s;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.log-item:hover {
+    background: rgba(255, 255, 255, 0.03);
 }
 
 .log-time {
-    color: #8edfff;
+    color: #94a3b8;
+    min-width: 75px;
+}
+
+.log-level {
+    font-weight: bold;
+    min-width: 60px;
+}
+
+.log-level-info { color: #38bdf8; }
+.log-level-warn { color: #fbbf24; }
+.log-level-error { color: #f87171; }
+
+.log-event {
+    color: #818cf8;
+    font-weight: 500;
+}
+
+.log-msg {
+    flex: 1;
+}
+
+.log-user {
+    color: #94a3b8;
+    font-size: 0.75rem;
+}
+
+.log-meta-toggle {
+    cursor: pointer;
+    font-size: 0.75rem;
+    color: #94a3b8;
+    text-decoration: underline;
+}
+
+.log-meta-content {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 8px;
+    margin-top: 4px;
+    border-radius: 4px;
+    color: #cbd5e1;
+    white-space: pre-wrap;
+    word-break: break-all;
 }
 
 footer {

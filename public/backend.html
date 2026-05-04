@@ -32,6 +32,7 @@
             <h2>Dashboard Menu</h2>
             <nav class="admin-nav">
                 <a href="#overview">Overview</a>
+                <a href="#tours">Tour Management</a>
                 <a href="#security">Security</a>
                 <a href="#performance">Performance</a>
                 <a href="#backup">Backup & DR</a>
@@ -64,6 +65,65 @@
                     </article>
                 </div>
             </section>
+
+            <section id="tours" class="section-shell admin-card">
+                <div class="admin-section-head">
+                    <h2>Tour Management</h2>
+                    <div style="display:flex; gap:10px;">
+                        <button id="sync-tours-btn" type="button" class="btn" style="background:#eef3ff; color:#0d3b66;">🔄 Sync from HTML</button>
+                        <button id="add-tour-btn" type="button" class="btn" style="background:#0d3b66; color:#fff;">+ Add New Tour</button>
+                    </div>
+                </div>
+                <p>จัดการข้อมูลแพ็กเกจทัวร์ ราคา และรายละเอียดที่แสดงบนหน้าเว็บ</p>
+                <div id="tours-list-container" class="grid two-col" style="margin-top:16px;">
+                    <p>Loading tours...</p>
+                </div>
+            </section>
+
+            <!-- Tour Edit Modal -->
+            <div id="tour-modal" class="modal-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:2000; align-items:center; justify-content:center;">
+                <div class="modal-content section-shell" style="background:#fff; max-width:600px; width:90%; max-height:90vh; overflow-y:auto; padding:30px; border-radius:15px; position:relative;">
+                    <button id="close-modal-btn" style="position:absolute; top:15px; right:15px; border:none; background:none; font-size:1.5rem; cursor:pointer;">&times;</button>
+                    <h2 id="modal-title">Edit Tour Package</h2>
+                    <form id="tour-form">
+                        <input type="hidden" id="tour-id">
+                        <div class="grid two-col" style="gap:15px; margin-bottom:15px;">
+                            <div>
+                                <label style="display:block; font-size:0.9rem; margin-bottom:5px;">Tour Title</label>
+                                <input type="text" id="tour-title" style="width:100%; padding:8px; border:1px solid #ddd; border-radius:6px;" required>
+                            </div>
+                            <div>
+                                <label style="display:block; font-size:0.9rem; margin-bottom:5px;">Slug (URL friendly)</label>
+                                <input type="text" id="tour-slug" placeholder="e.g. one-piece" style="width:100%; padding:8px; border:1px solid #ddd; border-radius:6px;" required>
+                            </div>
+                            <div>
+                                <label style="display:block; font-size:0.9rem; margin-bottom:5px;">Price Text</label>
+                                <input type="text" id="tour-price" placeholder="เริ่มต้น 39,900 บาท" style="width:100%; padding:8px; border:1px solid #ddd; border-radius:6px;">
+                            </div>
+                            <div>
+                                <label style="display:block; font-size:0.9rem; margin-bottom:5px;">Duration</label>
+                                <input type="text" id="tour-duration" placeholder="5 วัน 4 คืน" style="width:100%; padding:8px; border:1px solid #ddd; border-radius:6px;">
+                            </div>
+                        </div>
+                        <div style="margin-bottom:15px;">
+                            <label style="display:block; font-size:0.9rem; margin-bottom:5px;">Image URL</label>
+                            <input type="text" id="tour-image" placeholder="assets/tour.jpg" style="width:100%; padding:8px; border:1px solid #ddd; border-radius:6px;">
+                        </div>
+                        <div style="margin-bottom:15px;">
+                            <label style="display:block; font-size:0.9rem; margin-bottom:5px;">Description</label>
+                            <textarea id="tour-desc" rows="3" style="width:100%; padding:8px; border:1px solid #ddd; border-radius:6px; font-family:inherit;"></textarea>
+                        </div>
+                        <div style="margin-bottom:20px;">
+                            <label style="display:block; font-size:0.9rem; margin-bottom:5px;">Google Maps URL</label>
+                            <input type="text" id="tour-maps" style="width:100%; padding:8px; border:1px solid #ddd; border-radius:6px;">
+                        </div>
+                        <div style="display:flex; gap:10px; justify-content:flex-end;">
+                            <button type="button" id="cancel-tour-btn" class="btn" style="background:#f5f5f5;">Cancel</button>
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
 
             <section id="security" class="section-shell admin-card">
                 <h2>Security Hardening</h2>
@@ -159,6 +219,7 @@
     </footer>
 
     <script>
+        // --- DOM Elements ---
         const rolesTableBody = document.getElementById('roles-table-body');
         const rolesMessage = document.getElementById('roles-message');
         const refreshRolesBtn = document.getElementById('refresh-roles-btn');
@@ -170,6 +231,14 @@
         const adminAccessNote = document.getElementById('admin-access-note');
         const logoutBtn = document.getElementById('admin-logout-btn');
 
+        const toursListContainer = document.getElementById('tours-list-container');
+        const addTourBtn = document.getElementById('add-tour-btn');
+        const syncToursBtn = document.getElementById('sync-tours-btn');
+        const tourModal = document.getElementById('tour-modal');
+        const tourForm = document.getElementById('tour-form');
+        const closeModalBtn = document.getElementById('close-modal-btn');
+        const cancelTourBtn = document.getElementById('cancel-tour-btn');
+
         const metricUsers = document.getElementById('metric-users');
         const metricAdmins = document.getElementById('metric-admins');
         const metricBookings = document.getElementById('metric-bookings');
@@ -178,55 +247,10 @@
         const perfClsBar = document.getElementById('perf-cls-bar');
         const perfNote = document.getElementById('perf-note');
 
+        // --- Helper Functions ---
         function setRolesMessage(message, isError) {
             rolesMessage.textContent = message;
             rolesMessage.style.color = isError ? '#b42318' : '#2b4c8d';
-        }
-
-        async function ensureAdminAccess() {
-            if (!window.sb) {
-                adminAccessNote.textContent = 'Supabase config ไม่พร้อมใช้งาน';
-                window.location.replace('login.html');
-                return null;
-            }
-
-            const { data: sessionData } = await window.sb.auth.getSession();
-            const user = sessionData?.session?.user;
-            if (!user) {
-                window.location.replace('login.html');
-                return null;
-            }
-
-            const { data: profile, error } = await window.sb
-                .from('profiles')
-                .select('role, full_name')
-                .eq('id', user.id)
-                .maybeSingle();
-
-            if (error || !profile || profile.role !== 'admin') {
-                window.location.replace('index.html');
-                return null;
-            }
-
-            localStorage.setItem('isLoggedIn', 'true');
-            localStorage.setItem('userRole', 'admin');
-            localStorage.setItem('userEmail', user.email || '');
-            localStorage.setItem('userName', profile.full_name || user.email || 'Admin');
-
-            adminAccessNote.textContent = 'Signed in as admin: ' + (profile.full_name || user.email || user.id);
-            return user;
-        }
-
-        async function loadMetrics() {
-            const [{ count: usersCount }, { count: adminsCount }, { count: bookingsCount }] = await Promise.all([
-                window.sb.from('profiles').select('*', { count: 'exact', head: true }),
-                window.sb.from('profiles').select('*', { count: 'exact', head: true }).eq('role', 'admin'),
-                window.sb.from('bookings').select('*', { count: 'exact', head: true })
-            ]);
-
-            metricUsers.textContent = (usersCount ?? 0).toString();
-            metricAdmins.textContent = (adminsCount ?? 0).toString();
-            metricBookings.textContent = (bookingsCount ?? 0).toString();
         }
 
         function avg(values) {
@@ -242,46 +266,6 @@
             element.textContent = valueText;
             element.style.width = `${clamp(widthPercent, 12, 100)}%`;
             element.setAttribute('aria-label', `${label} ${valueText}`);
-        }
-
-        async function loadPerformanceMetrics() {
-            const { data, error } = await window.sb
-                .from('performance_metrics')
-                .select('ttfb_ms, lcp_ms, cls_value, created_at')
-                .order('created_at', { ascending: false })
-                .limit(80);
-
-            if (error) {
-                perfNote.textContent = 'ยังโหลด performance metrics ไม่ได้: ' + error.message;
-                return;
-            }
-
-            if (!data || data.length === 0) {
-                perfNote.textContent = 'ยังไม่มีข้อมูล metrics. เข้าใช้งานหน้าเว็บสักครู่เพื่อให้ระบบเก็บค่าอัตโนมัติ';
-                return;
-            }
-
-            const ttfbAvg = avg(data.map((row) => row.ttfb_ms).filter((value) => typeof value === 'number'));
-            const lcpAvg = avg(data.map((row) => row.lcp_ms).filter((value) => typeof value === 'number'));
-            const clsAvg = avg(data.map((row) => row.cls_value).filter((value) => typeof value === 'number'));
-
-            const ttfbText = ttfbAvg ? `${Math.round(ttfbAvg)}ms` : '-';
-            const lcpText = lcpAvg ? `${(lcpAvg / 1000).toFixed(2)}s` : '-';
-            const clsText = typeof clsAvg === 'number' ? clsAvg.toFixed(3) : '-';
-
-            renderPerfBar(perfTtfbBar, 'TTFB', ttfbText, ttfbAvg ? (1000 / ttfbAvg) * 42 : 12);
-            renderPerfBar(perfLcpBar, 'LCP', lcpText, lcpAvg ? (2500 / lcpAvg) * 46 : 12);
-            renderPerfBar(perfClsBar, 'CLS', clsText, typeof clsAvg === 'number' ? (0.25 / Math.max(clsAvg, 0.01)) * 28 : 12);
-
-            perfNote.textContent = `คำนวณจาก ${data.length} รายการล่าสุดในตาราง performance_metrics`;
-        }
-
-        function formatLogLine(log) {
-            const date = new Date(log.created_at || Date.now());
-            const time = date.toLocaleTimeString('th-TH', { hour12: false });
-            const level = (log.level || 'info').toUpperCase();
-            const message = log.message || '-';
-            return `<p><span class="log-time">${time}</span> [${level}] ${message}</p>`;
         }
 
         function tsForFile() {
@@ -312,7 +296,6 @@
                 }
                 return text;
             };
-
             const lines = [headers.join(',')];
             rows.forEach((row) => {
                 lines.push(headers.map((h) => escapeCell(row[h])).join(','));
@@ -325,223 +308,317 @@
             backupStatus.style.color = isError ? '#b42318' : '#2b4c8d';
         }
 
-        async function exportFullBackupJson() {
-            setBackupStatus('กำลังสร้างไฟล์ backup JSON...', false);
+        // --- Authentication ---
+        async function ensureAdminAccess() {
+            if (!window.sb) {
+                adminAccessNote.textContent = 'Supabase config ไม่พร้อมใช้งาน';
+                window.location.replace('login.html');
+                return null;
+            }
+            const { data: sessionData } = await window.sb.auth.getSession();
+            const user = sessionData?.session?.user;
+            if (!user) {
+                window.location.replace('login.html');
+                return null;
+            }
+            const { data: profile, error } = await window.sb
+                .from('profiles')
+                .select('role, full_name')
+                .eq('id', user.id)
+                .maybeSingle();
 
-            const [profilesResult, bookingsResult, logsResult, perfResult] = await Promise.allSettled([
-                window.sb.from('profiles').select('id, full_name, role, created_at').order('created_at', { ascending: false }),
-                window.sb.from('bookings').select('*').order('created_at', { ascending: false }),
-                window.sb.from('system_logs').select('*').order('created_at', { ascending: false }).limit(1000),
-                window.sb.from('performance_metrics').select('*').order('created_at', { ascending: false }).limit(1000)
+            if (error || !profile || profile.role !== 'admin') {
+                window.location.replace('index.html');
+                return null;
+            }
+            localStorage.setItem('isLoggedIn', 'true');
+            localStorage.setItem('userRole', 'admin');
+            localStorage.setItem('userEmail', user.email || '');
+            localStorage.setItem('userName', profile.full_name || user.email || 'Admin');
+            adminAccessNote.textContent = 'Signed in as admin: ' + (profile.full_name || user.email || user.id);
+            return user;
+        }
+
+        // --- Metric Loading ---
+        async function loadMetrics() {
+            const [{ count: usersCount }, { count: adminsCount }, { count: bookingsCount }] = await Promise.all([
+                window.sb.from('profiles').select('*', { count: 'exact', head: true }),
+                window.sb.from('profiles').select('*', { count: 'exact', head: true }).eq('role', 'admin'),
+                window.sb.from('bookings').select('*', { count: 'exact', head: true })
             ]);
-
-            const backup = {
-                generated_at: new Date().toISOString(),
-                source: 'AnimeTrails Admin Dashboard',
-                tables: {},
-                errors: {}
-            };
-
-            const mapResult = (name, result) => {
-                if (result.status === 'fulfilled' && !result.value.error) {
-                    backup.tables[name] = result.value.data || [];
-                    return;
-                }
-
-                const msg = result.status === 'rejected'
-                    ? (result.reason?.message || 'unknown error')
-                    : (result.value.error?.message || 'unknown error');
-                backup.errors[name] = msg;
-            };
-
-            mapResult('profiles', profilesResult);
-            mapResult('bookings', bookingsResult);
-            mapResult('system_logs', logsResult);
-            mapResult('performance_metrics', perfResult);
-
-            const fileName = `animetrails-backup-${tsForFile()}.json`;
-            downloadTextFile(fileName, JSON.stringify(backup, null, 2), 'application/json');
-
-            await window.writeSystemLog?.(
-                'backup.download.json',
-                'info',
-                'Admin downloaded full backup JSON',
-                {
-                    filename: fileName,
-                    profiles: (backup.tables.profiles || []).length,
-                    bookings: (backup.tables.bookings || []).length
-                }
-            );
-
-            const errorCount = Object.keys(backup.errors).length;
-            setBackupStatus(
-                errorCount
-                    ? `ดาวน์โหลดสำเร็จ (มีบางตารางไม่พร้อม ${errorCount} รายการ)`
-                    : 'ดาวน์โหลด backup JSON สำเร็จ',
-                false
-            );
+            metricUsers.textContent = (usersCount ?? 0).toString();
+            metricAdmins.textContent = (adminsCount ?? 0).toString();
+            metricBookings.textContent = (bookingsCount ?? 0).toString();
         }
 
-        async function exportBookingsCsv() {
-            setBackupStatus('กำลังสร้างไฟล์ CSV ของ bookings...', false);
+        async function loadPerformanceMetrics() {
             const { data, error } = await window.sb
-                .from('bookings')
-                .select('id, user_id, fullname, phone, tour_package, travel_date, note, created_at')
-                .order('created_at', { ascending: false });
-
-            if (error) {
-                setBackupStatus('ดาวน์โหลด CSV ไม่สำเร็จ: ' + error.message, true);
-                return;
-            }
-
-            const csv = toCsv(data || []);
-            const fileName = `animetrails-bookings-${tsForFile()}.csv`;
-            downloadTextFile(fileName, csv, 'text/csv;charset=utf-8;');
-
-            await window.writeSystemLog?.(
-                'backup.download.bookings_csv',
-                'info',
-                'Admin downloaded bookings CSV',
-                { filename: fileName, rows: (data || []).length }
-            );
-
-            setBackupStatus(`ดาวน์โหลด CSV สำเร็จ (${(data || []).length} แถว)`, false);
-        }
-
-        async function loadSystemLogs() {
-            const { data, error } = await window.sb
-                .from('system_logs')
-                .select('created_at, level, message')
+                .from('performance_metrics')
+                .select('ttfb_ms, lcp_ms, cls_value, created_at')
                 .order('created_at', { ascending: false })
-                .limit(30);
-
+                .limit(80);
             if (error) {
-                logsContainer.innerHTML = `<p><span class="log-time">--:--:--</span> [ERROR] Cannot load logs: ${error.message}</p>`;
+                perfNote.textContent = 'ยังโหลด performance metrics ไม่ได้: ' + error.message;
                 return;
             }
-
             if (!data || data.length === 0) {
-                logsContainer.innerHTML = '<p><span class="log-time">--:--:--</span> [INFO] No logs yet</p>';
+                perfNote.textContent = 'ยังไม่มีข้อมูล metrics. เข้าใช้งานหน้าเว็บสักครู่เพื่อให้ระบบเก็บค่าอัตโนมัติ';
                 return;
             }
-
-            logsContainer.innerHTML = data.map(formatLogLine).join('');
+            const ttfbAvg = avg(data.map(r => r.ttfb_ms).filter(v => typeof v === 'number'));
+            const lcpAvg = avg(data.map(r => r.lcp_ms).filter(v => typeof v === 'number'));
+            const clsAvg = avg(data.map(r => r.cls_value).filter(v => typeof v === 'number'));
+            const ttfbText = ttfbAvg ? `${Math.round(ttfbAvg)}ms` : '-';
+            const lcpText = lcpAvg ? `${(lcpAvg / 1000).toFixed(2)}s` : '-';
+            const clsText = typeof clsAvg === 'number' ? clsAvg.toFixed(3) : '-';
+            renderPerfBar(perfTtfbBar, 'TTFB', ttfbText, ttfbAvg ? (1000 / ttfbAvg) * 42 : 12);
+            renderPerfBar(perfLcpBar, 'LCP', lcpText, lcpAvg ? (2500 / lcpAvg) * 46 : 12);
+            renderPerfBar(perfClsBar, 'CLS', clsText, typeof clsAvg === 'number' ? (0.25 / Math.max(clsAvg, 0.01)) * 28 : 12);
+            perfNote.textContent = `คำนวณจาก ${data.length} รายการล่าสุดในตาราง performance_metrics`;
         }
 
-        function rowTemplate(profile) {
-            const fullName = profile.full_name || '-';
-            const role = profile.role || 'user';
+        // --- System Logs ---
+        function formatLogLine(log, index, userName) {
+            const date = new Date(log.created_at || Date.now());
+            const dateStr = date.toLocaleDateString('th-TH', { day: '2-digit', month: '2-digit', year: '2-digit' });
+            const timeStr = date.toLocaleTimeString('th-TH', { hour12: false, hour: '2-digit', minute: '2-digit' });
+            const level = (log.level || 'info').toLowerCase();
+            const message = log.message || '-';
+            const eventType = log.event_type || 'unknown';
+            const eventLabels = {
+                'auth.login.success': '🔑 Login',
+                'auth.login.failed': '❌ Login Failed',
+                'booking.create.success': '📅 New Booking',
+                'admin.role.update': '🛠️ Role Changed',
+                'backup.download.json': '💾 Backup Download',
+                'auth.logout': '🚪 Logout'
+            };
+            const label = eventLabels[eventType] || eventType;
+            let metaHtml = '';
+            if (log.metadata && Object.keys(log.metadata).length > 0) {
+                const metaStr = JSON.stringify(log.metadata, null, 2);
+                metaHtml = `
+                    <span class="log-meta-toggle" onclick="document.getElementById('meta-${index}').toggleAttribute('hidden')">details</span>
+                    <pre class="log-meta-content" id="meta-${index}" hidden>${metaStr}</pre>
+                `;
+            }
             return `
-                <tr data-user-id="${profile.id}">
-                    <td>${profile.id}</td>
-                    <td>${fullName}</td>
-                    <td>
-                        <select class="role-select" data-user-id="${profile.id}">
-                            <option value="user" ${role === 'user' ? 'selected' : ''}>user</option>
-                            <option value="admin" ${role === 'admin' ? 'selected' : ''}>admin</option>
-                        </select>
-                    </td>
-                    <td>
-                        <button class="btn role-save-btn" data-user-id="${profile.id}" style="background:#0d3b66; color:#fff; padding:6px 10px;">Save</button>
-                    </td>
-                </tr>
+                <div class="log-item">
+                    <span class="log-time" title="${date.toLocaleString('th-TH')}">
+                        <small style="display:block; font-size:0.7rem; color:#64748b;">${dateStr}</small>
+                        ${timeStr}
+                    </span>
+                    <span class="log-level log-level-${level}">${level.toUpperCase()}</span>
+                    <span class="log-event" style="min-width:140px;">${label}</span>
+                    <span class="log-msg">${message}</span>
+                    <span class="log-user" title="Full ID: ${log.user_id || 'Anonymous'}">${userName}</span>
+                    ${metaHtml}
+                </div>
             `;
         }
 
-        async function loadRolesTable() {
-            setRolesMessage('Loading users...', false);
-            const { data, error } = await window.sb
-                .from('profiles')
-                .select('id, full_name, role')
-                .order('created_at', { ascending: false });
-
-            if (error) {
-                rolesTableBody.innerHTML = '<tr><td colspan="4">Cannot load users</td></tr>';
-                setRolesMessage('โหลดข้อมูลผู้ใช้ไม่สำเร็จ: ' + error.message, true);
+        async function loadSystemLogs() {
+            const { data: logs, error: logsError } = await window.sb
+                .from('system_logs')
+                .select('created_at, level, message, event_type, user_id, metadata')
+                .order('created_at', { ascending: false })
+                .limit(100);
+            if (logsError) {
+                logsContainer.innerHTML = `<div class="log-item"><span class="log-level log-level-error">[ERROR]</span> Cannot load logs: ${logsError.message}</div>`;
                 return;
             }
+            if (!logs || logs.length === 0) {
+                logsContainer.innerHTML = '<div class="log-item"><span class="log-level log-level-info">[INFO]</span> No logs yet</div>';
+                return;
+            }
+            const userIds = [...new Set(logs.map(l => l.user_id).filter(id => !!id))];
+            const { data: profiles } = await window.sb.from('profiles').select('id, full_name').in('id', userIds);
+            const profileMap = {};
+            if (profiles) profiles.forEach(p => profileMap[p.id] = p.full_name);
+            logsContainer.innerHTML = logs.map((log, i) => {
+                const adminName = profileMap[log.user_id] || (log.user_id ? log.user_id.slice(0, 8) : 'anon');
+                return formatLogLine(log, i, adminName);
+            }).join('');
+        }
 
+        // --- Tour Management ---
+        function tourCardTemplate(tour) {
+            return `
+                <article class="admin-card" style="padding:15px; border:1px solid #eee;">
+                    <img src="${tour.image_url}" alt="${tour.title}" style="width:100%; height:120px; object-fit:cover; border-radius:8px; margin-bottom:10px;">
+                    <h4 style="margin:0 0 5px 0;">${tour.title}</h4>
+                    <p style="font-size:0.85rem; color:#666; margin-bottom:10px;">${tour.price} | ${tour.duration}</p>
+                    <div style="display:flex; gap:8px;">
+                        <button class="btn edit-tour-btn" data-id="${tour.id}" style="font-size:0.8rem; padding:5px 10px; background:#eef3ff; color:#0d3b66;">Edit</button>
+                        <button class="btn delete-tour-btn" data-id="${tour.id}" style="font-size:0.8rem; padding:5px 10px; background:#fff1f0; color:#cf1322;">Delete</button>
+                    </div>
+                </article>
+            `;
+        }
+
+        async function loadTours() {
+            toursListContainer.innerHTML = '<p>Loading tours from database...</p>';
+            const { data, error } = await window.sb.from('tour_packages').select('*').order('created_at', { ascending: false });
+            if (error) {
+                toursListContainer.innerHTML = `<div style="grid-column: 1 / -1; background:#fff1f0; padding:15px; border-radius:8px;"><p style="color:#cf1322;"><b>Error:</b> ${error.message}</p></div>`;
+                return;
+            }
             if (!data || data.length === 0) {
-                rolesTableBody.innerHTML = '<tr><td colspan="4">No users found</td></tr>';
-                setRolesMessage('ยังไม่มีผู้ใช้ในตาราง profiles', false);
+                toursListContainer.innerHTML = '<p style="grid-column: 1 / -1;">No tours found. Use "Sync from HTML" to import existing tours.</p>';
                 return;
             }
-
-            rolesTableBody.innerHTML = data.map(rowTemplate).join('');
-            setRolesMessage('พร้อมแก้ไข role ของผู้ใช้', false);
+            toursListContainer.innerHTML = data.map(tourCardTemplate).join('');
         }
 
-        async function saveRole(userId) {
-            const select = document.querySelector(`.role-select[data-user-id="${userId}"]`);
-            if (!select) return;
+        async function openModal(tour = null) {
+            document.getElementById('modal-title').textContent = tour ? 'Edit Tour Package' : 'Add New Tour';
+            document.getElementById('tour-id').value = tour?.id || '';
+            document.getElementById('tour-title').value = tour?.title || '';
+            document.getElementById('tour-slug').value = tour?.slug || '';
+            document.getElementById('tour-price').value = tour?.price || '';
+            document.getElementById('tour-duration').value = tour?.duration || '';
+            document.getElementById('tour-image').value = tour?.image_url || '';
+            document.getElementById('tour-desc').value = tour?.description || '';
+            document.getElementById('tour-maps').value = tour?.maps_url || '';
+            tourModal.style.display = 'flex';
+        }
 
-            const newRole = select.value;
-            const { error } = await window.sb
-                .from('profiles')
-                .update({ role: newRole })
-                .eq('id', userId);
+        function closeModal() { tourModal.style.display = 'none'; tourForm.reset(); }
 
-            if (error) {
-                setRolesMessage('อัปเดต role ไม่สำเร็จ: ' + error.message, true);
-                return;
+        closeModalBtn.onclick = closeModal;
+        cancelTourBtn.onclick = closeModal;
+
+        tourForm.onsubmit = async (e) => {
+            e.preventDefault();
+            const id = document.getElementById('tour-id').value;
+            const tourData = {
+                title: document.getElementById('tour-title').value,
+                slug: document.getElementById('tour-slug').value,
+                price: document.getElementById('tour-price').value,
+                duration: document.getElementById('tour-duration').value,
+                image_url: document.getElementById('tour-image').value,
+                description: document.getElementById('tour-desc').value,
+                maps_url: document.getElementById('tour-maps').value,
+            };
+            const { error } = id ? await window.sb.from('tour_packages').update(tourData).eq('id', id) : await window.sb.from('tour_packages').insert([tourData]);
+            if (error) alert('Error: ' + error.message);
+            else {
+                await window.writeSystemLog?.(id ? 'tour.update' : 'tour.create', 'info', `Tour ${tourData.title} saved`);
+                closeModal();
+                loadTours();
             }
+        };
 
-            await window.writeSystemLog?.(
-                'admin.role.update',
-                'warn',
-                'Admin changed user role',
-                { target_user_id: userId, new_role: newRole }
-            );
+        addTourBtn.onclick = () => openModal();
 
-            setRolesMessage('บันทึก role สำเร็จสำหรับ user ' + userId, false);
-            await loadMetrics();
-            await loadSystemLogs();
+        toursListContainer.onclick = async (e) => {
+            const id = e.target.getAttribute('data-id');
+            if (e.target.classList.contains('edit-tour-btn')) {
+                const { data } = await window.sb.from('tour_packages').select('*').eq('id', id).single();
+                if (data) openModal(data);
+            }
+            if (e.target.classList.contains('delete-tour-btn')) {
+                if (confirm('Delete this tour?')) {
+                    const { error } = await window.sb.from('tour_packages').delete().eq('id', id);
+                    if (!error) loadTours();
+                }
+            }
+        };
+
+        syncToursBtn.onclick = async () => {
+            if (!confirm('Import 9 tours from HTML into database?')) return;
+            syncToursBtn.disabled = true;
+            syncToursBtn.textContent = 'Syncing...';
+            const initialTours = [
+                { title: 'Straw Hat Voyage', slug: 'one-piece', price: 'เริ่มต้น 39,900 บาท', duration: '5 วัน 4 คืน', image_url: 'assets/onepiece.jpg', description: 'เส้นทางโตเกียว - โยโกฮามา - โอไดบะ' },
+                { title: 'Capsule Road', slug: 'dragon-ball-z', price: 'เริ่มต้น 44,500 บาท', duration: '6 วัน 5 คืน', image_url: 'assets/dbz.jpg', description: 'ตามรอยโลก Dragon Ball Z' },
+                { title: 'Jujutsu Kaisen Tokyo', slug: 'jjk', price: 'เริ่มต้น 35,900 บาท', duration: '4 วัน 3 คืน', image_url: 'assets/jjk.jpg', description: 'ตามรอยโลเคชันบรรยากาศเข้มข้นในโตเกียว' },
+                { title: 'Anohana Chichibu', slug: 'anohana', price: 'เริ่มต้น 29,900 บาท', duration: '3 วัน 2 คืน', image_url: 'assets/Anohana.png', description: 'ตามรอยฉากซึ้งกินใจที่เมืองจิจิบุ' },
+                { title: 'Kimetsu no Yaiba', slug: 'kimetsu', price: 'เริ่มต้น 41,500 บาท', duration: '5 วัน 4 คืน', image_url: 'assets/kimetsunoyaiba.png', description: 'ทริปธีมนักล่าอสูร ชมบรรยากาศวัดเก่า' },
+                { title: 'Slam Dunk Shonan', slug: 'slamdunk', price: 'เริ่มต้น 31,800 บาท', duration: '3 วัน 2 คืน', image_url: 'assets/slamdunk.png', description: 'ตามรอยจุดตัดรถไฟริมทะเลในตำนาน' },
+                { title: 'Garden of Words', slug: 'garden-of-words', price: 'เริ่มต้น 28,900 บาท', duration: '2 วัน 1 คืน', image_url: 'assets/thegardenofwords.png', description: 'เดินชมโทนเมืองฝนพรำสุดโรแมนติก' },
+                { title: 'Your Name Tokyo', slug: 'your-name', price: 'เริ่มต้น 33,700 บาท', duration: '3 วัน 2 คืน', image_url: 'assets/yourname.png', description: 'ตามรอยฉากชื่อดังจาก Kimi no Na wa' },
+                { title: 'Yuru Camp Fuji', slug: 'yuru-camp', price: 'เริ่มต้น 30,500 บาท', duration: '3 วัน 2 คืน', image_url: 'assets/yurucamp.png', description: 'ทัวร์สายธรรมชาติรอบภูเขาไฟฟูจิ' }
+            ];
+            const { error } = await window.sb.from('tour_packages').upsert(initialTours, { onConflict: 'slug' });
+            if (error) alert('Sync failed: ' + error.message);
+            else { alert('Success!'); loadTours(); }
+            syncToursBtn.disabled = false;
+            syncToursBtn.textContent = '🔄 Sync from HTML';
+        };
+
+        // --- Backups & Roles ---
+        async function exportFullBackupJson() {
+            setBackupStatus('กำลังสร้างไฟล์ backup JSON...', false);
+            const [p, b, l, m] = await Promise.allSettled([
+                window.sb.from('profiles').select('*'),
+                window.sb.from('bookings').select('*'),
+                window.sb.from('system_logs').select('*').limit(1000),
+                window.sb.from('performance_metrics').select('*').limit(1000)
+            ]);
+            const backup = { generated_at: new Date().toISOString(), tables: {} };
+            const mapR = (n, r) => { if (r.status === 'fulfilled' && !r.value.error) backup.tables[n] = r.value.data; };
+            mapR('profiles', p); mapR('bookings', b); mapR('system_logs', l); mapR('performance_metrics', m);
+            const fn = `backup-${tsForFile()}.json`;
+            downloadTextFile(fn, JSON.stringify(backup, null, 2), 'application/json');
+            setBackupStatus('Backup JSON สำเร็จ', false);
         }
 
-        rolesTableBody.addEventListener('click', async function (event) {
-            const btn = event.target.closest('.role-save-btn');
+        async function exportBookingsCsv() {
+            setBackupStatus('กำลังสร้าง CSV...', false);
+            const { data, error } = await window.sb.from('bookings').select('*').order('created_at', { ascending: false });
+            if (!error) {
+                const fn = `bookings-${tsForFile()}.csv`;
+                downloadTextFile(fn, toCsv(data || []), 'text/csv');
+                setBackupStatus('CSV สำเร็จ', false);
+            }
+        }
+
+        async function loadRolesTable() {
+            setRolesMessage('Loading...', false);
+            const { data, error } = await window.sb.from('profiles').select('id, full_name, role').order('created_at', { ascending: false });
+            if (error) { rolesTableBody.innerHTML = 'Error'; return; }
+            rolesTableBody.innerHTML = data.map(p => `
+                <tr>
+                    <td>${p.id}</td>
+                    <td>${p.full_name || '-'}</td>
+                    <td>
+                        <select class="role-select" data-user-id="${p.id}">
+                            <option value="user" ${p.role === 'user' ? 'selected' : ''}>user</option>
+                            <option value="admin" ${p.role === 'admin' ? 'selected' : ''}>admin</option>
+                        </select>
+                    </td>
+                    <td><button class="btn role-save-btn" data-user-id="${p.id}" style="background:#0d3b66; color:#fff; padding:6px 10px;">Save</button></td>
+                </tr>
+            `).join('');
+            setRolesMessage('พร้อมแก้ไข role', false);
+        }
+
+        rolesTableBody.addEventListener('click', async (e) => {
+            const btn = e.target.closest('.role-save-btn');
             if (!btn) return;
-            const userId = btn.getAttribute('data-user-id');
-            await saveRole(userId);
+            const uid = btn.getAttribute('data-user-id');
+            const role = document.querySelector(`.role-select[data-user-id="${uid}"]`).value;
+            const { error } = await window.sb.from('profiles').update({ role }).eq('id', uid);
+            if (!error) { setRolesMessage('Saved', false); loadMetrics(); loadSystemLogs(); }
         });
 
-        refreshRolesBtn.addEventListener('click', async function () {
-            await loadRolesTable();
-            await loadMetrics();
-        });
+        // --- Event Listeners ---
+        refreshRolesBtn.onclick = () => { loadRolesTable(); loadMetrics(); };
+        refreshLogsBtn.onclick = loadSystemLogs;
+        backupJsonBtn.onclick = exportFullBackupJson;
+        backupCsvBtn.onclick = exportBookingsCsv;
+        logoutBtn.onclick = async () => {
+            if (window.sb?.auth) await window.sb.auth.signOut();
+            localStorage.clear();
+            window.location.href = 'login.html';
+        };
 
-        refreshLogsBtn.addEventListener('click', async function () {
-            await loadSystemLogs();
-        });
-
-        backupJsonBtn.addEventListener('click', async function () {
-            await exportFullBackupJson();
-        });
-
-        backupCsvBtn.addEventListener('click', async function () {
-            await exportBookingsCsv();
-        });
-
-        logoutBtn.addEventListener('click', async function () {
-            await window.writeSystemLog?.('admin.logout', 'info', 'Admin logout action', null);
-            if (window.sb && window.sb.auth) {
-                await window.sb.auth.signOut();
-            }
-            localStorage.removeItem('isLoggedIn');
-            localStorage.removeItem('userRole');
-            localStorage.removeItem('userEmail');
-            localStorage.removeItem('userName');
-            window.location.href = 'login.html?logged_out=1';
-        });
-
-        (async function initAdminDashboard() {
+        // --- Init ---
+        (async function init() {
             const user = await ensureAdminAccess();
             if (!user) return;
-
-            await loadRolesTable();
-            await loadMetrics();
-            await loadPerformanceMetrics();
-            await loadSystemLogs();
+            await Promise.all([loadTours(), loadRolesTable(), loadMetrics(), loadPerformanceMetrics(), loadSystemLogs()]);
         })();
     </script>
 </body>
