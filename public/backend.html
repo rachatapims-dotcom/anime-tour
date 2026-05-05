@@ -540,7 +540,7 @@
             // Permission Logic:
             // superadmin: Everything
             // devops: Performance, Backup, Logs, Overview (No Tour/Booking/Role editing)
-            // admin: Bookings, Tours, Inquiries, Reviews, Overview (No Backup/Roles/Performance)
+            // admin: Bookings, Tours, Inquiries, Reviews, Overview, Performance (No Backup/Roles)
 
             const sections = {
                 'overview': ['superadmin', 'devops', 'admin'],
@@ -549,7 +549,7 @@
                 'inquiries': ['superadmin', 'admin'],
                 'reviews-mgmt': ['superadmin', 'admin'],
                 'security': ['superadmin', 'devops'],
-                'performance': ['superadmin', 'devops'],
+                'performance': ['superadmin', 'devops', 'admin'],
                 'backup': ['superadmin', 'devops'],
                 'monitoring': ['superadmin', 'devops'],
                 'roles': ['superadmin']
