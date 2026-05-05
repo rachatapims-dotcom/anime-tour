@@ -6,15 +6,9 @@ function updateNavigation() {
     const menu = document.querySelector('.menu');
     if (!menu) return;
 
-    // Remove ALL dynamic elements (login, dashboard, user badge, logout)
-    const existingDash = menu.querySelector('[data-dashboard]');
-    if (existingDash) existingDash.remove();
-
-    const existingLogin = menu.querySelector('[data-login]');
-    if (existingLogin) existingLogin.remove();
-    
-    const existingUser = menu.querySelector('[data-user]');
-    if (existingUser) existingUser.remove();
+    // Clear dynamic elements
+    const dynamicElements = menu.querySelectorAll('[data-dynamic]');
+    dynamicElements.forEach(el => el.remove());
 
     if (isLoggedIn) {
         if (userRole === 'admin') {
@@ -23,44 +17,23 @@ function updateNavigation() {
                 const dashLink = document.createElement('a');
                 dashLink.href = 'backend.html';
                 dashLink.textContent = '📊 Dashboard';
-                dashLink.style.cssText = `
-                    color: #ff6b35 !important;
-                    font-weight: 700 !important;
-                    text-decoration: none !important;
-                    padding: 8px 12px !important;
-                    border-radius: 999px !important;
-                    background: rgba(255, 107, 53, 0.1) !important;
-                    display: inline-block !important;
-                `;
-                dashLink.setAttribute('data-dashboard', 'true');
+                dashLink.className = 'nav-admin-link';
+                dashLink.setAttribute('data-dynamic', 'true');
                 menu.appendChild(dashLink);
             }
         }
 
         const userLabel = document.createElement('span');
-        userLabel.style.cssText = `
-            color: var(--muted) !important;
-            padding: 8px 12px !important;
-            border-radius: 999px !important;
-            background: var(--brand-soft) !important;
-            display: inline-block !important;
-        `;
+        userLabel.className = 'nav-user-badge';
         userLabel.textContent = `👤 ${userName}`;
+        userLabel.setAttribute('data-dynamic', 'true');
         menu.appendChild(userLabel);
 
         const logoutBtn = document.createElement('a');
-        userLabel.setAttribute('data-user', 'true');
         logoutBtn.href = '#';
         logoutBtn.textContent = 'Logout';
-        logoutBtn.style.cssText = `
-            text-decoration: none !important;
-            color: var(--text) !important;
-            font-weight: 500 !important;
-            padding: 8px 12px !important;
-            border-radius: 999px !important;
-            display: inline-block !important;
-        `;
-        logoutBtn.setAttribute('data-login', 'true');
+        logoutBtn.className = 'nav-logout-btn';
+        logoutBtn.setAttribute('data-dynamic', 'true');
         logoutBtn.addEventListener('click', async function (e) {
             e.preventDefault();
 
@@ -89,16 +62,8 @@ function updateNavigation() {
         const loginLink = document.createElement('a');
         loginLink.href = 'login.html';
         loginLink.textContent = 'Login';
-        loginLink.style.cssText = `
-            border-radius: 999px !important;
-            background: var(--brand) !important;
-            color: white !important;
-            padding: 8px 12px !important;
-            text-decoration: none !important;
-            font-weight: 500 !important;
-            display: inline-block !important;
-        `;
-        loginLink.setAttribute('data-login', 'true');
+        loginLink.className = 'nav-login-btn';
+        loginLink.setAttribute('data-dynamic', 'true');
         menu.appendChild(loginLink);
     }
 }

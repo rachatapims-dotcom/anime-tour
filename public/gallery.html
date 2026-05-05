@@ -5,7 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>แกลลอรี่และรีวิว | AnimeTrails JP</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script src="supabase-client.js"></script>
+    <script src="audit-log.js"></script>
     <script src="auth.js" defer></script>
+    <style>
+        .review-form-box { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 24px; margin-top: 30px; }
+        .review-form-box h3 { margin-top: 0; margin-bottom: 20px; }
+        .star-rating { display: flex; gap: 5px; margin-bottom: 15px; }
+        .star-rating button { background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #cbd5e1; transition: color 0.2s; }
+        .star-rating button.active { color: #f59e0b; }
+        .review-input { width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px; font: inherit; margin-bottom: 15px; resize: vertical; }
+        .review-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; align-items: stretch; }
+        .review-card { position: relative; padding-bottom: 20px; word-wrap: break-word; overflow-wrap: break-word; display: flex; flex-direction: column; }
+        .review-content-text { flex: 1; max-height: 160px; overflow-y: auto; margin-bottom: 15px; padding-right: 8px; font-style: italic; color: #475569; }
+        .review-content-text::-webkit-scrollbar { width: 4px; }
+        .review-content-text::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        .review-stars { color: #f59e0b; margin-bottom: 10px; }
+    </style>
 </head>
 <body>
     <header class="top-nav">
@@ -97,25 +115,148 @@
 
         <section class="section-shell">
             <h2>รีวิวจากลูกทัวร์</h2>
-            <div class="grid three-col">
-                <article class="review-card">
-                    <p>"ทีมไกด์พาไปถึงจุดถ่ายรูปแบบตรงมุมอนิเมะจริงๆ ตารางเวลาลื่นมาก ไม่เร่งเกินไป"</p>
-                    <p class="meta">- พิมพ์ชนก, ทริป One Piece</p>
-                </article>
-                <article class="review-card">
-                    <p>"ชอบมากที่มีเล่าที่มาของโลเคชันในแต่ละฉาก ทำให้ทริปสนุกกว่าการเที่ยวทั่วไปเยอะ"</p>
-                    <p class="meta">- ธันวา, ทริป Dragon Ball Z</p>
-                </article>
-                <article class="review-card">
-                    <p>"ภาพเปรียบเทียบก่อนเดินทางช่วยมาก พอไปถึงคือรู้เลยว่าต้องยืนตรงไหนถึงได้ช็อตเดียวกัน"</p>
-                    <p class="meta">- นนทิยา, Classic Anime Route</p>
-                </article>
-                <article class="review-card">
-                    <p>"แพ็กเกจใหม่อย่าง Kimetsu กับ Your Name ทำมุมถ่ายรูปออกมาดีมาก ได้ทั้งรูปและเรื่องราวระหว่างทาง"</p>
-                    <p class="meta">- ณัฐพล, Seasonal Route 2026</p>
-                </article>
+            <div id="reviews-container" class="review-grid">
+                <p>กำลังโหลดรีวิว...</p>
+            </div>
+
+            <!-- Review Submission Form (Only for logged-in users) -->
+            <div id="review-submission-box" class="review-form-box" style="display:none;">
+                <h3>ให้คะแนนและรีวิวความประทับใจ</h3>
+                <form id="review-form">
+                    <div class="star-rating" id="star-input">
+                        <button type="button" data-value="1">&#9733;</button>
+                        <button type="button" data-value="2">&#9733;</button>
+                        <button type="button" data-value="3">&#9733;</button>
+                        <button type="button" data-value="4">&#9733;</button>
+                        <button type="button" data-value="5">&#9733;</button>
+                    </div>
+                    <select id="review-package" class="review-input" required>
+                        <option value="">เลือกแพ็กเกจที่ร่วมทริป</option>
+                        <option value="One Piece">One Piece Tour</option>
+                        <option value="Dragon Ball Z">Dragon Ball Z Tour</option>
+                        <option value="Jujutsu Kaisen">Jujutsu Kaisen Tour</option>
+                        <option value="Anohana">Anohana Tour</option>
+                        <option value="Kimetsu no Yaiba">Kimetsu no Yaiba Tour</option>
+                        <option value="Slam Dunk">Slam Dunk Tour</option>
+                        <option value="Garden of Words">Garden of Words Tour</option>
+                        <option value="Your Name">Your Name Tour</option>
+                        <option value="Yuru Camp">Yuru Camp Tour</option>
+                    </select>
+                    <textarea id="review-content" class="review-input" placeholder="เขียนความประทับใจของคุณที่นี่..." rows="4" required></textarea>
+                    <button type="submit" class="btn btn-primary">ส่งรีวิว (รอการตรวจสอบ)</button>
+                </form>
+                <p id="review-message" style="margin-top:10px; display:none;"></p>
+            </div>
+            <div id="login-to-review-msg" style="margin-top:20px; text-align:center; color:#64748b; display:none;">
+                <p>ต้องการรีวิว? <a href="login.html" style="color:#0ea5e9; font-weight:600;">เข้าสู่ระบบ</a> เพื่อแชร์ประสบการณ์ของคุณ</p>
             </div>
         </section>
+
+        <script>
+            let currentRating = 5;
+            const stars = document.querySelectorAll('#star-input button');
+            const reviewsContainer = document.getElementById('reviews-container');
+            const reviewForm = document.getElementById('review-form');
+            const reviewMsg = document.getElementById('review-message');
+            const submissionBox = document.getElementById('review-submission-box');
+            const loginToReviewMsg = document.getElementById('login-to-review-msg');
+
+            // Handle Star Click
+            stars.forEach(star => {
+                star.addEventListener('click', () => {
+                    currentRating = parseInt(star.dataset.value);
+                    updateStars();
+                });
+            });
+
+            function updateStars() {
+                stars.forEach(s => {
+                    s.classList.toggle('active', parseInt(s.dataset.value) <= currentRating);
+                });
+            }
+            updateStars(); // Init
+
+            // Auth Check
+            async function checkAuth() {
+                if (!window.sb) return;
+                const { data } = await window.sb.auth.getSession();
+                if (data.session) {
+                    submissionBox.style.display = 'block';
+                    loginToReviewMsg.style.display = 'none';
+                } else {
+                    submissionBox.style.display = 'none';
+                    loginToReviewMsg.style.display = 'block';
+                }
+            }
+
+            // Fetch Reviews
+            async function loadReviews() {
+                if (!window.sb) return;
+                const { data, error } = await window.sb
+                    .from('reviews')
+                    .select('*')
+                    .eq('is_approved', true)
+                    .order('created_at', { ascending: false });
+
+                if (error || !data || data.length === 0) {
+                    reviewsContainer.innerHTML = '<p style="grid-column: 1 / -1; color:#64748b;">ยังไม่มีรีวิวจากผู้ใช้จริง (รอคุณมารีวิวคนแรก!)</p>';
+                    return;
+                }
+
+                reviewsContainer.innerHTML = data.map(r => `
+                    <article class="review-card section-shell" style="margin:0;">
+                        <div class="review-stars">${'&#9733;'.repeat(r.rating)}${'&#9734;'.repeat(5-r.rating)}</div>
+                        <div class="review-content-text">
+                            <p style="margin:0;">"${r.content}"</p>
+                        </div>
+                        <p class="meta" style="margin-top:auto;">- ${r.fullname}, ${r.tour_package}</p>
+                    </article>
+                `).join('');
+            }
+
+            // Submit Review
+            if (reviewForm) {
+                reviewForm.onsubmit = async (e) => {
+                    e.preventDefault();
+                    reviewMsg.style.display = 'none';
+                    
+                    const { data: sessionData } = await window.sb.auth.getSession();
+                    const user = sessionData?.session?.user;
+                    if (!user) return;
+
+                    // Get name from profile
+                    const { data: profile } = await window.sb.from('profiles').select('full_name').eq('id', user.id).single();
+                    const fullname = profile?.full_name || user.email.split('@')[0];
+
+                    const payload = {
+                        user_id: user.id,
+                        fullname: fullname,
+                        tour_package: document.getElementById('review-package').value,
+                        content: document.getElementById('review-content').value,
+                        rating: currentRating,
+                        is_approved: false // Default false for moderation
+                    };
+
+                    const { error } = await window.sb.from('reviews').insert(payload);
+                    if (error) {
+                        reviewMsg.textContent = 'เกิดข้อผิดพลาด: ' + error.message;
+                        reviewMsg.style.color = '#ef4444';
+                    } else {
+                        reviewMsg.textContent = 'ส่งรีวิวสำเร็จ! กรุณารอทีมงานตรวจสอบก่อนแสดงผลบนหน้าเว็บ';
+                        reviewMsg.style.color = '#10b981';
+                        reviewForm.reset();
+                        currentRating = 5;
+                        updateStars();
+                    }
+                    reviewMsg.style.display = 'block';
+                };
+            }
+
+            window.addEventListener('DOMContentLoaded', () => {
+                checkAuth();
+                loadReviews();
+            });
+        </script>
 
         <section class="section-shell">
             <h2>พร้อมเลือกเส้นทางที่ใช่?</h2>

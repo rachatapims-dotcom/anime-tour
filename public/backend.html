@@ -10,214 +10,423 @@
     <script src="supabase-client.js"></script>
     <script src="audit-log.js"></script>
     <script src="auth.js" defer></script>
+    <style>
+        /* Modern Admin Dashboard Overrides */
+        body { 
+            margin: 0; padding: 0; 
+            background: #f8fafc; 
+            height: 100vh; 
+            overflow: hidden; 
+            display: flex; 
+            font-family: 'Kanit', sans-serif; 
+        }
+        .top-nav, footer { display: none !important; }
+        
+        /* Sidebar */
+        .admin-sidebar-new {
+            width: 260px;
+            background: #0f172a;
+            color: #cbd5e1;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            flex-shrink: 0;
+            z-index: 100;
+        }
+        .admin-sidebar-header {
+            padding: 20px;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.8rem;
+            color: #fff;
+            letter-spacing: 1px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .admin-sidebar-header span { color: #38bdf8; }
+        
+        .admin-nav-new {
+            flex: 1;
+            padding: 20px 12px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .admin-nav-new a {
+            color: #94a3b8;
+            text-decoration: none;
+            padding: 10px 14px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.95rem;
+            transition: all 0.2s;
+        }
+        .admin-nav-new a:hover {
+            background: rgba(255,255,255,0.05);
+            color: #f1f5f9;
+        }
+        .admin-nav-new a svg { width: 18px; height: 18px; }
+        
+        .admin-sidebar-footer {
+            padding: 20px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+        .admin-sidebar-footer .btn {
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+            width: 100%;
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 10px;
+        }
+        .admin-sidebar-footer .btn:hover { background: rgba(255,255,255,0.15); }
+        
+        /* Main Wrapper */
+        .admin-main-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden;
+            background: #f1f5f9;
+        }
+        
+        .admin-topbar {
+            height: 64px;
+            background: #fff;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+            flex-shrink: 0;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+        }
+        
+        .admin-content-area {
+            flex: 1;
+            padding: 30px;
+            overflow-y: auto;
+        }
+        
+        /* Cards */
+        .admin-content-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            padding-bottom: 40px;
+        }
+        
+        .section-shell {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            margin: 0; /* Override style.css margin-top */
+        }
+        .section-shell h1 { margin-top: 0; color: #0f172a; font-size: 1.8rem; }
+        .section-shell h2 { margin-top: 0; color: #1e293b; font-size: 1.4rem; border-bottom: 1px solid #f1f5f9; padding-bottom: 10px; margin-bottom: 20px; }
+        
+        /* Metrics */
+        .admin-metric {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            position: relative;
+            overflow: hidden;
+        }
+        .admin-metric::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 4px; height: 100%;
+            background: #0ea5e9;
+        }
+        .admin-metric:nth-child(2)::before { background: #8b5cf6; }
+        .admin-metric:nth-child(3)::before { background: #10b981; }
+        .admin-metric h3 { font-size: 0.9rem; color: #64748b; margin: 0; text-transform: uppercase; letter-spacing: 0.5px; }
+        .admin-metric .admin-value { font-size: 2.2rem; color: #0f172a; margin: 10px 0 5px 0; line-height: 1; font-weight: 700; }
+        
+        /* Tables */
+        .admin-table { width: 100%; border-collapse: collapse; }
+        .admin-table th { background: #f8fafc; color: #475569; font-weight: 600; font-size: 0.85rem; text-transform: uppercase; padding: 12px; border-bottom: 1px solid #e2e8f0; }
+        .admin-table td { padding: 12px; border-bottom: 1px solid #e2e8f0; color: #334155; vertical-align: middle; }
+        
+        /* Buttons */
+        .btn { border-radius: 6px; font-weight: 500; padding: 8px 16px; border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; transition: 0.2s; }
+        .btn:hover { opacity: 0.9; transform: translateY(-1px); }
+        .btn-primary { background: #0ea5e9; color: #fff; }
+        .btn-outline { background: #fff; border: 1px solid #cbd5e1; color: #475569; }
+        .btn-danger { background: #fee2e2; color: #ef4444; }
+        
+        .log-feed { background: #0f172a; color: #e2e8f0; border-radius: 8px; padding: 16px; font-family: 'JetBrains Mono', Consolas, monospace; font-size: 0.85rem; max-height: 400px; overflow-y: auto; }
+        .log-item { border-bottom: 1px solid rgba(255,255,255,0.05); padding: 6px 0; display: flex; gap: 10px; }
+        .log-item:last-child { border: none; }
+        
+        .mini-bars div { margin-bottom: 8px; }
+        
+        /* Tour Cards in Admin */
+        #tours-list-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+        .tour-admin-card { border: 1px solid #e2e8f0; border-radius: 10px; overflow: hidden; background: #fff; }
+        .tour-admin-card img { width: 100%; height: 140px; object-fit: cover; }
+        .tour-admin-card-body { padding: 16px; }
+        .tour-admin-card-title { font-weight: 600; margin: 0 0 5px 0; color: #0f172a; }
+        .tour-admin-card-meta { font-size: 0.85rem; color: #64748b; margin-bottom: 15px; }
+        
+        .modal-overlay { background: rgba(15, 23, 42, 0.75) !important; backdrop-filter: blur(4px); }
+    </style>
 </head>
 <body>
-    <header class="top-nav">
-        <div class="nav-inner">
-            <a class="logo" href="index.html">AnimeTrails JP</a>
-            <nav class="menu">
-                <a href="index.html">หน้าแรก</a>
-                <a href="packages.html">แพ็กเกจทัวร์</a>
-                <a href="gallery.html">แกลลอรี่ & รีวิว</a>
-                <a href="contact.html">จอง & ติดต่อ</a>
-                <a href="team.html">ทีมไกด์</a>
-                <a class="active" href="backend.html">Dashboard</a>
+
+    <!-- Sidebar -->
+    <aside class="admin-sidebar-new">
+        <a href="index.html" class="admin-sidebar-header">
+            AnimeTrails <span>Admin</span>
+        </a>
+            <nav class="admin-nav-new">
+                <a href="#overview"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg> Overview</a>
+                <a href="#bookings-mgmt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg> Bookings</a>
+                <a href="#tours"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 12H16c-.7 2-2 3-4 3s-3.3-1-4-3H2.5"/><path d="M5.5 5.1L2 12v6c0 1.1.9 2 2 2h16a2 2 0 002-2v-6l-3.4-6.9A2 2 0 0016.8 4H7.2a2 2 0 00-1.8 1.1z"/></svg> Tour Packages</a>
+                <a href="#inquiries"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg> Inquiries</a>
+                <a href="#reviews-mgmt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg> Reviews</a>
+                <a href="#security"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Security</a>
+                <a href="#performance"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg> Performance</a>
+                <a href="#backup"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg> Backup</a>
+                <a href="#monitoring"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg> Logs</a>
+                <a href="#roles"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg> Roles</a>
             </nav>
+        <div class="admin-sidebar-footer">
+            <p id="admin-access-note" style="margin:0 0 10px 0; font-size:0.8rem; color:#94a3b8; line-height:1.4;"></p>
+            <button id="admin-logout-btn" class="btn" type="button">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                Logout
+            </button>
         </div>
-    </header>
+    </aside>
 
-    <main class="container admin-shell">
-        <aside class="admin-sidebar section-shell">
-            <p class="eyebrow admin-eyebrow">Admin Panel</p>
-            <h2>Dashboard Menu</h2>
-            <nav class="admin-nav">
-                <a href="#overview">Overview</a>
-                <a href="#tours">Tour Management</a>
-                <a href="#security">Security</a>
-                <a href="#performance">Performance</a>
-                <a href="#backup">Backup & DR</a>
-                <a href="#monitoring">Monitoring</a>
-                <a href="#roles">User Roles</a>
-            </nav>
-            <button id="admin-logout-btn" class="btn admin-logout-btn" type="button">Logout Admin</button>
-            <p id="admin-access-note" class="admin-note" style="margin-top:10px;"></p>
-        </aside>
+    <!-- Main Content -->
+    <div class="admin-main-wrapper">
+        <header class="admin-topbar">
+            <div style="font-weight:600; color:#0f172a; font-size:1.1rem;">Dashboard</div>
+            <a href="index.html" style="color:#64748b; text-decoration:none; font-size:0.9rem; display:flex; align-items:center; gap:6px;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+                Back to Website
+            </a>
+        </header>
 
-        <section class="admin-content">
-            <section id="overview" class="section-shell">
-                <h1>AnimeTrails Admin Dashboard</h1>
-                <p>ระบบจัดการหลังบ้านสำหรับการดูสถานะระบบและจัดการสิทธิ์ผู้ใช้งานจากฐานข้อมูลจริง</p>
-                <div class="grid three-col">
-                    <article class="admin-metric">
-                        <h3>Total Users</h3>
-                        <p class="admin-value" id="metric-users">-</p>
-                        <p class="admin-sub">ผู้ใช้ทั้งหมดใน profiles</p>
-                    </article>
-                    <article class="admin-metric">
-                        <h3>Admin Accounts</h3>
-                        <p class="admin-value" id="metric-admins">-</p>
-                        <p class="admin-sub">บทบาท admin</p>
-                    </article>
-                    <article class="admin-metric">
-                        <h3>Total Bookings</h3>
-                        <p class="admin-value" id="metric-bookings">-</p>
-                        <p class="admin-sub">จำนวนรายการจองในฐานข้อมูล</p>
-                    </article>
-                </div>
-            </section>
+        <main class="admin-content-area">
+            <div class="admin-content-inner">
+                
+                <section id="overview" class="section-shell">
+                    <h1 style="margin-bottom: 5px;">Welcome to AnimeTrails Admin</h1>
+                    <p style="color: #64748b; margin-top: 0; margin-bottom: 24px;">ระบบจัดการหลังบ้านสำหรับการดูสถานะระบบและจัดการสิทธิ์ผู้ใช้งานจากฐานข้อมูลจริง</p>
+                    <div class="grid three-col">
+                        <article class="admin-metric">
+                            <h3>Total Users</h3>
+                            <p class="admin-value" id="metric-users">-</p>
+                            <p class="admin-sub">ผู้ใช้ทั้งหมดใน profiles</p>
+                        </article>
+                        <article class="admin-metric">
+                            <h3>Admin Accounts</h3>
+                            <p class="admin-value" id="metric-admins">-</p>
+                            <p class="admin-sub">บทบาท admin</p>
+                        </article>
+                        <article class="admin-metric">
+                            <h3>Total Bookings</h3>
+                            <p class="admin-value" id="metric-bookings">-</p>
+                            <p class="admin-sub">จำนวนรายการจองในฐานข้อมูล</p>
+                        </article>
+                    </div>
+                </section>
 
-            <section id="tours" class="section-shell admin-card">
-                <div class="admin-section-head">
-                    <h2>Tour Management</h2>
-                    <div style="display:flex; gap:10px;">
-                        <button id="sync-tours-btn" type="button" class="btn" style="background:#eef3ff; color:#0d3b66;">🔄 Sync from HTML</button>
-                        <button id="add-tour-btn" type="button" class="btn" style="background:#0d3b66; color:#fff;">+ Add New Tour</button>
+                <section id="bookings-mgmt" class="section-shell">
+                    <div class="admin-section-head" style="margin-bottom: 20px;">
+                        <h2 style="margin:0; border:none; padding:0;">Booking Management</h2>
+                        <button id="refresh-bookings-btn" type="button" class="btn btn-outline">Refresh</button>
+                    </div>
+                    <div id="booking-groups-container">
+                        <p>Loading bookings...</p>
+                    </div>
+                </section>
+
+                <section id="tours" class="section-shell">
+                    <div class="admin-section-head" style="margin-bottom: 20px;">
+                        <h2 style="margin:0; border:none; padding:0;">Tour Management</h2>
+                        <div style="display:flex; gap:10px;">
+                            <button id="sync-tours-btn" type="button" class="btn btn-outline">🔄 Sync from HTML</button>
+                            <button id="add-tour-btn" type="button" class="btn btn-primary">+ Add New Tour</button>
+                        </div>
+                    </div>
+                    <div id="tours-list-container">
+                        <p>Loading tours...</p>
+                    </div>
+                </section>
+
+                <section id="security" class="section-shell">
+                    <h2>Security Hardening</h2>
+                    <ul class="admin-list" style="color: #334155;">
+                        <li><span class="pill ok">ENABLED</span> RLS บังคับตรวจสิทธิ์ระดับตารางใน Supabase</li>
+                        <li><span class="pill ok">ENABLED</span> แยก anon key และ service key (ฝั่งเว็บใช้ anon เท่านั้น)</li>
+                        <li><span class="pill ok">ENABLED</span> OAuth / Email Auth ผ่าน Supabase Auth</li>
+                        <li><span class="pill warn">CHECK</span> ตรวจทาน redirect URLs ก่อน deploy production</li>
+                    </ul>
+                </section>
+
+                <section id="performance" class="section-shell">
+                    <h2>Performance & Optimization</h2>
+                    <div class="mini-bars" aria-label="performance bars">
+                        <div><span style="width:50px; display:inline-block;">TTFB</span><b id="perf-ttfb-bar" style="width:15%;">-</b></div>
+                        <div><span style="width:50px; display:inline-block;">LCP</span><b id="perf-lcp-bar" style="width:15%;">-</b></div>
+                        <div><span style="width:50px; display:inline-block;">CLS</span><b id="perf-cls-bar" style="width:15%;">-</b></div>
+                    </div>
+                    <p id="perf-note" style="color:#64748b; font-size:0.9rem; margin-top:15px;">กำลังดึงค่า performance metrics จริงจากฐานข้อมูล...</p>
+                </section>
+
+                <section id="backup" class="section-shell">
+                    <h2>Backup & Disaster Recovery</h2>
+                    <div style="display:flex; gap:10px; margin-bottom:15px;">
+                        <button id="download-backup-json-btn" type="button" class="btn btn-primary">Download Full Backup (JSON)</button>
+                        <button id="download-bookings-csv-btn" type="button" class="btn btn-outline">Download Bookings (CSV)</button>
+                    </div>
+                    <p id="backup-status" style="color:#64748b; font-size:0.9rem; margin-bottom:20px;">คุณสามารถดาวน์โหลดข้อมูลล่าสุดจาก Supabase ได้จากปุ่มด้านบน</p>
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Asset</th>
+                                <th>Frequency</th>
+                                <th>Retention</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Bookings DB</td>
+                                <td>Every 6 hours</td>
+                                <td>30 days</td>
+                                <td><span class="pill ok">OK</span></td>
+                            </tr>
+                            <tr>
+                                <td>Config Snapshots</td>
+                                <td>On deploy</td>
+                                <td>20 versions</td>
+                                <td><span class="pill warn">CHECK</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <section id="monitoring" class="section-shell">
+                    <div class="admin-section-head" style="margin-bottom: 20px;">
+                        <h2 style="margin:0; border:none; padding:0;">Monitoring & System Logs</h2>
+                        <button id="refresh-logs-btn" type="button" class="btn btn-outline">Refresh Logs</button>
+                    </div>
+                    <div class="log-feed" id="logs-container">
+                        <p><span class="log-time">--:--:--</span> [INFO] Loading logs...</p>
+                    </div>
+                </section>
+
+                <section id="roles" class="section-shell">
+                    <div class="admin-section-head" style="margin-bottom: 20px;">
+                        <h2 style="margin:0; border:none; padding:0;">User Roles Management</h2>
+                        <button id="refresh-roles-btn" type="button" class="btn btn-outline">Refresh</button>
+                    </div>
+                    <p style="color:#64748b; margin-top:0;">หน้านี้แก้บทบาทผู้ใช้จริงในตาราง <strong>profiles</strong>. เลือก role แล้วกด Save.</p>
+                    <p id="roles-message" style="margin-bottom:15px; font-weight:500;"></p>
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>User ID</th>
+                                <th>Name</th>
+                                <th>Role</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="roles-table-body">
+                            <tr>
+                                <td colspan="4">Loading users...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <section id="inquiries" class="section-shell">
+                    <div class="admin-section-head" style="margin-bottom: 20px;">
+                        <h2 style="margin:0; border:none; padding:0;">Contact Inquiries</h2>
+                        <button id="refresh-inquiries-btn" type="button" class="btn btn-outline">Refresh</button>
+                    </div>
+                    <div id="inquiries-list">
+                        <p style="color:#64748b;">No inquiries found in database yet. (Static HTML data not shown here)</p>
+                    </div>
+                </section>
+
+                <section id="reviews-mgmt" class="section-shell">
+                    <div class="admin-section-head" style="margin-bottom: 20px;">
+                        <h2 style="margin:0; border:none; padding:0;">Review Moderation</h2>
+                        <button id="refresh-reviews-btn" type="button" class="btn btn-outline">Refresh</button>
+                    </div>
+                    <div id="reviews-list">
+                        <p style="color:#64748b;">No reviews found in database yet. (Static HTML data not shown here)</p>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Tour Edit Modal -->
+    <div id="tour-modal" class="modal-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; z-index:2000; align-items:center; justify-content:center;">
+        <div class="modal-content section-shell" style="background:#fff; max-width:600px; width:90%; max-height:90vh; overflow-y:auto; padding:30px; border-radius:12px; position:relative; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);">
+            <button id="close-modal-btn" style="position:absolute; top:15px; right:15px; border:none; background:none; font-size:1.5rem; cursor:pointer; color:#94a3b8;">&times;</button>
+            <h2 id="modal-title" style="margin-top:0; border-bottom:none;">Edit Tour Package</h2>
+            <form id="tour-form">
+                <input type="hidden" id="tour-id">
+                <div class="grid two-col" style="gap:15px; margin-bottom:15px;">
+                    <div>
+                        <label style="display:block; font-size:0.9rem; font-weight:500; margin-bottom:5px; color:#475569;">Tour Title</label>
+                        <input type="text" id="tour-title" style="width:100%; padding:10px; border:1px solid #cbd5e1; border-radius:6px; font:inherit;" required>
+                    </div>
+                    <div>
+                        <label style="display:block; font-size:0.9rem; font-weight:500; margin-bottom:5px; color:#475569;">Slug (URL friendly)</label>
+                        <input type="text" id="tour-slug" placeholder="e.g. one-piece" style="width:100%; padding:10px; border:1px solid #cbd5e1; border-radius:6px; font:inherit;" required>
+                    </div>
+                    <div>
+                        <label style="display:block; font-size:0.9rem; font-weight:500; margin-bottom:5px; color:#475569;">Price Text</label>
+                        <input type="text" id="tour-price" placeholder="เริ่มต้น 39,900 บาท" style="width:100%; padding:10px; border:1px solid #cbd5e1; border-radius:6px; font:inherit;">
+                    </div>
+                    <div>
+                        <label style="display:block; font-size:0.9rem; font-weight:500; margin-bottom:5px; color:#475569;">Duration</label>
+                        <input type="text" id="tour-duration" placeholder="5 วัน 4 คืน" style="width:100%; padding:10px; border:1px solid #cbd5e1; border-radius:6px; font:inherit;">
                     </div>
                 </div>
-                <p>จัดการข้อมูลแพ็กเกจทัวร์ ราคา และรายละเอียดที่แสดงบนหน้าเว็บ</p>
-                <div id="tours-list-container" class="grid two-col" style="margin-top:16px;">
-                    <p>Loading tours...</p>
+                <div style="margin-bottom:15px;">
+                    <label style="display:block; font-size:0.9rem; font-weight:500; margin-bottom:5px; color:#475569;">Image URL</label>
+                    <input type="text" id="tour-image" placeholder="assets/tour.jpg" style="width:100%; padding:10px; border:1px solid #cbd5e1; border-radius:6px; font:inherit;">
                 </div>
-            </section>
-
-            <!-- Tour Edit Modal -->
-            <div id="tour-modal" class="modal-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:2000; align-items:center; justify-content:center;">
-                <div class="modal-content section-shell" style="background:#fff; max-width:600px; width:90%; max-height:90vh; overflow-y:auto; padding:30px; border-radius:15px; position:relative;">
-                    <button id="close-modal-btn" style="position:absolute; top:15px; right:15px; border:none; background:none; font-size:1.5rem; cursor:pointer;">&times;</button>
-                    <h2 id="modal-title">Edit Tour Package</h2>
-                    <form id="tour-form">
-                        <input type="hidden" id="tour-id">
-                        <div class="grid two-col" style="gap:15px; margin-bottom:15px;">
-                            <div>
-                                <label style="display:block; font-size:0.9rem; margin-bottom:5px;">Tour Title</label>
-                                <input type="text" id="tour-title" style="width:100%; padding:8px; border:1px solid #ddd; border-radius:6px;" required>
-                            </div>
-                            <div>
-                                <label style="display:block; font-size:0.9rem; margin-bottom:5px;">Slug (URL friendly)</label>
-                                <input type="text" id="tour-slug" placeholder="e.g. one-piece" style="width:100%; padding:8px; border:1px solid #ddd; border-radius:6px;" required>
-                            </div>
-                            <div>
-                                <label style="display:block; font-size:0.9rem; margin-bottom:5px;">Price Text</label>
-                                <input type="text" id="tour-price" placeholder="เริ่มต้น 39,900 บาท" style="width:100%; padding:8px; border:1px solid #ddd; border-radius:6px;">
-                            </div>
-                            <div>
-                                <label style="display:block; font-size:0.9rem; margin-bottom:5px;">Duration</label>
-                                <input type="text" id="tour-duration" placeholder="5 วัน 4 คืน" style="width:100%; padding:8px; border:1px solid #ddd; border-radius:6px;">
-                            </div>
-                        </div>
-                        <div style="margin-bottom:15px;">
-                            <label style="display:block; font-size:0.9rem; margin-bottom:5px;">Image URL</label>
-                            <input type="text" id="tour-image" placeholder="assets/tour.jpg" style="width:100%; padding:8px; border:1px solid #ddd; border-radius:6px;">
-                        </div>
-                        <div style="margin-bottom:15px;">
-                            <label style="display:block; font-size:0.9rem; margin-bottom:5px;">Description</label>
-                            <textarea id="tour-desc" rows="3" style="width:100%; padding:8px; border:1px solid #ddd; border-radius:6px; font-family:inherit;"></textarea>
-                        </div>
-                        <div style="margin-bottom:20px;">
-                            <label style="display:block; font-size:0.9rem; margin-bottom:5px;">Google Maps URL</label>
-                            <input type="text" id="tour-maps" style="width:100%; padding:8px; border:1px solid #ddd; border-radius:6px;">
-                        </div>
-                        <div style="display:flex; gap:10px; justify-content:flex-end;">
-                            <button type="button" id="cancel-tour-btn" class="btn" style="background:#f5f5f5;">Cancel</button>
-                            <button type="submit" class="btn btn-primary">Save Changes</button>
-                        </div>
-                    </form>
+                <div style="margin-bottom:15px;">
+                    <label style="display:block; font-size:0.9rem; font-weight:500; margin-bottom:5px; color:#475569;">Description</label>
+                    <textarea id="tour-desc" rows="3" style="width:100%; padding:10px; border:1px solid #cbd5e1; border-radius:6px; font:inherit;"></textarea>
                 </div>
-            </div>
-
-            <section id="security" class="section-shell admin-card">
-                <h2>Security Hardening</h2>
-                <ul class="admin-list">
-                    <li><span class="pill ok">ENABLED</span> RLS บังคับตรวจสิทธิ์ระดับตารางใน Supabase</li>
-                    <li><span class="pill ok">ENABLED</span> แยก anon key และ service key (ฝั่งเว็บใช้ anon เท่านั้น)</li>
-                    <li><span class="pill ok">ENABLED</span> OAuth / Email Auth ผ่าน Supabase Auth</li>
-                    <li><span class="pill warn">CHECK</span> ตรวจทาน redirect URLs ก่อน deploy production</li>
-                </ul>
-            </section>
-
-            <section id="performance" class="section-shell admin-card">
-                <h2>Performance & Optimization</h2>
-                <div class="mini-bars" aria-label="performance bars">
-                    <div><span>TTFB</span><b id="perf-ttfb-bar" style="width:15%;">-</b></div>
-                    <div><span>LCP</span><b id="perf-lcp-bar" style="width:15%;">-</b></div>
-                    <div><span>CLS</span><b id="perf-cls-bar" style="width:15%;">-</b></div>
+                <div style="margin-bottom:25px;">
+                    <label style="display:block; font-size:0.9rem; font-weight:500; margin-bottom:5px; color:#475569;">Google Maps URL</label>
+                    <input type="text" id="tour-maps" style="width:100%; padding:10px; border:1px solid #cbd5e1; border-radius:6px; font:inherit;">
                 </div>
-                <p id="perf-note" class="admin-note">กำลังดึงค่า performance metrics จริงจากฐานข้อมูล...</p>
-            </section>
-
-            <section id="backup" class="section-shell admin-card">
-                <h2>Backup & Disaster Recovery</h2>
-                <div class="backup-actions">
-                    <button id="download-backup-json-btn" type="button" class="btn" style="background:#0d3b66; color:#fff;">Download Full Backup (JSON)</button>
-                    <button id="download-bookings-csv-btn" type="button" class="btn" style="background:#eef3ff; color:#0d3b66;">Download Bookings (CSV)</button>
+                <div style="display:flex; gap:10px; justify-content:flex-end;">
+                    <button type="button" id="cancel-tour-btn" class="btn btn-outline">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
                 </div>
-                <p id="backup-status" class="admin-note">คุณสามารถดาวน์โหลดข้อมูลล่าสุดจาก Supabase ได้จากปุ่มด้านบน</p>
-                <table class="admin-table">
-                    <thead>
-                        <tr>
-                            <th>Asset</th>
-                            <th>Frequency</th>
-                            <th>Retention</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Bookings DB</td>
-                            <td>Every 6 hours</td>
-                            <td>30 days</td>
-                            <td><span class="pill ok">OK</span></td>
-                        </tr>
-                        <tr>
-                            <td>Config Snapshots</td>
-                            <td>On deploy</td>
-                            <td>20 versions</td>
-                            <td><span class="pill warn">CHECK</span></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </section>
+            </form>
+        </div>
+    </div>
 
-            <section id="monitoring" class="section-shell admin-card">
-                <div class="admin-section-head">
-                    <h2>Monitoring & System Logs</h2>
-                    <button id="refresh-logs-btn" type="button" class="btn" style="background:#eef3ff; color:#0d3b66;">Refresh Logs</button>
-                </div>
-                <div class="log-feed" id="logs-container">
-                    <p><span class="log-time">--:--:--</span> [INFO] Loading logs...</p>
-                </div>
-            </section>
-
-            <section id="roles" class="section-shell admin-card">
-                <div class="admin-section-head">
-                    <h2>User Roles Management</h2>
-                    <button id="refresh-roles-btn" type="button" class="btn" style="background:#eef3ff; color:#0d3b66;">Refresh</button>
-                </div>
-                <p>หน้านี้แก้บทบาทผู้ใช้จริงในตาราง <strong>profiles</strong>. เลือก role แล้วกด Save.</p>
-                <p id="roles-message" class="admin-note" style="margin-bottom:10px;"></p>
-                <table class="admin-table">
-                    <thead>
-                        <tr>
-                            <th>User ID</th>
-                            <th>Name</th>
-                            <th>Role</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody id="roles-table-body">
-                        <tr>
-                            <td colspan="4">Loading users...</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </section>
-        </section>
-    </main>
-
-    <footer>
-        Admin Dashboard เชื่อมต่อ Supabase profiles/bookings
-    </footer>
-
+    <!-- JS (Keep all logic intact, just update tourCardTemplate) -->
     <script>
         // --- DOM Elements ---
         const rolesTableBody = document.getElementById('roles-table-body');
@@ -250,7 +459,7 @@
         // --- Helper Functions ---
         function setRolesMessage(message, isError) {
             rolesMessage.textContent = message;
-            rolesMessage.style.color = isError ? '#b42318' : '#2b4c8d';
+            rolesMessage.style.color = isError ? '#ef4444' : '#10b981';
         }
 
         function avg(values) {
@@ -305,7 +514,7 @@
 
         function setBackupStatus(message, isError) {
             backupStatus.textContent = message;
-            backupStatus.style.color = isError ? '#b42318' : '#2b4c8d';
+            backupStatus.style.color = isError ? '#ef4444' : '#10b981';
         }
 
         // --- Authentication ---
@@ -335,7 +544,7 @@
             localStorage.setItem('userRole', 'admin');
             localStorage.setItem('userEmail', user.email || '');
             localStorage.setItem('userName', profile.full_name || user.email || 'Admin');
-            adminAccessNote.textContent = 'Signed in as admin: ' + (profile.full_name || user.email || user.id);
+            adminAccessNote.textContent = 'Admin: ' + (profile.full_name || user.email || user.id);
             return user;
         }
 
@@ -398,20 +607,20 @@
             if (log.metadata && Object.keys(log.metadata).length > 0) {
                 const metaStr = JSON.stringify(log.metadata, null, 2);
                 metaHtml = `
-                    <span class="log-meta-toggle" onclick="document.getElementById('meta-${index}').toggleAttribute('hidden')">details</span>
-                    <pre class="log-meta-content" id="meta-${index}" hidden>${metaStr}</pre>
+                    <span class="log-meta-toggle" style="cursor:pointer; text-decoration:underline; color:#94a3b8; font-size:0.75rem;" onclick="document.getElementById('meta-${index}').toggleAttribute('hidden')">details</span>
+                    <pre class="log-meta-content" id="meta-${index}" hidden style="width:100%; background:rgba(0,0,0,0.3); padding:8px; border-radius:4px; margin-top:4px;">${metaStr}</pre>
                 `;
             }
             return `
-                <div class="log-item">
-                    <span class="log-time" title="${date.toLocaleString('th-TH')}">
-                        <small style="display:block; font-size:0.7rem; color:#64748b;">${dateStr}</small>
+                <div class="log-item" style="display:flex; flex-wrap:wrap; gap:10px;">
+                    <span class="log-time" title="${date.toLocaleString('th-TH')}" style="color:#94a3b8; min-width:80px;">
+                        <small style="display:block; font-size:0.7rem;">${dateStr}</small>
                         ${timeStr}
                     </span>
-                    <span class="log-level log-level-${level}">${level.toUpperCase()}</span>
-                    <span class="log-event" style="min-width:140px;">${label}</span>
-                    <span class="log-msg">${message}</span>
-                    <span class="log-user" title="Full ID: ${log.user_id || 'Anonymous'}">${userName}</span>
+                    <span class="log-level log-level-${level}" style="font-weight:bold; min-width:60px; color: ${level==='error'?'#f87171':level==='warn'?'#fbbf24':'#38bdf8'};">${level.toUpperCase()}</span>
+                    <span class="log-event" style="min-width:140px; color:#818cf8;">${label}</span>
+                    <span class="log-msg" style="flex:1;">${message}</span>
+                    <span class="log-user" title="Full ID: ${log.user_id || 'Anonymous'}" style="color:#94a3b8; font-size:0.8rem;">${userName}</span>
                     ${metaHtml}
                 </div>
             `;
@@ -424,11 +633,11 @@
                 .order('created_at', { ascending: false })
                 .limit(100);
             if (logsError) {
-                logsContainer.innerHTML = `<div class="log-item"><span class="log-level log-level-error">[ERROR]</span> Cannot load logs: ${logsError.message}</div>`;
+                logsContainer.innerHTML = `<div class="log-item"><span style="color:#f87171">[ERROR]</span> Cannot load logs: ${logsError.message}</div>`;
                 return;
             }
             if (!logs || logs.length === 0) {
-                logsContainer.innerHTML = '<div class="log-item"><span class="log-level log-level-info">[INFO]</span> No logs yet</div>';
+                logsContainer.innerHTML = '<div class="log-item"><span style="color:#38bdf8">[INFO]</span> No logs yet</div>';
                 return;
             }
             const userIds = [...new Set(logs.map(l => l.user_id).filter(id => !!id))];
@@ -444,13 +653,15 @@
         // --- Tour Management ---
         function tourCardTemplate(tour) {
             return `
-                <article class="admin-card" style="padding:15px; border:1px solid #eee;">
-                    <img src="${tour.image_url}" alt="${tour.title}" style="width:100%; height:120px; object-fit:cover; border-radius:8px; margin-bottom:10px;">
-                    <h4 style="margin:0 0 5px 0;">${tour.title}</h4>
-                    <p style="font-size:0.85rem; color:#666; margin-bottom:10px;">${tour.price} | ${tour.duration}</p>
-                    <div style="display:flex; gap:8px;">
-                        <button class="btn edit-tour-btn" data-id="${tour.id}" style="font-size:0.8rem; padding:5px 10px; background:#eef3ff; color:#0d3b66;">Edit</button>
-                        <button class="btn delete-tour-btn" data-id="${tour.id}" style="font-size:0.8rem; padding:5px 10px; background:#fff1f0; color:#cf1322;">Delete</button>
+                <article class="tour-admin-card">
+                    <img src="${tour.image_url}" alt="${tour.title}">
+                    <div class="tour-admin-card-body">
+                        <h4 class="tour-admin-card-title">${tour.title}</h4>
+                        <p class="tour-admin-card-meta">${tour.price} &bull; ${tour.duration}</p>
+                        <div style="display:flex; gap:8px;">
+                            <button class="btn btn-outline edit-tour-btn" data-id="${tour.id}" style="flex:1; justify-content:center; padding:6px;">Edit</button>
+                            <button class="btn btn-danger delete-tour-btn" data-id="${tour.id}" style="padding:6px;">Delete</button>
+                        </div>
                     </div>
                 </article>
             `;
@@ -460,11 +671,11 @@
             toursListContainer.innerHTML = '<p>Loading tours from database...</p>';
             const { data, error } = await window.sb.from('tour_packages').select('*').order('created_at', { ascending: false });
             if (error) {
-                toursListContainer.innerHTML = `<div style="grid-column: 1 / -1; background:#fff1f0; padding:15px; border-radius:8px;"><p style="color:#cf1322;"><b>Error:</b> ${error.message}</p></div>`;
+                toursListContainer.innerHTML = `<div style="grid-column: 1 / -1; background:#fee2e2; padding:15px; border-radius:8px; color:#ef4444;"><b>Error:</b> ${error.message}</div>`;
                 return;
             }
             if (!data || data.length === 0) {
-                toursListContainer.innerHTML = '<p style="grid-column: 1 / -1;">No tours found. Use "Sync from HTML" to import existing tours.</p>';
+                toursListContainer.innerHTML = '<p style="grid-column: 1 / -1; color:#64748b;">No tours found. Use "Sync from HTML" to import existing tours.</p>';
                 return;
             }
             toursListContainer.innerHTML = data.map(tourCardTemplate).join('');
@@ -512,12 +723,14 @@
         addTourBtn.onclick = () => openModal();
 
         toursListContainer.onclick = async (e) => {
-            const id = e.target.getAttribute('data-id');
-            if (e.target.classList.contains('edit-tour-btn')) {
+            const btn = e.target.closest('button');
+            if(!btn) return;
+            const id = btn.getAttribute('data-id');
+            if (btn.classList.contains('edit-tour-btn')) {
                 const { data } = await window.sb.from('tour_packages').select('*').eq('id', id).single();
                 if (data) openModal(data);
             }
-            if (e.target.classList.contains('delete-tour-btn')) {
+            if (btn.classList.contains('delete-tour-btn')) {
                 if (confirm('Delete this tour?')) {
                     const { error } = await window.sb.from('tour_packages').delete().eq('id', id);
                     if (!error) loadTours();
@@ -577,18 +790,18 @@
         async function loadRolesTable() {
             setRolesMessage('Loading...', false);
             const { data, error } = await window.sb.from('profiles').select('id, full_name, role').order('created_at', { ascending: false });
-            if (error) { rolesTableBody.innerHTML = 'Error'; return; }
+            if (error) { rolesTableBody.innerHTML = '<tr><td colspan="4">Error loading roles</td></tr>'; return; }
             rolesTableBody.innerHTML = data.map(p => `
                 <tr>
-                    <td>${p.id}</td>
+                    <td>${p.id.slice(0, 10)}...</td>
                     <td>${p.full_name || '-'}</td>
                     <td>
-                        <select class="role-select" data-user-id="${p.id}">
+                        <select class="role-select" data-user-id="${p.id}" style="padding:6px; border-radius:4px; border:1px solid #cbd5e1;">
                             <option value="user" ${p.role === 'user' ? 'selected' : ''}>user</option>
                             <option value="admin" ${p.role === 'admin' ? 'selected' : ''}>admin</option>
                         </select>
                     </td>
-                    <td><button class="btn role-save-btn" data-user-id="${p.id}" style="background:#0d3b66; color:#fff; padding:6px 10px;">Save</button></td>
+                    <td><button class="btn btn-primary role-save-btn" data-user-id="${p.id}" style="padding:6px 12px; font-size:0.85rem;">Save</button></td>
                 </tr>
             `).join('');
             setRolesMessage('พร้อมแก้ไข role', false);
@@ -600,7 +813,8 @@
             const uid = btn.getAttribute('data-user-id');
             const role = document.querySelector(`.role-select[data-user-id="${uid}"]`).value;
             const { error } = await window.sb.from('profiles').update({ role }).eq('id', uid);
-            if (!error) { setRolesMessage('Saved', false); loadMetrics(); loadSystemLogs(); }
+            if (!error) { setRolesMessage('Saved successfully', false); loadMetrics(); loadSystemLogs(); }
+            else { setRolesMessage('Error saving role', true); }
         });
 
         // --- Event Listeners ---
@@ -614,11 +828,156 @@
             window.location.href = 'login.html';
         };
 
+        const bookingGroupsContainer = document.getElementById('booking-groups-container');
+        const refreshBookingsBtn = document.getElementById('refresh-bookings-btn');
+        const refreshInquiriesBtn = document.getElementById('refresh-inquiries-btn');
+        const refreshReviewsBtn = document.getElementById('refresh-reviews-btn');
+        const reviewsList = document.getElementById('reviews-list');
+
+        async function loadBookings() {
+            bookingGroupsContainer.innerHTML = '<p>Loading bookings...</p>';
+            const { data, error } = await window.sb.from('bookings').select('*').order('created_at', { ascending: false });
+            if (error) {
+                bookingGroupsContainer.innerHTML = `<p style="color:#ef4444;">Error: ${error.message}</p>`;
+                return;
+            }
+            if (!data || data.length === 0) {
+                bookingGroupsContainer.innerHTML = '<p style="color:#64748b;">No bookings found in database.</p>';
+                return;
+            }
+
+            const groups = {};
+            data.forEach(b => {
+                const pkg = b.tour_package || 'unspecified';
+                if (!groups[pkg]) groups[pkg] = { items: [], totalParticipants: 0 };
+                groups[pkg].items.push(b);
+                groups[pkg].totalParticipants += (b.participants || 1);
+            });
+
+            bookingGroupsContainer.innerHTML = Object.keys(groups).map(pkg => `
+                <div class="section-shell" style="margin-bottom:20px; border-color:#e2e8f0; background:#f8fafc;">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+                        <h3 style="margin:0; font-size:1.1rem; color:#0f172a;">${pkg.toUpperCase()}</h3>
+                        <span class="pill ${groups[pkg].totalParticipants >= 10 ? 'warn' : 'ok'}" style="font-size:0.9rem; padding:4px 12px;">
+                            ${groups[pkg].totalParticipants} / 10 Participants
+                        </span>
+                    </div>
+                    <table class="admin-table" style="background:#fff; border-radius:8px; overflow:hidden;">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Phone</th>
+                                <th>Travel Date</th>
+                                <th>Pax</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${groups[pkg].items.map(item => `
+                                <tr>
+                                    <td>${item.fullname}</td>
+                                    <td>${item.phone}</td>
+                                    <td>${new Date(item.travel_date).toLocaleDateString('th-TH')}</td>
+                                    <td>${item.participants || 1}</td>
+                                    <td><span class="pill ok">PENDING</span></td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                </div>
+            `).join('');
+        }
+
+        refreshBookingsBtn.onclick = loadBookings;
+        refreshInquiriesBtn.onclick = () => alert('Inquiries table not yet configured in Supabase. This is a UI placeholder.');
+        
+        // --- Review Moderation ---
+        async function loadReviewsForAdmin() {
+            reviewsList.innerHTML = '<p>Loading reviews...</p>';
+            const { data, error } = await window.sb.from('reviews').select('*').order('created_at', { ascending: false });
+            if (error) {
+                reviewsList.innerHTML = `<p style="color:#ef4444;">Error: ${error.message}</p>`;
+                return;
+            }
+            if (!data || data.length === 0) {
+                reviewsList.innerHTML = '<p style="color:#64748b;">No reviews found in database.</p>';
+                return;
+            }
+
+            reviewsList.innerHTML = `
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>User</th>
+                            <th>Package</th>
+                            <th>Rating</th>
+                            <th>Content</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${data.map(r => `
+                            <tr>
+                                <td>${r.fullname}</td>
+                                <td>${r.tour_package}</td>
+                                <td>${r.rating} ⭐</td>
+                                <td style="max-width:300px; font-size:0.9rem; word-break:break-word;">${r.content}</td>
+                                <td>
+                                    ${r.is_approved ? '<span class="pill ok">APPROVED</span>' : '<span class="pill warn">PENDING</span>'}
+                                </td>
+                                <td>
+                                    <div style="display:flex; gap:5px;">
+                                        ${!r.is_approved ? `<button class="btn btn-primary approve-review-btn" data-id="${r.id}" style="padding:4px 8px; font-size:0.8rem;">Approve</button>` : ''}
+                                        <button class="btn btn-danger delete-review-btn" data-id="${r.id}" style="padding:4px 8px; font-size:0.8rem;">Delete</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            `;
+        }
+
+        async function approveReview(id) {
+            const { error } = await window.sb.from('reviews').update({ is_approved: true }).eq('id', id);
+            if (!error) loadReviewsForAdmin();
+        }
+
+        async function deleteReview(id) {
+            if (!confirm('Delete this review permanently?')) return;
+            const { error } = await window.sb.from('reviews').delete().eq('id', id);
+            if (!error) loadReviewsForAdmin();
+        }
+
+        reviewsList.onclick = (e) => {
+            const btn = e.target.closest('button');
+            if (!btn) return;
+            const id = btn.dataset.id;
+            if (btn.classList.contains('approve-review-btn')) approveReview(id);
+            if (btn.classList.contains('delete-review-btn')) deleteReview(id);
+        };
+
+        refreshReviewsBtn.onclick = loadReviewsForAdmin;
+
+        // Smooth scroll for nav
+        document.querySelectorAll('.admin-nav-new a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                // Highlight active link
+                document.querySelectorAll('.admin-nav-new a').forEach(a => a.style.background = 'transparent');
+                this.style.background = 'rgba(255,255,255,0.05)';
+            });
+        });
+
         // --- Init ---
         (async function init() {
             const user = await ensureAdminAccess();
             if (!user) return;
-            await Promise.all([loadTours(), loadRolesTable(), loadMetrics(), loadPerformanceMetrics(), loadSystemLogs()]);
+            await Promise.all([loadTours(), loadBookings(), loadReviewsForAdmin(), loadRolesTable(), loadMetrics(), loadPerformanceMetrics(), loadSystemLogs()]);
         })();
     </script>
 </body>
