@@ -12,7 +12,9 @@ function updateNavigation() {
 
     if (isLoggedIn) {
         const adminRoles = ['admin', 'superadmin', 'devops'];
-        if (adminRoles.includes(userRole)) {
+        const normalizedRole = (userRole || '').toLowerCase();
+        
+        if (adminRoles.includes(normalizedRole)) {
             const hasStaticDashboard = !!menu.querySelector('a[href="backend.html"]');
             if (!hasStaticDashboard) {
                 const dashLink = document.createElement('a');
