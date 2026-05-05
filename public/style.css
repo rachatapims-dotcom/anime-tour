@@ -78,6 +78,19 @@ body {
     background: linear-gradient(135deg, var(--brand), #1464ad);
 }
 
+.nav-user-badge {
+    padding: 6px 12px;
+    background: var(--brand-soft);
+    color: var(--brand);
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid var(--line);
+}
+
 .container {
     max-width: 1150px;
     margin: 0 auto;
