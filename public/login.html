@@ -77,12 +77,14 @@
                 .maybeSingle();
 
             if (!profile) {
+                // If no profile exists, create a default 'user' profile
                 await window.sb.from('profiles').insert({
                     id: user.id,
                     full_name: userName,
                     role: 'user'
                 });
             } else {
+                // Important: Use the actual role from the database ('admin', 'superadmin', 'devops', or 'user')
                 role = profile.role || 'user';
                 userName = profile.full_name || userName;
             }
