@@ -296,31 +296,7 @@
                         <button id="download-backup-json-btn" type="button" class="btn btn-primary">Download Full Backup (JSON)</button>
                         <button id="download-bookings-csv-btn" type="button" class="btn btn-outline">Download Bookings (CSV)</button>
                     </div>
-                    <p id="backup-status" style="color:#64748b; font-size:0.9rem; margin-bottom:20px;">คุณสามารถดาวน์โหลดข้อมูลล่าสุดจาก Supabase ได้จากปุ่มด้านบน</p>
-                    <table class="admin-table">
-                        <thead>
-                            <tr>
-                                <th>Asset</th>
-                                <th>Frequency</th>
-                                <th>Retention</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Bookings DB</td>
-                                <td>Every 6 hours</td>
-                                <td>30 days</td>
-                                <td><span class="pill ok">OK</span></td>
-                            </tr>
-                            <tr>
-                                <td>Config Snapshots</td>
-                                <td>On deploy</td>
-                                <td>20 versions</td>
-                                <td><span class="pill warn">CHECK</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <p id="backup-status" style="color:#64748b; font-size:0.9rem; margin-bottom:20px;">คุณสามารถดาวน์โหลดข้อมูลล่าสุดจากฐานข้อมูล Supabase ได้โดยตรงจากปุ่มด้านบน เพื่อเก็บไว้เป็นสำเนาความปลอดภัย (Manual Backup)</p>
                 </section>
 
                 <section id="monitoring" class="section-shell">
@@ -536,16 +512,77 @@
                 .eq('id', user.id)
                 .maybeSingle();
 
-            if (error || !profile || profile.role !== 'admin') {
+            // Allow superadmin, devops, and admin
+            const allowedRoles = ['superadmin', 'devops', 'admin'];
+            if (error || !profile || !allowedRoles.includes(profile.role)) {
                 window.location.replace('index.html');
                 return null;
             }
+
+            const currentRole = profile.role;
             localStorage.setItem('isLoggedIn', 'true');
-            localStorage.setItem('userRole', 'admin');
+            localStorage.setItem('userRole', currentRole);
             localStorage.setItem('userEmail', user.email || '');
             localStorage.setItem('userName', profile.full_name || user.email || 'Admin');
-            adminAccessNote.textContent = 'Admin: ' + (profile.full_name || user.email || user.id);
+            
+            const roleLabels = {
+                'superadmin': '👑 Super Admin',
+                'devops': '🛠️ DevOps/Server',
+                'admin': '👤 Admin'
+            };
+            adminAccessNote.textContent = `${roleLabels[currentRole] || 'Staff'}: ${profile.full_name || user.email || user.id}`;
+            
+            applyRolePermissions(currentRole);
             return user;
+        }
+
+        function applyRolePermissions(role) {
+            // Permission Logic:
+            // superadmin: Everything
+            // devops: Performance, Backup, Logs, Overview (No Tour/Booking/Role editing)
+            // admin: Bookings, Tours, Inquiries, Reviews, Overview (No Backup/Roles/Performance)
+
+            const sections = {
+                'overview': ['superadmin', 'devops', 'admin'],
+                'bookings-mgmt': ['superadmin', 'admin'],
+                'tours': ['superadmin', 'admin'],
+                'inquiries': ['superadmin', 'admin'],
+                'reviews-mgmt': ['superadmin', 'admin'],
+                'security': ['superadmin', 'devops'],
+                'performance': ['superadmin', 'devops'],
+                'backup': ['superadmin', 'devops'],
+                'monitoring': ['superadmin', 'devops'],
+                'roles': ['superadmin']
+            };
+
+            const navLinks = {
+                '#overview': sections['overview'],
+                '#bookings-mgmt': sections['bookings-mgmt'],
+                '#tours': sections['tours'],
+                '#inquiries': sections['inquiries'],
+                '#reviews-mgmt': sections['reviews-mgmt'],
+                '#security': sections['security'],
+                '#performance': sections['performance'],
+                '#backup': sections['backup'],
+                '#monitoring': sections['monitoring'],
+                '#roles': sections['roles']
+            };
+
+            // Hide/Show Nav Links
+            document.querySelectorAll('.admin-nav-new a').forEach(link => {
+                const target = link.getAttribute('href');
+                if (navLinks[target] && !navLinks[target].includes(role)) {
+                    link.style.display = 'none';
+                }
+            });
+
+            // Hide/Show Sections
+            Object.keys(sections).forEach(id => {
+                const el = document.getElementById(id);
+                if (el && !sections[id].includes(role)) {
+                    el.style.display = 'none';
+                }
+            });
         }
 
         // --- Metric Loading ---
@@ -799,6 +836,8 @@
                         <select class="role-select" data-user-id="${p.id}" style="padding:6px; border-radius:4px; border:1px solid #cbd5e1;">
                             <option value="user" ${p.role === 'user' ? 'selected' : ''}>user</option>
                             <option value="admin" ${p.role === 'admin' ? 'selected' : ''}>admin</option>
+                            <option value="devops" ${p.role === 'devops' ? 'selected' : ''}>devops</option>
+                            <option value="superadmin" ${p.role === 'superadmin' ? 'selected' : ''}>superadmin</option>
                         </select>
                     </td>
                     <td><button class="btn btn-primary role-save-btn" data-user-id="${p.id}" style="padding:6px 12px; font-size:0.85rem;">Save</button></td>
@@ -849,17 +888,34 @@
             const groups = {};
             data.forEach(b => {
                 const pkg = b.tour_package || 'unspecified';
-                if (!groups[pkg]) groups[pkg] = { items: [], totalParticipants: 0 };
-                groups[pkg].items.push(b);
-                groups[pkg].totalParticipants += (b.participants || 1);
+                const date = b.travel_date || 'no-date';
+                const groupKey = `${pkg}_${date}`;
+
+                if (!groups[groupKey]) {
+                    groups[groupKey] = { 
+                        pkgName: pkg, 
+                        travelDate: date,
+                        items: [], 
+                        totalParticipants: 0 
+                    };
+                }
+                groups[groupKey].items.push(b);
+                groups[groupKey].totalParticipants += (b.participants || 1);
             });
 
-            bookingGroupsContainer.innerHTML = Object.keys(groups).map(pkg => `
+            bookingGroupsContainer.innerHTML = Object.keys(groups).sort().map(key => {
+                const group = groups[key];
+                const dateStr = group.travelDate !== 'no-date' ? new Date(group.travelDate).toLocaleDateString('th-TH') : 'ไม่ระบุวันที่';
+                
+                return `
                 <div class="section-shell" style="margin-bottom:20px; border-color:#e2e8f0; background:#f8fafc;">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
-                        <h3 style="margin:0; font-size:1.1rem; color:#0f172a;">${pkg.toUpperCase()}</h3>
-                        <span class="pill ${groups[pkg].totalParticipants >= 10 ? 'warn' : 'ok'}" style="font-size:0.9rem; padding:4px 12px;">
-                            ${groups[pkg].totalParticipants} / 10 Participants
+                        <div>
+                            <h3 style="margin:0; font-size:1.1rem; color:#0f172a;">${group.pkgName.toUpperCase()}</h3>
+                            <small style="color:#64748b; font-weight:500;">📅 รอบวันที่: ${dateStr}</small>
+                        </div>
+                        <span class="pill ${group.totalParticipants >= 10 ? 'warn' : 'ok'}" style="font-size:0.9rem; padding:4px 12px;">
+                            ${group.totalParticipants} / 10 Participants
                         </span>
                     </div>
                     <table class="admin-table" style="background:#fff; border-radius:8px; overflow:hidden;">
@@ -867,17 +923,15 @@
                             <tr>
                                 <th>Name</th>
                                 <th>Phone</th>
-                                <th>Travel Date</th>
                                 <th>Pax</th>
                                 <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>
-                            ${groups[pkg].items.map(item => `
+                            ${group.items.map(item => `
                                 <tr>
                                     <td>${item.fullname}</td>
                                     <td>${item.phone}</td>
-                                    <td>${new Date(item.travel_date).toLocaleDateString('th-TH')}</td>
                                     <td>${item.participants || 1}</td>
                                     <td><span class="pill ok">PENDING</span></td>
                                 </tr>
@@ -885,11 +939,75 @@
                         </tbody>
                     </table>
                 </div>
-            `).join('');
+            `;
+            }).join('');
         }
 
+        async function loadInquiries() {
+            const inquiriesList = document.getElementById('inquiries-list');
+            inquiriesList.innerHTML = '<p>Loading inquiries...</p>';
+            const { data, error } = await window.sb.from('inquiries').select('*').order('created_at', { ascending: false });
+            
+            if (error) {
+                inquiriesList.innerHTML = `<p style="color:#ef4444;">Error: ${error.message}</p>`;
+                return;
+            }
+            if (!data || data.length === 0) {
+                inquiriesList.innerHTML = '<p style="color:#64748b;">No inquiries found in database yet.</p>';
+                return;
+            }
+
+            inquiriesList.innerHTML = `
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>From</th>
+                            <th>Subject</th>
+                            <th>Message</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${data.map((item, i) => `
+                            <tr>
+                                <td style="font-size:0.8rem; color:#64748b;">${new Date(item.created_at).toLocaleString('th-TH')}</td>
+                                <td>
+                                    <div style="font-weight:600;">${item.fullname}</div>
+                                    <div style="font-size:0.8rem; color:#64748b;">${item.email}</div>
+                                </td>
+                                <td style="font-weight:500; color:#0ea5e9;">${item.subject}</td>
+                                <td style="max-width:300px; font-size:0.9rem;">
+                                    <div id="inq-short-${i}">${item.message.length > 60 ? item.message.substring(0, 60) + '...' : item.message}</div>
+                                    ${item.message.length > 60 ? `
+                                        <div id="inq-full-${i}" style="display:none; white-space:pre-wrap; margin-top:5px; padding:8px; background:#f1f5f9; border-radius:4px;">${item.message}</div>
+                                        <button onclick="const f=document.getElementById('inq-full-${i}'); const s=document.getElementById('inq-short-${i}'); if(f.style.display==='none'){f.style.display='block'; s.style.display='none'; this.textContent='Hide';}else{f.style.display='none'; s.style.display='block'; this.textContent='Details';}" 
+                                                style="background:none; border:none; color:#38bdf8; padding:0; font-size:0.8rem; cursor:pointer; text-decoration:underline;">Details</button>
+                                    ` : ''}
+                                </td>
+                                <td>
+                                    <button class="btn btn-danger delete-inquiry-btn" data-id="${item.id}" style="padding:4px 8px; font-size:0.8rem;">Delete</button>
+                                </td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            `;
+        }
+
+        async function deleteInquiry(id) {
+            if (!confirm('Delete this inquiry permanently?')) return;
+            const { error } = await window.sb.from('inquiries').delete().eq('id', id);
+            if (!error) loadInquiries();
+        }
+
+        document.getElementById('inquiries-list').onclick = (e) => {
+            const btn = e.target.closest('.delete-inquiry-btn');
+            if (btn) deleteInquiry(btn.dataset.id);
+        };
+
         refreshBookingsBtn.onclick = loadBookings;
-        refreshInquiriesBtn.onclick = () => alert('Inquiries table not yet configured in Supabase. This is a UI placeholder.');
+        refreshInquiriesBtn.onclick = loadInquiries;
         
         // --- Review Moderation ---
         async function loadReviewsForAdmin() {
@@ -917,12 +1035,23 @@
                         </tr>
                     </thead>
                     <tbody>
-                        ${data.map(r => `
+                        ${data.map((r, i) => {
+                            const isLong = r.content && r.content.length > 100;
+                            const displayContent = isLong ? r.content.substring(0, 100) + '...' : r.content;
+                            
+                            return `
                             <tr>
                                 <td>${r.fullname}</td>
                                 <td>${r.tour_package}</td>
                                 <td>${r.rating} ⭐</td>
-                                <td style="max-width:300px; font-size:0.9rem; word-break:break-word;">${r.content}</td>
+                                <td style="max-width:300px; font-size:0.9rem;">
+                                    <div id="review-short-${i}">${displayContent}</div>
+                                    ${isLong ? `
+                                        <div id="review-full-${i}" style="display:none; white-space:pre-wrap; margin-top:5px; padding:8px; background:#f1f5f9; border-radius:4px;">${r.content}</div>
+                                        <button onclick="const f=document.getElementById('review-full-${i}'); const s=document.getElementById('review-short-${i}'); if(f.style.display==='none'){f.style.display='block'; s.style.display='none'; this.textContent='Hide';}else{f.style.display='none'; s.style.display='block'; this.textContent='Details';}" 
+                                                style="background:none; border:none; color:#38bdf8; padding:0; font-size:0.8rem; cursor:pointer; text-decoration:underline;">Details</button>
+                                    ` : ''}
+                                </td>
                                 <td>
                                     ${r.is_approved ? '<span class="pill ok">APPROVED</span>' : '<span class="pill warn">PENDING</span>'}
                                 </td>
@@ -933,7 +1062,8 @@
                                     </div>
                                 </td>
                             </tr>
-                        `).join('')}
+                            `;
+                        }).join('')}
                     </tbody>
                 </table>
             `;

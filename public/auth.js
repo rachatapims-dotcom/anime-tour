@@ -11,7 +11,8 @@ function updateNavigation() {
     dynamicElements.forEach(el => el.remove());
 
     if (isLoggedIn) {
-        if (userRole === 'admin') {
+        const adminRoles = ['admin', 'superadmin', 'devops'];
+        if (adminRoles.includes(userRole)) {
             const hasStaticDashboard = !!menu.querySelector('a[href="backend.html"]');
             if (!hasStaticDashboard) {
                 const dashLink = document.createElement('a');

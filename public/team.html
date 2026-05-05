@@ -36,6 +36,7 @@
                     <p><strong>รหัสนักศึกษา:</strong> 1660703875</p>
                     <p><strong>กลุ่มเรียน:</strong> IT464</p>
                     <p><strong>เลขที่:</strong> 17</p>
+                    <button class="btn btn-primary contact-guide-btn" data-guide="ธัญเทพ สมไสยา" style="width:100%; margin-top:15px;">ติดต่อไกด์</button>
                 </div>
             </article>
 
@@ -46,6 +47,7 @@
                     <p><strong>รหัสนักศึกษา:</strong> 1660703644</p>
                     <p><strong>กลุ่มเรียน:</strong> IT464</p>
                     <p><strong>เลขที่:</strong> 15</p>
+                    <button class="btn btn-primary contact-guide-btn" data-guide="นวพล สวัสดี" style="width:100%; margin-top:15px;">ติดต่อไกด์</button>
                 </div>
             </article>
 
@@ -56,13 +58,92 @@
                     <p><strong>รหัสนักศึกษา:</strong> 1660705805</p>
                     <p><strong>กลุ่มเรียน:</strong> IT464</p>
                     <p><strong>เลขที่:</strong> 29</p>
+                    <button class="btn btn-primary contact-guide-btn" data-guide="รชฏะ พิมทรัพย์ศิริ" style="width:100%; margin-top:15px;">ติดต่อไกด์</button>
                 </div>
             </article>
         </section>
     </main>
 
+    <!-- Contact Modal -->
+    <div id="contact-modal" class="modal-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:1000; align-items:center; justify-content:center; backdrop-filter: blur(4px);">
+        <div class="modal-content section-shell" style="background:#fff; max-width:500px; width:90%; padding:30px; border-radius:12px; position:relative;">
+            <h2 style="margin-top:0;">ติดต่อไกด์ <span id="target-guide-name" style="color:#0ea5e9;"></span></h2>
+            <form id="contact-guide-form">
+                <div style="margin-bottom:15px;">
+                    <label style="display:block; margin-bottom:5px; font-weight:500;">ชื่อของคุณ</label>
+                    <input type="text" id="contact-name" style="width:100%; padding:10px; border:1px solid #ddd; border-radius:6px;" required>
+                </div>
+                <div style="margin-bottom:15px;">
+                    <label style="display:block; margin-bottom:5px; font-weight:500;">อีเมล</label>
+                    <input type="email" id="contact-email" style="width:100%; padding:10px; border:1px solid #ddd; border-radius:6px;" required>
+                </div>
+                <div style="margin-bottom:15px;">
+                    <label style="display:block; margin-bottom:5px; font-weight:500;">ข้อความ</label>
+                    <textarea id="contact-message" rows="4" style="width:100%; padding:10px; border:1px solid #ddd; border-radius:6px;" required></textarea>
+                </div>
+                <div style="display:flex; gap:10px; justify-content:flex-end;">
+                    <button type="button" id="close-modal-btn" class="btn btn-outline">ยกเลิก</button>
+                    <button type="submit" class="btn btn-primary">ส่งข้อความ</button>
+                </div>
+            </form>
+            <p id="contact-success" style="display:none; color:#10b981; margin-top:15px; text-align:center; font-weight:500;">ส่งข้อความสำเร็จแล้ว!</p>
+        </div>
+    </div>
+
     <footer>
         AnimeTrails JP | ทีมไกด์ผู้จัดทำเว็บไซต์และวางเส้นทางทัวร์ตามรอยอนิเมะ
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script src="supabase-client.js"></script>
+    <script>
+        const modal = document.getElementById('contact-modal');
+        const form = document.getElementById('contact-guide-form');
+        const successMsg = document.getElementById('contact-success');
+        const guideNameSpan = document.getElementById('target-guide-name');
+        let selectedGuide = '';
+
+        document.querySelectorAll('.contact-guide-btn').forEach(btn => {
+            btn.onclick = () => {
+                selectedGuide = btn.dataset.guide;
+                guideNameSpan.textContent = selectedGuide;
+                modal.style.display = 'flex';
+                successMsg.style.display = 'none';
+                form.style.display = 'block';
+            };
+        });
+
+        document.getElementById('close-modal-btn').onclick = () => {
+            modal.style.display = 'none';
+        };
+
+        form.onsubmit = async (e) => {
+            e.preventDefault();
+            const submitBtn = form.querySelector('button[type="submit"]');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'กำลังส่ง...';
+
+            const { error } = await window.sb.from('inquiries').insert([{
+                fullname: document.getElementById('contact-name').value,
+                email: document.getElementById('contact-email').value,
+                subject: `Contacting Guide: ${selectedGuide}`,
+                message: document.getElementById('contact-message').value
+            }]);
+
+            if (error) {
+                alert('เกิดข้อผิดพลาด: ' + error.message);
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'ส่งข้อความ';
+            } else {
+                form.style.display = 'none';
+                successMsg.style.display = 'block';
+                form.reset();
+                setTimeout(() => {
+                    modal.style.display = 'none';
+                }, 2000);
+            }
+        };
+    </script>
 </body>
 </html>
