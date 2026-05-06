@@ -1,0 +1,1033 @@
+[
+  {
+    "id": 1,
+    "user_id": "190e8cee-5647-40fb-81a5-292e4f25d5a2",
+    "event_type": "auth.login.success",
+    "level": "info",
+    "message": "User login success",
+    "metadata": {
+      "email": "monchai.chai23@gmail.com"
+    },
+    "created_at": "2026-03-30T10:20:16.906611+00:00"
+  },
+  {
+    "id": 2,
+    "user_id": "190e8cee-5647-40fb-81a5-292e4f25d5a2",
+    "event_type": "backup.download.bookings_csv",
+    "level": "info",
+    "message": "Admin downloaded bookings CSV",
+    "metadata": {
+      "rows": 1,
+      "filename": "animetrails-bookings-20260330-172300.csv"
+    },
+    "created_at": "2026-03-30T10:23:02.256422+00:00"
+  },
+  {
+    "id": 3,
+    "user_id": "190e8cee-5647-40fb-81a5-292e4f25d5a2",
+    "event_type": "backup.download.json",
+    "level": "info",
+    "message": "Admin downloaded full backup JSON",
+    "metadata": {
+      "bookings": 1,
+      "filename": "animetrails-backup-20260330-172301.json",
+      "profiles": 1
+    },
+    "created_at": "2026-03-30T10:23:03.324339+00:00"
+  },
+  {
+    "id": 4,
+    "user_id": "190e8cee-5647-40fb-81a5-292e4f25d5a2",
+    "event_type": "auth.logout",
+    "level": "info",
+    "message": "User clicked logout",
+    "metadata": {
+      "role": "admin",
+      "email": "monchai.chai23@gmail.com"
+    },
+    "created_at": "2026-03-30T10:23:13.906111+00:00"
+  },
+  {
+    "id": 5,
+    "user_id": "190e8cee-5647-40fb-81a5-292e4f25d5a2",
+    "event_type": "auth.login.success",
+    "level": "info",
+    "message": "User login success",
+    "metadata": {
+      "email": "monchai.chai23@gmail.com"
+    },
+    "created_at": "2026-03-30T10:28:35.007454+00:00"
+  },
+  {
+    "id": 6,
+    "user_id": "190e8cee-5647-40fb-81a5-292e4f25d5a2",
+    "event_type": "auth.login.success",
+    "level": "info",
+    "message": "User login success",
+    "metadata": {
+      "email": "monchai.chai23@gmail.com"
+    },
+    "created_at": "2026-03-30T10:51:48.750522+00:00"
+  },
+  {
+    "id": 8,
+    "user_id": "190e8cee-5647-40fb-81a5-292e4f25d5a2",
+    "event_type": "auth.logout",
+    "level": "info",
+    "message": "User clicked logout",
+    "metadata": {
+      "role": "admin",
+      "email": "monchai.chai23@gmail.com"
+    },
+    "created_at": "2026-03-30T10:51:56.922518+00:00"
+  },
+  {
+    "id": 10,
+    "user_id": "190e8cee-5647-40fb-81a5-292e4f25d5a2",
+    "event_type": "auth.logout",
+    "level": "info",
+    "message": "User clicked logout",
+    "metadata": {
+      "role": "admin",
+      "email": "monchai.chai23@gmail.com"
+    },
+    "created_at": "2026-03-30T10:57:59.202255+00:00"
+  },
+  {
+    "id": 18,
+    "user_id": "2bf4d3e2-98ea-4c24-baa4-5daa674f4420",
+    "event_type": "auth.login.success",
+    "level": "info",
+    "message": "User login success",
+    "metadata": {
+      "email": "stormsk7742@gmail.com"
+    },
+    "created_at": "2026-03-31T11:52:25.242816+00:00"
+  },
+  {
+    "id": 21,
+    "user_id": "190e8cee-5647-40fb-81a5-292e4f25d5a2",
+    "event_type": "auth.login.success",
+    "level": "info",
+    "message": "User login success",
+    "metadata": {
+      "email": "monchai.chai23@gmail.com"
+    },
+    "created_at": "2026-03-31T11:52:57.623113+00:00"
+  },
+  {
+    "id": 22,
+    "user_id": "2bf4d3e2-98ea-4c24-baa4-5daa674f4420",
+    "event_type": "booking.create.success",
+    "level": "info",
+    "message": "Booking created successfully",
+    "metadata": {
+      "travel_date": "2026-03-31",
+      "tour_package": "one-piece"
+    },
+    "created_at": "2026-03-31T11:53:00.046861+00:00"
+  },
+  {
+    "id": 24,
+    "user_id": "2bf4d3e2-98ea-4c24-baa4-5daa674f4420",
+    "event_type": "booking.create.success",
+    "level": "info",
+    "message": "Booking created successfully",
+    "metadata": {
+      "travel_date": "2026-03-30",
+      "tour_package": "one-piece"
+    },
+    "created_at": "2026-03-31T11:54:35.031278+00:00"
+  },
+  {
+    "id": 26,
+    "user_id": "2bf4d3e2-98ea-4c24-baa4-5daa674f4420",
+    "event_type": "booking.create.success",
+    "level": "info",
+    "message": "Booking created successfully",
+    "metadata": {
+      "travel_date": "2026-03-17",
+      "tour_package": "jjk"
+    },
+    "created_at": "2026-03-31T11:54:56.661666+00:00"
+  },
+  {
+    "id": 31,
+    "user_id": "2bf4d3e2-98ea-4c24-baa4-5daa674f4420",
+    "event_type": "booking.create.success",
+    "level": "info",
+    "message": "Booking created successfully",
+    "metadata": {
+      "travel_date": "2026-03-25",
+      "tour_package": "jjk"
+    },
+    "created_at": "2026-03-31T11:55:48.677603+00:00"
+  },
+  {
+    "id": 36,
+    "user_id": "2bf4d3e2-98ea-4c24-baa4-5daa674f4420",
+    "event_type": "auth.login.success",
+    "level": "info",
+    "message": "User login success",
+    "metadata": {
+      "email": "stormsk7742@gmail.com"
+    },
+    "created_at": "2026-03-31T15:30:56.837732+00:00"
+  },
+  {
+    "id": 37,
+    "user_id": "190e8cee-5647-40fb-81a5-292e4f25d5a2",
+    "event_type": "auth.login.success",
+    "level": "info",
+    "message": "User login success",
+    "metadata": {
+      "email": "monchai.chai23@gmail.com"
+    },
+    "created_at": "2026-04-01T13:43:44.25695+00:00"
+  },
+  {
+    "id": 46,
+    "user_id": "190e8cee-5647-40fb-81a5-292e4f25d5a2",
+    "event_type": "auth.login.success",
+    "level": "info",
+    "message": "User login success",
+    "metadata": {
+      "email": "monchai.chai23@gmail.com"
+    },
+    "created_at": "2026-04-02T03:31:40.264744+00:00"
+  },
+  {
+    "id": 47,
+    "user_id": "190e8cee-5647-40fb-81a5-292e4f25d5a2",
+    "event_type": "auth.logout",
+    "level": "info",
+    "message": "User clicked logout",
+    "metadata": {
+      "role": "admin",
+      "email": "monchai.chai23@gmail.com"
+    },
+    "created_at": "2026-04-02T03:32:01.926482+00:00"
+  },
+  {
+    "id": 50,
+    "user_id": "190e8cee-5647-40fb-81a5-292e4f25d5a2",
+    "event_type": "auth.login.success",
+    "level": "info",
+    "message": "User login success",
+    "metadata": {
+      "email": "monchai.chai23@gmail.com"
+    },
+    "created_at": "2026-04-02T03:32:20.313015+00:00"
+  },
+  {
+    "id": 51,
+    "user_id": "190e8cee-5647-40fb-81a5-292e4f25d5a2",
+    "event_type": "backup.download.json",
+    "level": "info",
+    "message": "Admin downloaded full backup JSON",
+    "metadata": {
+      "bookings": 5,
+      "filename": "animetrails-backup-20260402-103238.json",
+      "profiles": 1
+    },
+    "created_at": "2026-04-02T03:32:39.030936+00:00"
+  },
+  {
+    "id": 52,
+    "user_id": "190e8cee-5647-40fb-81a5-292e4f25d5a2",
+    "event_type": "backup.download.bookings_csv",
+    "level": "info",
+    "message": "Admin downloaded bookings CSV",
+    "metadata": {
+      "rows": 5,
+      "filename": "animetrails-bookings-20260402-103241.csv"
+    },
+    "created_at": "2026-04-02T03:32:41.548818+00:00"
+  },
+  {
+    "id": 59,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "auth.login.success",
+    "level": "info",
+    "message": "User login success",
+    "metadata": {
+      "email": "rachatapeet2@gmail.com"
+    },
+    "created_at": "2026-05-03T12:09:11.072791+00:00"
+  },
+  {
+    "id": 60,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "auth.login.success",
+    "level": "info",
+    "message": "User login success",
+    "metadata": {
+      "email": "rachatapeet2@gmail.com"
+    },
+    "created_at": "2026-05-03T12:09:35.70093+00:00"
+  },
+  {
+    "id": 61,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "booking.create.success",
+    "level": "info",
+    "message": "Booking created successfully",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+      "url": "http://127.0.0.1:5500/public/contact.html?package=one-piece",
+      "path": "/public/contact.html",
+      "travel_date": "2233-03-23",
+      "timestamp_ms": 1777810496039,
+      "tour_package": "one-piece"
+    },
+    "created_at": "2026-05-03T12:14:58.105344+00:00"
+  },
+  {
+    "id": 62,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "booking.create.success",
+    "level": "info",
+    "message": "Booking created successfully",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+      "url": "http://127.0.0.1:5500/public/contact.html?package=one-piece",
+      "path": "/public/contact.html",
+      "travel_date": "2333-03-23",
+      "timestamp_ms": 1777811293349,
+      "tour_package": "one-piece"
+    },
+    "created_at": "2026-05-03T12:28:15.502363+00:00"
+  },
+  {
+    "id": 65,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "auth.login.success",
+    "level": "info",
+    "message": "User login success",
+    "metadata": {
+      "email": "rachatapeet2@gmail.com"
+    },
+    "created_at": "2026-05-05T14:11:37.774091+00:00"
+  },
+  {
+    "id": 68,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "auth.login.success",
+    "level": "info",
+    "message": "User login success",
+    "metadata": {
+      "email": "rachatapeet2@gmail.com"
+    },
+    "created_at": "2026-05-05T14:28:45.759893+00:00"
+  },
+  {
+    "id": 80,
+    "user_id": "190e8cee-5647-40fb-81a5-292e4f25d5a2",
+    "event_type": "auth.login.success",
+    "level": "info",
+    "message": "User login success",
+    "metadata": {
+      "email": "monchai.chai23@gmail.com"
+    },
+    "created_at": "2026-05-05T14:33:59.725765+00:00"
+  },
+  {
+    "id": 81,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "auth.login.success",
+    "level": "info",
+    "message": "User login success",
+    "metadata": {
+      "email": "rachatapeet2@gmail.com"
+    },
+    "created_at": "2026-05-05T14:34:09.506848+00:00"
+  },
+  {
+    "id": 83,
+    "user_id": "12bf9fd7-f0a8-483d-aa90-4dc9840ff60b",
+    "event_type": "auth.login.success",
+    "level": "info",
+    "message": "User login success",
+    "metadata": {
+      "email": "thanyatep.soms@bumail.net"
+    },
+    "created_at": "2026-05-05T14:35:45.531457+00:00"
+  },
+  {
+    "id": 84,
+    "user_id": "12bf9fd7-f0a8-483d-aa90-4dc9840ff60b",
+    "event_type": "booking.create.success",
+    "level": "info",
+    "message": "New booking for kimetsu",
+    "metadata": null,
+    "created_at": "2026-05-05T14:36:22.960284+00:00"
+  },
+  {
+    "id": 85,
+    "user_id": "12bf9fd7-f0a8-483d-aa90-4dc9840ff60b",
+    "event_type": "auth.logout",
+    "level": "info",
+    "message": "User clicked logout",
+    "metadata": {
+      "role": "user",
+      "email": "thanyatep.soms@bumail.net"
+    },
+    "created_at": "2026-05-05T14:36:50.796616+00:00"
+  },
+  {
+    "id": 87,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "auth.login.success",
+    "level": "info",
+    "message": "User login success",
+    "metadata": {
+      "email": "rachatapeet2@gmail.com"
+    },
+    "created_at": "2026-05-05T14:36:56.468587+00:00"
+  },
+  {
+    "id": 88,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "auth.login.success",
+    "level": "info",
+    "message": "User login success",
+    "metadata": {
+      "email": "rachatapeet2@gmail.com"
+    },
+    "created_at": "2026-05-05T14:38:48.105058+00:00"
+  },
+  {
+    "id": 89,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "auth.login.success",
+    "level": "info",
+    "message": "User login success",
+    "metadata": {
+      "email": "rachatapeet2@gmail.com"
+    },
+    "created_at": "2026-05-05T14:40:31.932331+00:00"
+  },
+  {
+    "id": 90,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "booking.create.success",
+    "level": "info",
+    "message": "New booking for kimetsu",
+    "metadata": null,
+    "created_at": "2026-05-05T14:41:23.131389+00:00"
+  },
+  {
+    "id": 91,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "auth.login.success",
+    "level": "info",
+    "message": "User login success",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+      "url": "http://127.0.0.1:5500/public/login.html",
+      "path": "/public/login.html",
+      "email": "rachatapeet2@gmail.com",
+      "timestamp_ms": 1777992241866
+    },
+    "created_at": "2026-05-05T14:44:03.940879+00:00"
+  },
+  {
+    "id": 92,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "auth.login.success",
+    "level": "info",
+    "message": "User login success",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+      "url": "http://127.0.0.1:5500/public/login.html",
+      "path": "/public/login.html",
+      "email": "rachatapeet2@gmail.com",
+      "timestamp_ms": 1777993345849
+    },
+    "created_at": "2026-05-05T15:02:27.961406+00:00"
+  },
+  {
+    "id": 94,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "auth.login.success",
+    "level": "info",
+    "message": "User login success",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+      "url": "http://127.0.0.1:5500/public/login.html?logged_out=1",
+      "path": "/public/login.html",
+      "email": "rachatapeet2@gmail.com",
+      "timestamp_ms": 1777993362398
+    },
+    "created_at": "2026-05-05T15:02:44.494398+00:00"
+  },
+  {
+    "id": 96,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "auth.login.success",
+    "level": "info",
+    "message": "User login success",
+    "metadata": {
+      "email": "rachatapeet2@gmail.com"
+    },
+    "created_at": "2026-05-05T15:21:57.326455+00:00"
+  },
+  {
+    "id": 97,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "auth.login.success",
+    "level": "info",
+    "message": "User login success",
+    "metadata": {
+      "email": "rachatapeet2@gmail.com"
+    },
+    "created_at": "2026-05-05T15:22:31.021774+00:00"
+  },
+  {
+    "id": 98,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "auth.login.success",
+    "level": "info",
+    "message": "User login success",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+      "url": "http://127.0.0.1:5500/public/login.html",
+      "path": "/public/login.html",
+      "email": "rachatapeet2@gmail.com",
+      "timestamp_ms": 1777994555730
+    },
+    "created_at": "2026-05-05T15:22:37.943328+00:00"
+  },
+  {
+    "id": 99,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "auth.login.success",
+    "level": "info",
+    "message": "User login success",
+    "metadata": {
+      "email": "rachatapeet2@gmail.com"
+    },
+    "created_at": "2026-05-05T15:24:13.77122+00:00"
+  },
+  {
+    "id": 101,
+    "user_id": "12bf9fd7-f0a8-483d-aa90-4dc9840ff60b",
+    "event_type": "auth.login.success",
+    "level": "info",
+    "message": "User login success",
+    "metadata": {
+      "email": "thanyatep.soms@bumail.net"
+    },
+    "created_at": "2026-05-05T15:24:51.179385+00:00"
+  },
+  {
+    "id": 102,
+    "user_id": "12bf9fd7-f0a8-483d-aa90-4dc9840ff60b",
+    "event_type": "auth.login.success",
+    "level": "info",
+    "message": "User login success",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+      "url": "http://127.0.0.1:5500/public/login.html?logged_out=1",
+      "path": "/public/login.html",
+      "email": "thanyatep.soms@bumail.net",
+      "timestamp_ms": 1777994706680
+    },
+    "created_at": "2026-05-05T15:25:08.898662+00:00"
+  },
+  {
+    "id": 103,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "auth.login.success",
+    "level": "info",
+    "message": "User login success",
+    "metadata": {
+      "email": "rachatapeet2@gmail.com"
+    },
+    "created_at": "2026-05-05T15:25:19.527775+00:00"
+  },
+  {
+    "id": 104,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "auth.login.success",
+    "level": "info",
+    "message": "User login success",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+      "url": "http://127.0.0.1:5500/public/login.html?logged_out=1",
+      "path": "/public/login.html",
+      "email": "rachatapeet2@gmail.com",
+      "timestamp_ms": 1777994780412
+    },
+    "created_at": "2026-05-05T15:26:22.646306+00:00"
+  },
+  {
+    "id": 105,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "auth.login.success",
+    "level": "info",
+    "message": "User login success",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+      "url": "http://127.0.0.1:5500/public/login.html?logged_out=1",
+      "path": "/public/login.html",
+      "email": "rachatapeet2@gmail.com",
+      "timestamp_ms": 1777995000917
+    },
+    "created_at": "2026-05-05T15:30:03.172991+00:00"
+  },
+  {
+    "id": 106,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "auth.login.success",
+    "level": "info",
+    "message": "User login success",
+    "metadata": {
+      "email": "rachatapeet2@gmail.com"
+    },
+    "created_at": "2026-05-05T15:30:11.953586+00:00"
+  },
+  {
+    "id": 107,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "auth.login.success",
+    "level": "info",
+    "message": "User login success",
+    "metadata": {
+      "email": "rachatapeet2@gmail.com"
+    },
+    "created_at": "2026-05-05T15:32:42.783495+00:00"
+  },
+  {
+    "id": 108,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "auth.login.success",
+    "level": "info",
+    "message": "User login success",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+      "url": "http://127.0.0.1:5500/public/login.html?logged_out=1",
+      "path": "/public/login.html",
+      "email": "rachatapeet2@gmail.com",
+      "timestamp_ms": 1777995166835
+    },
+    "created_at": "2026-05-05T15:32:49.055052+00:00"
+  },
+  {
+    "id": 109,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "auth.login.success",
+    "level": "info",
+    "message": "User login success",
+    "metadata": {
+      "email": "rachatapeet2@gmail.com"
+    },
+    "created_at": "2026-05-05T15:39:59.754371+00:00"
+  },
+  {
+    "id": 111,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "auth.login.success",
+    "level": "info",
+    "message": "User login success",
+    "metadata": {
+      "email": "rachatapeet2@gmail.com"
+    },
+    "created_at": "2026-05-05T15:43:59.32596+00:00"
+  },
+  {
+    "id": 112,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "auth.login.success",
+    "level": "info",
+    "message": "User login success",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+      "url": "https://animetourserver.dev/login.html",
+      "path": "/login.html",
+      "email": "rachatapeet2@gmail.com",
+      "timestamp_ms": 1777997794461
+    },
+    "created_at": "2026-05-05T16:16:36.826916+00:00"
+  },
+  {
+    "id": 113,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "auth.login.success",
+    "level": "info",
+    "message": "User login success",
+    "metadata": {
+      "email": "rachatapeet2@gmail.com"
+    },
+    "created_at": "2026-05-05T16:16:49.540355+00:00"
+  },
+  {
+    "id": 114,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "auth.login.success",
+    "level": "info",
+    "message": "User login success",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+      "url": "http://127.0.0.1:5500/public/login.html",
+      "path": "/public/login.html",
+      "email": "rachatapeet2@gmail.com",
+      "timestamp_ms": 1778064156212
+    },
+    "created_at": "2026-05-06T10:42:37.375748+00:00"
+  },
+  {
+    "id": 115,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "auth.login.success",
+    "level": "info",
+    "message": "User login success",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+      "url": "https://animetourserver.dev/login.html",
+      "path": "/login.html",
+      "email": "rachatapeet2@gmail.com",
+      "timestamp_ms": 1778064247497
+    },
+    "created_at": "2026-05-06T10:44:08.75205+00:00"
+  },
+  {
+    "id": 116,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "booking.create.success",
+    "level": "info",
+    "message": "New booking for one-piece",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+      "url": "https://animetourserver.dev/contact.html?package=one-piece",
+      "path": "/contact.html",
+      "timestamp_ms": 1778064277999
+    },
+    "created_at": "2026-05-06T10:44:39.152257+00:00"
+  },
+  {
+    "id": 117,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /public/backend.html",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+      "url": "http://127.0.0.1:5500/public/backend.html",
+      "path": "/public/backend.html",
+      "timestamp_ms": 1778064488242
+    },
+    "created_at": "2026-05-06T10:48:09.467879+00:00"
+  },
+  {
+    "id": 118,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /public/backend.html",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+      "url": "http://127.0.0.1:5500/public/backend.html",
+      "path": "/public/backend.html",
+      "timestamp_ms": 1778064554033
+    },
+    "created_at": "2026-05-06T10:49:15.76992+00:00"
+  },
+  {
+    "id": 119,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /public/backend.html",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+      "url": "http://127.0.0.1:5500/public/backend.html",
+      "path": "/public/backend.html",
+      "timestamp_ms": 1778064556899
+    },
+    "created_at": "2026-05-06T10:49:18.081115+00:00"
+  },
+  {
+    "id": 120,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /public/backend.html",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+      "url": "http://127.0.0.1:5500/public/backend.html",
+      "path": "/public/backend.html",
+      "timestamp_ms": 1778064560346
+    },
+    "created_at": "2026-05-06T10:49:21.538956+00:00"
+  },
+  {
+    "id": 121,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /public/backend.html",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+      "url": "http://127.0.0.1:5500/public/backend.html",
+      "path": "/public/backend.html",
+      "timestamp_ms": 1778064624021
+    },
+    "created_at": "2026-05-06T10:50:25.284171+00:00"
+  },
+  {
+    "id": 122,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /public/backend.html",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+      "url": "http://127.0.0.1:5500/public/backend.html",
+      "path": "/public/backend.html",
+      "timestamp_ms": 1778064644399
+    },
+    "created_at": "2026-05-06T10:50:45.580593+00:00"
+  },
+  {
+    "id": 123,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /public/backend.html",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+      "url": "http://127.0.0.1:5500/public/backend.html",
+      "path": "/public/backend.html",
+      "timestamp_ms": 1778064734702
+    },
+    "created_at": "2026-05-06T10:52:17.342861+00:00"
+  },
+  {
+    "id": 124,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /public/backend.html",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+      "url": "http://127.0.0.1:5500/public/backend.html",
+      "path": "/public/backend.html",
+      "timestamp_ms": 1778064744150
+    },
+    "created_at": "2026-05-06T10:52:25.329756+00:00"
+  },
+  {
+    "id": 126,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "auth.logout",
+    "level": "info",
+    "message": "User clicked logout",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+      "url": "https://animetourserver.dev/index.html",
+      "path": "/index.html",
+      "role": "superadmin",
+      "email": "rachatapeet2@gmail.com",
+      "timestamp_ms": 1778064910513
+    },
+    "created_at": "2026-05-06T10:55:14.373122+00:00"
+  },
+  {
+    "id": 125,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "auth.logout",
+    "level": "info",
+    "message": "User clicked logout",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+      "url": "https://animetourserver.dev/index.html",
+      "path": "/index.html",
+      "role": "superadmin",
+      "email": "rachatapeet2@gmail.com",
+      "timestamp_ms": 1778064912907
+    },
+    "created_at": "2026-05-06T10:55:14.373521+00:00"
+  },
+  {
+    "id": 127,
+    "user_id": null,
+    "event_type": "auth.login.failed",
+    "level": "warn",
+    "message": "Login failed",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+      "url": "https://animetourserver.dev/login.html?logged_out=1",
+      "path": "/login.html",
+      "email": "rachata.pims@bumail.net",
+      "timestamp_ms": 1778064922159
+    },
+    "created_at": "2026-05-06T10:55:23.444583+00:00"
+  },
+  {
+    "id": 128,
+    "user_id": null,
+    "event_type": "auth.login.failed",
+    "level": "warn",
+    "message": "Login failed",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+      "url": "https://animetourserver.dev/login.html?logged_out=1",
+      "path": "/login.html",
+      "email": "rachata.pims@bumail.net",
+      "timestamp_ms": 1778064924373
+    },
+    "created_at": "2026-05-06T10:55:25.671483+00:00"
+  },
+  {
+    "id": 129,
+    "user_id": null,
+    "event_type": "auth.login.failed",
+    "level": "warn",
+    "message": "Login failed",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+      "url": "https://animetourserver.dev/login.html?logged_out=1",
+      "path": "/login.html",
+      "email": "rachata.pims@bumail.net",
+      "timestamp_ms": 1778064926738
+    },
+    "created_at": "2026-05-06T10:55:27.975071+00:00"
+  },
+  {
+    "id": 130,
+    "user_id": null,
+    "event_type": "auth.login.failed",
+    "level": "warn",
+    "message": "Login failed",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+      "url": "https://animetourserver.dev/login.html?logged_out=1",
+      "path": "/login.html",
+      "email": "rachata.pims@bumail.net",
+      "timestamp_ms": 1778064928713
+    },
+    "created_at": "2026-05-06T10:55:29.959569+00:00"
+  },
+  {
+    "id": 131,
+    "user_id": null,
+    "event_type": "auth.login.failed",
+    "level": "warn",
+    "message": "Login failed",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+      "url": "https://animetourserver.dev/login.html?logged_out=1",
+      "path": "/login.html",
+      "email": "rachata.pims@bumail.net",
+      "timestamp_ms": 1778064930110
+    },
+    "created_at": "2026-05-06T10:55:31.32479+00:00"
+  },
+  {
+    "id": 132,
+    "user_id": null,
+    "event_type": "auth.login.failed",
+    "level": "warn",
+    "message": "Login failed",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+      "url": "https://animetourserver.dev/login.html?logged_out=1",
+      "path": "/login.html",
+      "email": "rachata.pims@bumail.net",
+      "timestamp_ms": 1778064933117
+    },
+    "created_at": "2026-05-06T10:55:34.325684+00:00"
+  },
+  {
+    "id": 133,
+    "user_id": "190e8cee-5647-40fb-81a5-292e4f25d5a2",
+    "event_type": "auth.login.success",
+    "level": "info",
+    "message": "User login success",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+      "url": "https://animetourserver.dev/login.html?logged_out=1",
+      "path": "/login.html",
+      "email": "monchai.chai23@gmail.com",
+      "timestamp_ms": 1778064940082
+    },
+    "created_at": "2026-05-06T10:55:41.274747+00:00"
+  },
+  {
+    "id": 134,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "auth.login.success",
+    "level": "info",
+    "message": "User login success",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+      "url": "https://animetourserver.dev/login.html",
+      "path": "/login.html",
+      "email": "rachatapeet2@gmail.com",
+      "timestamp_ms": 1778066793936
+    },
+    "created_at": "2026-05-06T11:26:35.268947+00:00"
+  },
+  {
+    "id": 135,
+    "user_id": null,
+    "event_type": "auth.logout",
+    "level": "info",
+    "message": "User clicked logout",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+      "url": "https://animetourserver.dev/login.html",
+      "path": "/login.html",
+      "role": "superadmin",
+      "email": "rachatapeet2@gmail.com",
+      "timestamp_ms": 1778067091305
+    },
+    "created_at": "2026-05-06T11:31:33.255244+00:00"
+  },
+  {
+    "id": 136,
+    "user_id": null,
+    "event_type": "auth.login.failed",
+    "level": "warn",
+    "message": "Login failed",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+      "url": "https://animetourserver.dev/login.html?logged_out=1",
+      "path": "/login.html",
+      "email": "thanyatep.soms@bumail.net",
+      "timestamp_ms": 1778067095474
+    },
+    "created_at": "2026-05-06T11:31:36.890602+00:00"
+  },
+  {
+    "id": 137,
+    "user_id": null,
+    "event_type": "auth.login.failed",
+    "level": "warn",
+    "message": "Login failed",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+      "url": "https://animetourserver.dev/login.html?logged_out=1",
+      "path": "/login.html",
+      "email": "thanyatep.soms@bumail.net",
+      "timestamp_ms": 1778067098142
+    },
+    "created_at": "2026-05-06T11:31:39.549474+00:00"
+  },
+  {
+    "id": 138,
+    "user_id": "12bf9fd7-f0a8-483d-aa90-4dc9840ff60b",
+    "event_type": "auth.login.success",
+    "level": "info",
+    "message": "User login success",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+      "url": "https://animetourserver.dev/login.html?logged_out=1",
+      "path": "/login.html",
+      "email": "thanyatep.soms@bumail.net",
+      "timestamp_ms": 1778067100255
+    },
+    "created_at": "2026-05-06T11:31:41.588391+00:00"
+  }
+]

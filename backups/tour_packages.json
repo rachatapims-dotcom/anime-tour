@@ -1,0 +1,110 @@
+[
+  {
+    "id": "54a440d0-7fba-4377-95d2-51b56989afb2",
+    "title": "Straw Hat Voyage",
+    "price": "เริ่มต้น 39,900 บาท",
+    "duration": "5 วัน 4 คืน",
+    "description": "เส้นทางโตเกียว - โยโกฮามา - โอไดบะ",
+    "image_url": "assets/onepiece.jpg",
+    "itinerary": null,
+    "maps_url": null,
+    "slug": "one-piece",
+    "created_at": "2026-05-03T12:30:18.248577+00:00"
+  },
+  {
+    "id": "48552ec3-5af6-40b7-9392-6b0bda8fdc20",
+    "title": "Capsule Road",
+    "price": "เริ่มต้น 44,500 บาท",
+    "duration": "6 วัน 5 คืน",
+    "description": "ตามรอยโลก Dragon Ball Z",
+    "image_url": "assets/dbz.jpg",
+    "itinerary": null,
+    "maps_url": null,
+    "slug": "dragon-ball-z",
+    "created_at": "2026-05-03T12:30:18.248577+00:00"
+  },
+  {
+    "id": "12dfa74d-ffe8-4eaf-9eae-d5c3010c9783",
+    "title": "Jujutsu Kaisen Tokyo",
+    "price": "เริ่มต้น 35,900 บาท",
+    "duration": "4 วัน 3 คืน",
+    "description": "ตามรอยโลเคชันบรรยากาศเข้มข้นในโตเกียว",
+    "image_url": "assets/jjk.jpg",
+    "itinerary": null,
+    "maps_url": null,
+    "slug": "jjk",
+    "created_at": "2026-05-03T12:30:18.248577+00:00"
+  },
+  {
+    "id": "db7911ff-1a5d-4c92-aec5-d0ebec954403",
+    "title": "Anohana Chichibu",
+    "price": "เริ่มต้น 29,900 บาท",
+    "duration": "3 วัน 2 คืน",
+    "description": "ตามรอยฉากซึ้งกินใจที่เมืองจิจิบุ",
+    "image_url": "assets/Anohana.png",
+    "itinerary": null,
+    "maps_url": null,
+    "slug": "anohana",
+    "created_at": "2026-05-03T12:30:18.248577+00:00"
+  },
+  {
+    "id": "4f013141-9614-4699-a0b4-8bd142312ddd",
+    "title": "Kimetsu no Yaiba",
+    "price": "เริ่มต้น 41,500 บาท",
+    "duration": "5 วัน 4 คืน",
+    "description": "ทริปธีมนักล่าอสูร ชมบรรยากาศวัดเก่า",
+    "image_url": "assets/kimetsunoyaiba.png",
+    "itinerary": null,
+    "maps_url": null,
+    "slug": "kimetsu",
+    "created_at": "2026-05-03T12:30:18.248577+00:00"
+  },
+  {
+    "id": "4b1fa775-49e5-4409-af52-91c48796a867",
+    "title": "Slam Dunk Shonan",
+    "price": "เริ่มต้น 31,800 บาท",
+    "duration": "3 วัน 2 คืน",
+    "description": "ตามรอยจุดตัดรถไฟริมทะเลในตำนาน",
+    "image_url": "assets/slamdunk.png",
+    "itinerary": null,
+    "maps_url": null,
+    "slug": "slamdunk",
+    "created_at": "2026-05-03T12:30:18.248577+00:00"
+  },
+  {
+    "id": "cf51fabd-e966-41d0-ac84-dbe4d5a03f81",
+    "title": "Garden of Words",
+    "price": "เริ่มต้น 28,900 บาท",
+    "duration": "2 วัน 1 คืน",
+    "description": "เดินชมโทนเมืองฝนพรำสุดโรแมนติก",
+    "image_url": "assets/thegardenofwords.png",
+    "itinerary": null,
+    "maps_url": null,
+    "slug": "garden-of-words",
+    "created_at": "2026-05-03T12:30:18.248577+00:00"
+  },
+  {
+    "id": "f848591b-250f-4b4b-858f-06da3ddab7d4",
+    "title": "Your Name Tokyo",
+    "price": "เริ่มต้น 33,700 บาท",
+    "duration": "3 วัน 2 คืน",
+    "description": "ตามรอยฉากชื่อดังจาก Kimi no Na wa",
+    "image_url": "assets/yourname.png",
+    "itinerary": null,
+    "maps_url": null,
+    "slug": "your-name",
+    "created_at": "2026-05-03T12:30:18.248577+00:00"
+  },
+  {
+    "id": "8093a24b-caff-44ab-bd7b-3f8260c86284",
+    "title": "Yuru Camp Fuji",
+    "price": "เริ่มต้น 30,500 บาท",
+    "duration": "3 วัน 2 คืน",
+    "description": "ทัวร์สายธรรมชาติรอบภูเขาไฟฟูจิ",
+    "image_url": "assets/yurucamp.png",
+    "itinerary": null,
+    "maps_url": null,
+    "slug": "yuru-camp",
+    "created_at": "2026-05-03T12:30:18.248577+00:00"
+  }
+]

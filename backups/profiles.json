@@ -1,0 +1,32 @@
+[
+  {
+    "id": "190e8cee-5647-40fb-81a5-292e4f25d5a2",
+    "full_name": "Peet",
+    "role": "admin",
+    "created_at": "2026-03-30T09:51:44.742923+00:00"
+  },
+  {
+    "id": "2bf4d3e2-98ea-4c24-baa4-5daa674f4420",
+    "full_name": "test",
+    "role": "user",
+    "created_at": "2026-03-31T11:52:25.137878+00:00"
+  },
+  {
+    "id": "12bf9fd7-f0a8-483d-aa90-4dc9840ff60b",
+    "full_name": "Bosszaza123321",
+    "role": "devops",
+    "created_at": "2026-05-05T14:35:31.656369+00:00"
+  },
+  {
+    "id": "f4a93c43-317c-490e-814d-4b09ab39b683",
+    "full_name": "xxxx",
+    "role": "user",
+    "created_at": "2026-05-05T14:38:14.683933+00:00"
+  },
+  {
+    "id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "full_name": "admin",
+    "role": "superadmin",
+    "created_at": "2026-05-03T12:09:10.967262+00:00"
+  }
+]
