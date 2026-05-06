@@ -32,22 +32,28 @@
 
         try {
             // We use insert for logs to ensure a trail is kept
-            await window.sb.from('system_logs').insert({
+            const { error: insertError } = await window.sb.from('system_logs').insert({
                 user_id: userId,
                 event_type: safeEventType,
                 level: safeLevel,
                 message: safeMessage,
                 metadata: enhancedMetadata
             });
+            
+            if (insertError) {
+                console.warn('[AuditLog] Insert failed:', insertError.message, insertError.details);
+            }
         } catch (error) {
             // Fail silently on logging errors to not break the app, but log to console
-            console.warn('[AuditLog] failed:', error?.message || error);
+            console.warn('[AuditLog] Exception:', error?.message || error);
         }
     }
 
     // Export to window
     window.writeSystemLog = writeSystemLog;
     
-    // Auto-log page view if needed (uncomment if you want to track every page)
-    // window.writeSystemLog('page.view', 'info', `Visited ${window.location.pathname}`);
+    // Auto-log page view to ensure the system starts collecting data immediately
+    if (window.location.pathname !== '/login.html') {
+        window.writeSystemLog('page.view', 'info', `Visited ${window.location.pathname}`);
+    }
 })();

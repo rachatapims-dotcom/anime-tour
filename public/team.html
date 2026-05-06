@@ -97,6 +97,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="supabase-config.js"></script>
     <script src="supabase-client.js"></script>
+    <script src="audit-log.js"></script>
     <script>
         const modal = document.getElementById('contact-modal');
         const form = document.getElementById('contact-guide-form');
@@ -136,6 +137,7 @@
                 submitBtn.disabled = false;
                 submitBtn.textContent = 'ส่งข้อความ';
             } else {
+                window.writeSystemLog?.('inquiry.guide.success', 'info', `Sent inquiry to guide: ${selectedGuide}`);
                 form.style.display = 'none';
                 successMsg.style.display = 'block';
                 form.reset();

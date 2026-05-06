@@ -281,7 +281,10 @@
                 </section>
 
                 <section id="performance" class="section-shell">
-                    <h2>Performance & Optimization</h2>
+                    <div class="admin-section-head" style="margin-bottom: 20px;">
+                        <h2 style="margin:0; border:none; padding:0;">Performance & Optimization</h2>
+                        <button id="refresh-perf-btn" type="button" class="btn btn-outline">Refresh Metrics</button>
+                    </div>
                     <div class="mini-bars" aria-label="performance bars">
                         <div><span style="width:50px; display:inline-block;">TTFB</span><b id="perf-ttfb-bar" style="width:15%;">-</b></div>
                         <div><span style="width:50px; display:inline-block;">LCP</span><b id="perf-lcp-bar" style="width:15%;">-</b></div>
@@ -431,6 +434,7 @@
         const perfLcpBar = document.getElementById('perf-lcp-bar');
         const perfClsBar = document.getElementById('perf-cls-bar');
         const perfNote = document.getElementById('perf-note');
+        const refreshPerfBtn = document.getElementById('refresh-perf-btn');
 
         // --- Helper Functions ---
         function setRolesMessage(message, isError) {
@@ -859,6 +863,7 @@
         // --- Event Listeners ---
         refreshRolesBtn.onclick = () => { loadRolesTable(); loadMetrics(); };
         refreshLogsBtn.onclick = loadSystemLogs;
+        refreshPerfBtn.onclick = loadPerformanceMetrics;
         backupJsonBtn.onclick = exportFullBackupJson;
         backupCsvBtn.onclick = exportBookingsCsv;
         logoutBtn.onclick = async () => {

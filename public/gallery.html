@@ -242,6 +242,7 @@
                         reviewMsg.textContent = 'เกิดข้อผิดพลาด: ' + error.message;
                         reviewMsg.style.color = '#ef4444';
                     } else {
+                        window.writeSystemLog?.('review.submit.success', 'info', `User submitted a review for ${payload.tour_package}`);
                         reviewMsg.textContent = 'ส่งรีวิวสำเร็จ! กรุณารอทีมงานตรวจสอบก่อนแสดงผลบนหน้าเว็บ';
                         reviewMsg.style.color = '#10b981';
                         reviewForm.reset();

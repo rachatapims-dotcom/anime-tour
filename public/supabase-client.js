@@ -52,7 +52,7 @@
                     const { data } = await window.sb.auth.getSession();
                     const userId = data?.session?.user?.id || null;
 
-                    await window.sb.from('performance_metrics').insert({
+                    const { error: insertError } = await window.sb.from('performance_metrics').insert({
                         user_id: userId,
                         page_path: window.location.pathname,
                         ttfb_ms: ttfbMs,
@@ -60,8 +60,12 @@
                         cls_value: Number(clsValue.toFixed(4)),
                         user_agent: navigator.userAgent.slice(0, 250)
                     });
+
+                    if (insertError) {
+                        console.warn('[Performance] Insert failed:', insertError.message);
+                    }
                 } catch (error) {
-                    console.warn('performance_metrics insert failed:', error?.message || error);
+                    console.warn('[Performance] Exception:', error?.message || error);
                 }
             }, 3200);
         } catch (error) {

@@ -435,6 +435,7 @@
                 btn.disabled = false;
                 btn.textContent = 'ส่งข้อความ';
             } else {
+                window.writeSystemLog?.('inquiry.general.success', 'info', 'User submitted a general inquiry');
                 genForm.style.display = 'none';
                 genSuccess.style.display = 'block';
                 genForm.reset();
