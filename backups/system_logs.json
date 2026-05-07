@@ -1029,5 +1029,35 @@
       "timestamp_ms": 1778067100255
     },
     "created_at": "2026-05-06T11:31:41.588391+00:00"
+  },
+  {
+    "id": 139,
+    "user_id": null,
+    "event_type": "auth.login.failed",
+    "level": "warn",
+    "message": "Login failed",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+      "url": "https://animetourserver.dev/login.html",
+      "path": "/login.html",
+      "email": "rachatapeet2@gmail.com",
+      "timestamp_ms": 1778118711783
+    },
+    "created_at": "2026-05-07T01:51:49.276998+00:00"
+  },
+  {
+    "id": 140,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "auth.login.success",
+    "level": "info",
+    "message": "User login success",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+      "url": "https://animetourserver.dev/login.html",
+      "path": "/login.html",
+      "email": "rachatapeet2@gmail.com",
+      "timestamp_ms": 1778118714127
+    },
+    "created_at": "2026-05-07T01:51:51.564355+00:00"
   }
 ]

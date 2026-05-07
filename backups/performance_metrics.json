@@ -1968,5 +1968,65 @@
     "cls_value": 0.0831,
     "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
     "created_at": "2026-05-06T11:31:46.861928+00:00"
+  },
+  {
+    "id": 269,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "page_path": "/",
+    "ttfb_ms": 47,
+    "lcp_ms": 1408,
+    "cls_value": 0.0043,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+    "created_at": "2026-05-06T13:00:00.314253+00:00"
+  },
+  {
+    "id": 270,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "page_path": "/",
+    "ttfb_ms": 0,
+    "lcp_ms": 100,
+    "cls_value": 0.0098,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+    "created_at": "2026-05-06T13:08:50.572786+00:00"
+  },
+  {
+    "id": 271,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "page_path": "/backend.html",
+    "ttfb_ms": 44,
+    "lcp_ms": 100,
+    "cls_value": 0,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+    "created_at": "2026-05-06T13:13:47.027591+00:00"
+  },
+  {
+    "id": 272,
+    "user_id": null,
+    "page_path": "/",
+    "ttfb_ms": 72,
+    "lcp_ms": 1083,
+    "cls_value": 0.0009,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+    "created_at": "2026-05-07T01:51:40.713046+00:00"
+  },
+  {
+    "id": 273,
+    "user_id": null,
+    "page_path": "/login.html",
+    "ttfb_ms": 66,
+    "lcp_ms": 96,
+    "cls_value": 0,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+    "created_at": "2026-05-07T01:51:44.163234+00:00"
+  },
+  {
+    "id": 274,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "page_path": "/backend.html",
+    "ttfb_ms": 96,
+    "lcp_ms": 157,
+    "cls_value": 0.2475,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+    "created_at": "2026-05-07T01:51:56.61021+00:00"
   }
 ]
