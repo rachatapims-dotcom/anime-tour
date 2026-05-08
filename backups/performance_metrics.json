@@ -2028,5 +2028,65 @@
     "cls_value": 0.2475,
     "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
     "created_at": "2026-05-07T01:51:56.61021+00:00"
+  },
+  {
+    "id": 275,
+    "user_id": null,
+    "page_path": "/",
+    "ttfb_ms": 58,
+    "lcp_ms": null,
+    "cls_value": 0,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+    "created_at": "2026-05-07T04:33:01.859486+00:00"
+  },
+  {
+    "id": 276,
+    "user_id": null,
+    "page_path": "/login.html",
+    "ttfb_ms": 69,
+    "lcp_ms": 452,
+    "cls_value": 0,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+    "created_at": "2026-05-07T04:43:07.408977+00:00"
+  },
+  {
+    "id": 277,
+    "user_id": null,
+    "page_path": "/login.html",
+    "ttfb_ms": 335,
+    "lcp_ms": 3509,
+    "cls_value": 0.0034,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+    "created_at": "2026-05-07T04:43:23.885054+00:00"
+  },
+  {
+    "id": 278,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "page_path": "/backend.html",
+    "ttfb_ms": 44,
+    "lcp_ms": 788,
+    "cls_value": 0.3145,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+    "created_at": "2026-05-07T04:43:26.092881+00:00"
+  },
+  {
+    "id": 279,
+    "user_id": null,
+    "page_path": "/",
+    "ttfb_ms": 1,
+    "lcp_ms": null,
+    "cls_value": 0,
+    "user_agent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Googlebot/2.1; +http://www.google.com/bot.html) Chrome/147.0.7727.116 Safari/537.36",
+    "created_at": "2026-05-07T22:15:29.767963+00:00"
+  },
+  {
+    "id": 280,
+    "user_id": null,
+    "page_path": "/",
+    "ttfb_ms": 1,
+    "lcp_ms": null,
+    "cls_value": 0,
+    "user_agent": "Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.7727.116 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
+    "created_at": "2026-05-07T22:15:29.766847+00:00"
   }
 ]
