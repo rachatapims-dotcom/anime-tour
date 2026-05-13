@@ -303,12 +303,30 @@
                 </section>
 
                 <section id="monitoring" class="section-shell">
-                    <div class="admin-section-head" style="margin-bottom: 20px;">
+                    <div class="admin-section-head" style="margin-bottom: 20px; flex-wrap: wrap; gap: 15px;">
                         <h2 style="margin:0; border:none; padding:0;">Monitoring & System Logs</h2>
-                        <button id="refresh-logs-btn" type="button" class="btn btn-outline">Refresh Logs</button>
+                        <div style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center;">
+                            <input type="date" id="log-filter-start" class="btn btn-outline" style="padding: 6px 10px;">
+                            <input type="date" id="log-filter-end" class="btn btn-outline" style="padding: 6px 10px;">
+                            <select id="log-filter-level" class="btn btn-outline" style="padding: 6px 10px;">
+                                <option value="">All Levels</option>
+                                <option value="info">INFO</option>
+                                <option value="warn">WARN</option>
+                                <option value="error">ERROR</option>
+                            </select>
+                            <input type="text" id="log-filter-search" placeholder="Search message..." class="btn btn-outline" style="padding: 6px 10px; min-width: 200px;">
+                            <button id="refresh-logs-btn" type="button" class="btn btn-primary">Apply Filters</button>
+                        </div>
                     </div>
-                    <div class="log-feed" id="logs-container">
+                    <div class="log-feed" id="logs-container" style="max-height: 600px;">
                         <p><span class="log-time">--:--:--</span> [INFO] Loading logs...</p>
+                    </div>
+                    <div id="logs-pagination" style="display: flex; justify-content: space-between; align-items: center; margin-top: 15px; font-size: 0.9rem; color: #64748b;">
+                        <div>Showing <span id="log-range-text">0-0</span> of <span id="log-total-text">0</span> logs</div>
+                        <div style="display: flex; gap: 8px;">
+                            <button id="log-prev-btn" class="btn btn-outline" style="padding: 4px 12px;">Previous</button>
+                            <button id="log-next-btn" class="btn btn-outline" style="padding: 4px 12px;">Next</button>
+                        </div>
                     </div>
                 </section>
 
@@ -628,6 +646,10 @@
         }
 
         // --- System Logs ---
+        let logCurrentPage = 0;
+        const logPageSize = 50;
+        let logTotalCount = 0;
+
         function formatLogLine(log, index, userName) {
             const date = new Date(log.created_at || Date.now());
             const dateStr = date.toLocaleDateString('th-TH', { day: '2-digit', month: '2-digit', year: '2-digit' });
@@ -667,29 +689,92 @@
             `;
         }
 
-        async function loadSystemLogs() {
-            const { data: logs, error: logsError } = await window.sb
+        async function loadSystemLogs(resetPage = false) {
+            if (resetPage) logCurrentPage = 0;
+            
+            const start = document.getElementById('log-filter-start').value;
+            const end = document.getElementById('log-filter-end').value;
+            const level = document.getElementById('log-filter-level').value;
+            const search = document.getElementById('log-filter-search').value;
+
+            // Show loading state
+            logsContainer.innerHTML = '<div class="log-item"><span style="color:#38bdf8">[INFO]</span> Fetching logs from database...</div>';
+
+            let query = window.sb
                 .from('system_logs')
-                .select('created_at, level, message, event_type, user_id, metadata')
+                .select('created_at, level, message, event_type, user_id, metadata', { count: 'exact' });
+
+            if (start) query = query.gte('created_at', `${start}T00:00:00`);
+            if (end) query = query.lte('created_at', `${end}T23:59:59`);
+            if (level) query = query.eq('level', level);
+            if (search) query = query.ilike('message', `%${search}%`);
+
+            const from = logCurrentPage * logPageSize;
+            const to = from + logPageSize - 1;
+
+            const { data: logs, count, error: logsError } = await query
                 .order('created_at', { ascending: false })
-                .limit(100);
+                .range(from, to);
+
             if (logsError) {
                 logsContainer.innerHTML = `<div class="log-item"><span style="color:#f87171">[ERROR]</span> Cannot load logs: ${logsError.message}</div>`;
                 return;
             }
+
+            logTotalCount = count || 0;
+            updateLogPaginationUI(from, to);
+
             if (!logs || logs.length === 0) {
-                logsContainer.innerHTML = '<div class="log-item"><span style="color:#38bdf8">[INFO]</span> No logs yet</div>';
+                logsContainer.innerHTML = '<div class="log-item"><span style="color:#38bdf8">[INFO]</span> No logs matching filters</div>';
                 return;
             }
+
             const userIds = [...new Set(logs.map(l => l.user_id).filter(id => !!id))];
-            const { data: profiles } = await window.sb.from('profiles').select('id, full_name').in('id', userIds);
             const profileMap = {};
-            if (profiles) profiles.forEach(p => profileMap[p.id] = p.full_name);
+            if (userIds.length > 0) {
+                const { data: profiles } = await window.sb.from('profiles').select('id, full_name').in('id', userIds);
+                if (profiles) profiles.forEach(p => profileMap[p.id] = p.full_name);
+            }
+
             logsContainer.innerHTML = logs.map((log, i) => {
                 const adminName = profileMap[log.user_id] || (log.user_id ? log.user_id.slice(0, 8) : 'anon');
                 return formatLogLine(log, i, adminName);
             }).join('');
+            
+            // Scroll to top of container
+            logsContainer.scrollTop = 0;
         }
+
+        function updateLogPaginationUI(from, to) {
+            const rangeText = document.getElementById('log-range-text');
+            const totalText = document.getElementById('log-total-text');
+            const prevBtn = document.getElementById('log-prev-btn');
+            const nextBtn = document.getElementById('log-next-btn');
+
+            const displayTo = Math.min(to + 1, logTotalCount);
+            rangeText.textContent = logTotalCount === 0 ? '0' : `${from + 1}-${displayTo}`;
+            totalText.textContent = logTotalCount;
+
+            prevBtn.disabled = logCurrentPage === 0;
+            nextBtn.disabled = displayTo >= logTotalCount;
+        }
+
+        // Add event listeners for logs
+        document.getElementById('log-prev-btn').onclick = () => {
+            if (logCurrentPage > 0) {
+                logCurrentPage--;
+                loadSystemLogs();
+            }
+        };
+
+        document.getElementById('log-next-btn').onclick = () => {
+            if ((logCurrentPage + 1) * logPageSize < logTotalCount) {
+                logCurrentPage++;
+                loadSystemLogs();
+            }
+        };
+
+        refreshLogsBtn.onclick = () => loadSystemLogs(true);
 
         // --- Tour Management ---
         function tourCardTemplate(tour) {
