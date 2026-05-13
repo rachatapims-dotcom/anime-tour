@@ -2108,5 +2108,35 @@
     "cls_value": 0.0399,
     "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36",
     "created_at": "2026-05-09T03:26:26.110994+00:00"
+  },
+  {
+    "id": 283,
+    "user_id": null,
+    "page_path": "/",
+    "ttfb_ms": 313,
+    "lcp_ms": 1404,
+    "cls_value": 0.0401,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36",
+    "created_at": "2026-05-12T07:24:22.192476+00:00"
+  },
+  {
+    "id": 284,
+    "user_id": null,
+    "page_path": "/",
+    "ttfb_ms": 301,
+    "lcp_ms": 1724,
+    "cls_value": 0,
+    "user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 26_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/144.0.7559.95 Mobile/15E148 Safari/604.1",
+    "created_at": "2026-05-12T10:43:02.499538+00:00"
+  },
+  {
+    "id": 285,
+    "user_id": null,
+    "page_path": "/",
+    "ttfb_ms": 359,
+    "lcp_ms": 8012,
+    "cls_value": 0,
+    "user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 26_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/144.0.7559.95 Mobile/15E148 Safari/604.1",
+    "created_at": "2026-05-12T10:43:57.457525+00:00"
   }
 ]
