@@ -484,6 +484,20 @@
     "created_at": "2026-05-05T15:22:31.021774+00:00"
   },
   {
+    "id": 147,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /public/index.html",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+      "url": "http://127.0.0.1:5500/public/index.html",
+      "path": "/public/index.html",
+      "timestamp_ms": 1778674593408
+    },
+    "created_at": "2026-05-13T12:16:36.276512+00:00"
+  },
+  {
     "id": 98,
     "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
     "event_type": "auth.login.success",
@@ -1104,5 +1118,147 @@
       "timestamp_ms": 1778129000814
     },
     "created_at": "2026-05-07T04:43:21.031169+00:00"
+  },
+  {
+    "id": 144,
+    "user_id": null,
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /public/login.html",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+      "url": "http://127.0.0.1:5500/public/login.html",
+      "path": "/public/login.html",
+      "timestamp_ms": 1778674580073
+    },
+    "created_at": "2026-05-13T12:16:24.102521+00:00"
+  },
+  {
+    "id": 145,
+    "user_id": null,
+    "event_type": "auth.login.failed",
+    "level": "warn",
+    "message": "Login failed",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+      "url": "http://127.0.0.1:5500/public/login.html",
+      "path": "/public/login.html",
+      "email": "monchai.chai23@gmail.com",
+      "timestamp_ms": 1778674587004
+    },
+    "created_at": "2026-05-13T12:16:29.871598+00:00"
+  },
+  {
+    "id": 146,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "auth.login.success",
+    "level": "info",
+    "message": "User login success",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+      "url": "http://127.0.0.1:5500/public/login.html",
+      "path": "/public/login.html",
+      "email": "rachatapeet2@gmail.com",
+      "timestamp_ms": 1778674593252
+    },
+    "created_at": "2026-05-13T12:16:36.130025+00:00"
+  },
+  {
+    "id": 148,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /public/backend.html",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+      "url": "http://127.0.0.1:5500/public/backend.html",
+      "path": "/public/backend.html",
+      "timestamp_ms": 1778674594480
+    },
+    "created_at": "2026-05-13T12:16:37.445515+00:00"
+  },
+  {
+    "id": 149,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /public/index.html",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+      "url": "http://127.0.0.1:5500/public/index.html",
+      "path": "/public/index.html",
+      "timestamp_ms": 1778674616236
+    },
+    "created_at": "2026-05-13T12:16:59.154191+00:00"
+  },
+  {
+    "id": 150,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /public/index.html",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+      "url": "http://127.0.0.1:5500/public/index.html",
+      "path": "/public/index.html",
+      "timestamp_ms": 1778674664741
+    },
+    "created_at": "2026-05-13T12:17:47.971349+00:00"
+  },
+  {
+    "id": 151,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+      "url": "https://animetourserver.dev/",
+      "path": "/",
+      "timestamp_ms": 1778674795174
+    },
+    "created_at": "2026-05-13T12:19:59.162175+00:00"
+  },
+  {
+    "id": 152,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /backend.html",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+      "url": "https://animetourserver.dev/backend.html",
+      "path": "/backend.html",
+      "timestamp_ms": 1778674797204
+    },
+    "created_at": "2026-05-13T12:20:00.19015+00:00"
+  },
+  {
+    "id": 153,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+      "url": "https://animetourserver.dev/",
+      "path": "/",
+      "timestamp_ms": 1778674910533
+    },
+    "created_at": "2026-05-13T12:21:54.108129+00:00"
+  },
+  {
+    "id": 154,
+    "user_id": null,
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+      "url": "https://animetourserver.dev/",
+      "path": "/",
+      "timestamp_ms": 1778675175060
+    },
+    "created_at": "2026-05-13T12:26:17.853733+00:00"
   }
 ]
