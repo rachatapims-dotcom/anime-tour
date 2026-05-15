@@ -2208,5 +2208,25 @@
     "cls_value": 0,
     "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
     "created_at": "2026-05-13T12:26:19.981289+00:00"
+  },
+  {
+    "id": 293,
+    "user_id": null,
+    "page_path": "/",
+    "ttfb_ms": 2,
+    "lcp_ms": null,
+    "cls_value": 0,
+    "user_agent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Googlebot/2.1; +http://www.google.com/bot.html) Chrome/148.0.7778.96 Safari/537.36",
+    "created_at": "2026-05-14T20:02:00.737614+00:00"
+  },
+  {
+    "id": 294,
+    "user_id": null,
+    "page_path": "/",
+    "ttfb_ms": 1,
+    "lcp_ms": null,
+    "cls_value": 0,
+    "user_agent": "Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.7778.96 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
+    "created_at": "2026-05-14T20:02:00.949068+00:00"
   }
 ]
