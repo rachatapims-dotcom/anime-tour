@@ -1302,5 +1302,61 @@
       "timestamp_ms": 1778788916067
     },
     "created_at": "2026-05-14T20:01:59.470966+00:00"
+  },
+  {
+    "id": 158,
+    "user_id": null,
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /",
+    "metadata": {
+      "ua": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm) Chrome/136.0.0.0 Safari/537.36",
+      "url": "https://167.99.65.12/",
+      "path": "/",
+      "timestamp_ms": 1779013789112
+    },
+    "created_at": "2026-05-17T10:29:51.742636+00:00"
+  },
+  {
+    "id": 159,
+    "user_id": null,
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /",
+    "metadata": {
+      "ua": "Mozilla/5.0 (compatible; AhrefsBot/7.0; +http://ahrefs.com/robot/)",
+      "url": "https://animetourserver.dev/",
+      "path": "/",
+      "timestamp_ms": 1779024239081
+    },
+    "created_at": "2026-05-17T13:24:00.288592+00:00"
+  },
+  {
+    "id": 160,
+    "user_id": null,
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36",
+      "url": "https://167.99.65.12/",
+      "path": "/",
+      "timestamp_ms": 1779053368087
+    },
+    "created_at": "2026-05-17T21:29:29.019091+00:00"
+  },
+  {
+    "id": 161,
+    "user_id": null,
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36",
+      "url": "https://167.99.65.12/",
+      "path": "/",
+      "timestamp_ms": 1779053420005
+    },
+    "created_at": "2026-05-17T21:30:20.846369+00:00"
   }
 ]
