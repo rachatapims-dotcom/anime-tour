@@ -2288,5 +2288,25 @@
     "cls_value": 0.4956,
     "user_agent": "Mozilla/5.0 (iPhone13,2; U; CPU iPhone OS 14_0 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) Version/10.0 Mobile/15E148 Safari/602.1",
     "created_at": "2026-05-19T03:24:16.946858+00:00"
+  },
+  {
+    "id": 301,
+    "user_id": null,
+    "page_path": "/",
+    "ttfb_ms": 1,
+    "lcp_ms": null,
+    "cls_value": 0,
+    "user_agent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Googlebot/2.1; +http://www.google.com/bot.html) Chrome/148.0.7778.96 Safari/537.36",
+    "created_at": "2026-05-19T21:47:07.657147+00:00"
+  },
+  {
+    "id": 302,
+    "user_id": null,
+    "page_path": "/",
+    "ttfb_ms": 1,
+    "lcp_ms": null,
+    "cls_value": 0,
+    "user_agent": "Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.7778.96 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
+    "created_at": "2026-05-19T21:47:08.147552+00:00"
   }
 ]
