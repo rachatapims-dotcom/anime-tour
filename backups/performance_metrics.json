@@ -2318,5 +2318,15 @@
     "cls_value": 0.001,
     "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36",
     "created_at": "2026-05-21T02:31:51.995644+00:00"
+  },
+  {
+    "id": 304,
+    "user_id": null,
+    "page_path": "/gallery.html",
+    "ttfb_ms": 13,
+    "lcp_ms": 228,
+    "cls_value": 0.015,
+    "user_agent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm) Chrome/136.0.0.0 Safari/537.36",
+    "created_at": "2026-05-22T06:57:05.603598+00:00"
   }
 ]

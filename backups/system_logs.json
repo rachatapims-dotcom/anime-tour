@@ -1456,5 +1456,19 @@
       "timestamp_ms": 1779330705864
     },
     "created_at": "2026-05-21T02:31:49.044734+00:00"
+  },
+  {
+    "id": 169,
+    "user_id": null,
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /gallery.html",
+    "metadata": {
+      "ua": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm) Chrome/136.0.0.0 Safari/537.36",
+      "url": "https://167.99.65.12/gallery.html",
+      "path": "/gallery.html",
+      "timestamp_ms": 1779433020736
+    },
+    "created_at": "2026-05-22T06:57:01.921674+00:00"
   }
 ]
