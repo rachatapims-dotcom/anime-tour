@@ -2368,5 +2368,645 @@
     "cls_value": 0,
     "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4 Safari/605.1.15 (Applebot/0.1; +http://www.apple.com/go/applebot)",
     "created_at": "2026-05-28T15:18:05.414334+00:00"
+  },
+  {
+    "id": 309,
+    "user_id": null,
+    "page_path": "/",
+    "ttfb_ms": 269,
+    "lcp_ms": 17848,
+    "cls_value": 0.3317,
+    "user_agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
+    "created_at": "2026-05-29T14:11:14.368121+00:00"
+  },
+  {
+    "id": 310,
+    "user_id": null,
+    "page_path": "/",
+    "ttfb_ms": 361,
+    "lcp_ms": 2907,
+    "cls_value": 0.0026,
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+    "created_at": "2026-05-29T14:11:47.816495+00:00"
+  },
+  {
+    "id": 311,
+    "user_id": null,
+    "page_path": "/",
+    "ttfb_ms": 318,
+    "lcp_ms": 3106,
+    "cls_value": 0.0015,
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+    "created_at": "2026-05-29T14:11:53.285798+00:00"
+  },
+  {
+    "id": 312,
+    "user_id": null,
+    "page_path": "/",
+    "ttfb_ms": 511,
+    "lcp_ms": 26498,
+    "cls_value": 0.8078,
+    "user_agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
+    "created_at": "2026-05-29T14:12:09.435601+00:00"
+  },
+  {
+    "id": 313,
+    "user_id": null,
+    "page_path": "/",
+    "ttfb_ms": 255,
+    "lcp_ms": 9980,
+    "cls_value": 0.0036,
+    "user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1",
+    "created_at": "2026-05-29T14:12:12.292282+00:00"
+  },
+  {
+    "id": 314,
+    "user_id": null,
+    "page_path": "/",
+    "ttfb_ms": 371,
+    "lcp_ms": 19498,
+    "cls_value": 0.0006,
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+    "created_at": "2026-05-29T14:12:15.730179+00:00"
+  },
+  {
+    "id": 316,
+    "user_id": null,
+    "page_path": "/",
+    "ttfb_ms": 286,
+    "lcp_ms": 1978,
+    "cls_value": 0,
+    "user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1",
+    "created_at": "2026-05-29T14:12:17.192438+00:00"
+  },
+  {
+    "id": 317,
+    "user_id": null,
+    "page_path": "/login.html",
+    "ttfb_ms": 253,
+    "lcp_ms": 915,
+    "cls_value": 0.0045,
+    "user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1",
+    "created_at": "2026-05-29T14:12:23.668063+00:00"
+  },
+  {
+    "id": 318,
+    "user_id": null,
+    "page_path": "/",
+    "ttfb_ms": 244,
+    "lcp_ms": 7472,
+    "cls_value": 0.0023,
+    "user_agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/127.0.6533.119 Safari/537.36",
+    "created_at": "2026-05-29T14:12:30.777393+00:00"
+  },
+  {
+    "id": 321,
+    "user_id": null,
+    "page_path": "/login.html",
+    "ttfb_ms": 257,
+    "lcp_ms": 810,
+    "cls_value": 0.0043,
+    "user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1",
+    "created_at": "2026-05-29T14:12:45.58323+00:00"
+  },
+  {
+    "id": 323,
+    "user_id": null,
+    "page_path": "/login.html",
+    "ttfb_ms": 310,
+    "lcp_ms": 2735,
+    "cls_value": 0.001,
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+    "created_at": "2026-05-29T14:12:58.072177+00:00"
+  },
+  {
+    "id": 325,
+    "user_id": null,
+    "page_path": "/login.html",
+    "ttfb_ms": 276,
+    "lcp_ms": 748,
+    "cls_value": 0.0045,
+    "user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1",
+    "created_at": "2026-05-29T14:13:41.390081+00:00"
+  },
+  {
+    "id": 327,
+    "user_id": null,
+    "page_path": "/login.html",
+    "ttfb_ms": 254,
+    "lcp_ms": 2146,
+    "cls_value": 0.0043,
+    "user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1",
+    "created_at": "2026-05-29T14:13:53.987245+00:00"
+  },
+  {
+    "id": 328,
+    "user_id": null,
+    "page_path": "/login.html",
+    "ttfb_ms": 262,
+    "lcp_ms": 678,
+    "cls_value": 0.0035,
+    "user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1",
+    "created_at": "2026-05-29T14:14:19.201955+00:00"
+  },
+  {
+    "id": 330,
+    "user_id": null,
+    "page_path": "/login.html",
+    "ttfb_ms": 333,
+    "lcp_ms": 4324,
+    "cls_value": 0.0005,
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+    "created_at": "2026-05-29T14:14:33.831529+00:00"
+  },
+  {
+    "id": 315,
+    "user_id": null,
+    "page_path": "/login.html",
+    "ttfb_ms": 294,
+    "lcp_ms": 2950,
+    "cls_value": 0.0004,
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+    "created_at": "2026-05-29T14:12:16.997959+00:00"
+  },
+  {
+    "id": 319,
+    "user_id": null,
+    "page_path": "/login.html",
+    "ttfb_ms": 423,
+    "lcp_ms": 952,
+    "cls_value": 0.0038,
+    "user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1",
+    "created_at": "2026-05-29T14:12:34.855837+00:00"
+  },
+  {
+    "id": 320,
+    "user_id": null,
+    "page_path": "/",
+    "ttfb_ms": 321,
+    "lcp_ms": 14882,
+    "cls_value": 0,
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+    "created_at": "2026-05-29T14:12:40.698035+00:00"
+  },
+  {
+    "id": 322,
+    "user_id": null,
+    "page_path": "/login.html",
+    "ttfb_ms": 260,
+    "lcp_ms": 680,
+    "cls_value": 0.0044,
+    "user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1",
+    "created_at": "2026-05-29T14:12:56.470041+00:00"
+  },
+  {
+    "id": 324,
+    "user_id": null,
+    "page_path": "/login.html",
+    "ttfb_ms": 269,
+    "lcp_ms": 552,
+    "cls_value": 0.0044,
+    "user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1",
+    "created_at": "2026-05-29T14:13:28.291766+00:00"
+  },
+  {
+    "id": 326,
+    "user_id": null,
+    "page_path": "/login.html",
+    "ttfb_ms": 581,
+    "lcp_ms": 2318,
+    "cls_value": 0.001,
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+    "created_at": "2026-05-29T14:13:44.628075+00:00"
+  },
+  {
+    "id": 329,
+    "user_id": null,
+    "page_path": "/login.html",
+    "ttfb_ms": 252,
+    "lcp_ms": 821,
+    "cls_value": 0.0035,
+    "user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1",
+    "created_at": "2026-05-29T14:14:29.978316+00:00"
+  },
+  {
+    "id": 331,
+    "user_id": null,
+    "page_path": "/login.html",
+    "ttfb_ms": 263,
+    "lcp_ms": 689,
+    "cls_value": 0.0043,
+    "user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1",
+    "created_at": "2026-05-29T14:14:43.143587+00:00"
+  },
+  {
+    "id": 332,
+    "user_id": null,
+    "page_path": "/",
+    "ttfb_ms": 270,
+    "lcp_ms": 1934,
+    "cls_value": 0.0018,
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+    "created_at": "2026-05-29T15:42:08.518222+00:00"
+  },
+  {
+    "id": 333,
+    "user_id": null,
+    "page_path": "/",
+    "ttfb_ms": 263,
+    "lcp_ms": 1692,
+    "cls_value": 0.0025,
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+    "created_at": "2026-05-29T15:42:12.437244+00:00"
+  },
+  {
+    "id": 334,
+    "user_id": null,
+    "page_path": "/",
+    "ttfb_ms": 609,
+    "lcp_ms": 5693,
+    "cls_value": 0.0006,
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+    "created_at": "2026-05-29T15:42:18.279052+00:00"
+  },
+  {
+    "id": 335,
+    "user_id": null,
+    "page_path": "/login.html",
+    "ttfb_ms": 527,
+    "lcp_ms": 970,
+    "cls_value": 0.0016,
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+    "created_at": "2026-05-29T15:42:24.619268+00:00"
+  },
+  {
+    "id": 336,
+    "user_id": null,
+    "page_path": "/",
+    "ttfb_ms": 259,
+    "lcp_ms": 17729,
+    "cls_value": 0.0015,
+    "user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1",
+    "created_at": "2026-05-29T15:42:32.59241+00:00"
+  },
+  {
+    "id": 337,
+    "user_id": null,
+    "page_path": "/",
+    "ttfb_ms": 392,
+    "lcp_ms": 10060,
+    "cls_value": 0.0006,
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+    "created_at": "2026-05-29T15:42:36.283491+00:00"
+  },
+  {
+    "id": 338,
+    "user_id": null,
+    "page_path": "/",
+    "ttfb_ms": 260,
+    "lcp_ms": 1549,
+    "cls_value": 0,
+    "user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1",
+    "created_at": "2026-05-29T15:42:36.379357+00:00"
+  },
+  {
+    "id": 339,
+    "user_id": null,
+    "page_path": "/login.html",
+    "ttfb_ms": 311,
+    "lcp_ms": 778,
+    "cls_value": 0.0035,
+    "user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1",
+    "created_at": "2026-05-29T15:42:49.959898+00:00"
+  },
+  {
+    "id": 340,
+    "user_id": null,
+    "page_path": "/login.html",
+    "ttfb_ms": 268,
+    "lcp_ms": 842,
+    "cls_value": 0.0012,
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+    "created_at": "2026-05-29T15:42:54.673116+00:00"
+  },
+  {
+    "id": 341,
+    "user_id": null,
+    "page_path": "/login.html",
+    "ttfb_ms": 259,
+    "lcp_ms": 662,
+    "cls_value": 0.0045,
+    "user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1",
+    "created_at": "2026-05-29T15:43:22.414963+00:00"
+  },
+  {
+    "id": 342,
+    "user_id": null,
+    "page_path": "/login.html",
+    "ttfb_ms": 389,
+    "lcp_ms": 5056,
+    "cls_value": 0,
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+    "created_at": "2026-05-29T15:43:25.641684+00:00"
+  },
+  {
+    "id": 343,
+    "user_id": null,
+    "page_path": "/login.html",
+    "ttfb_ms": 1655,
+    "lcp_ms": 2295,
+    "cls_value": 0.0033,
+    "user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1",
+    "created_at": "2026-05-29T15:43:35.318765+00:00"
+  },
+  {
+    "id": 344,
+    "user_id": null,
+    "page_path": "/login.html",
+    "ttfb_ms": 442,
+    "lcp_ms": 979,
+    "cls_value": 0.0011,
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+    "created_at": "2026-05-29T15:43:36.607662+00:00"
+  },
+  {
+    "id": 345,
+    "user_id": null,
+    "page_path": "/login.html",
+    "ttfb_ms": 277,
+    "lcp_ms": 689,
+    "cls_value": 0.0016,
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+    "created_at": "2026-05-29T15:44:06.255726+00:00"
+  },
+  {
+    "id": 346,
+    "user_id": null,
+    "page_path": "/login.html",
+    "ttfb_ms": 378,
+    "lcp_ms": 3169,
+    "cls_value": 0.0006,
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+    "created_at": "2026-05-29T15:44:22.032651+00:00"
+  },
+  {
+    "id": 347,
+    "user_id": null,
+    "page_path": "/login.html",
+    "ttfb_ms": 260,
+    "lcp_ms": 22343,
+    "cls_value": 0.0041,
+    "user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1",
+    "created_at": "2026-05-29T15:44:26.720856+00:00"
+  },
+  {
+    "id": 348,
+    "user_id": null,
+    "page_path": "/login.html",
+    "ttfb_ms": 269,
+    "lcp_ms": 687,
+    "cls_value": 0.0016,
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+    "created_at": "2026-05-29T15:44:33.044797+00:00"
+  },
+  {
+    "id": 349,
+    "user_id": null,
+    "page_path": "/login.html",
+    "ttfb_ms": 265,
+    "lcp_ms": 673,
+    "cls_value": 0.0031,
+    "user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1",
+    "created_at": "2026-05-29T15:44:40.796827+00:00"
+  },
+  {
+    "id": 350,
+    "user_id": null,
+    "page_path": "/login.html",
+    "ttfb_ms": 859,
+    "lcp_ms": 3043,
+    "cls_value": 0.0006,
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+    "created_at": "2026-05-29T15:44:56.222052+00:00"
+  },
+  {
+    "id": 351,
+    "user_id": null,
+    "page_path": "/login.html",
+    "ttfb_ms": 251,
+    "lcp_ms": 802,
+    "cls_value": 0.0031,
+    "user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1",
+    "created_at": "2026-05-29T15:44:56.416335+00:00"
+  },
+  {
+    "id": 352,
+    "user_id": null,
+    "page_path": "/login.html",
+    "ttfb_ms": 274,
+    "lcp_ms": 733,
+    "cls_value": 0.0016,
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+    "created_at": "2026-05-29T15:45:00.140421+00:00"
+  },
+  {
+    "id": 353,
+    "user_id": null,
+    "page_path": "/",
+    "ttfb_ms": 1081,
+    "lcp_ms": 4374,
+    "cls_value": 0.0016,
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+    "created_at": "2026-05-29T17:30:17.288796+00:00"
+  },
+  {
+    "id": 354,
+    "user_id": null,
+    "page_path": "/",
+    "ttfb_ms": 367,
+    "lcp_ms": 1853,
+    "cls_value": 0.0015,
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+    "created_at": "2026-05-29T17:30:21.304701+00:00"
+  },
+  {
+    "id": 355,
+    "user_id": null,
+    "page_path": "/login.html",
+    "ttfb_ms": 370,
+    "lcp_ms": 1015,
+    "cls_value": 0.0012,
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+    "created_at": "2026-05-29T17:30:35.109084+00:00"
+  },
+  {
+    "id": 356,
+    "user_id": null,
+    "page_path": "/",
+    "ttfb_ms": 1251,
+    "lcp_ms": 17460,
+    "cls_value": 0.0006,
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+    "created_at": "2026-05-29T17:30:52.343941+00:00"
+  },
+  {
+    "id": 357,
+    "user_id": null,
+    "page_path": "/",
+    "ttfb_ms": 317,
+    "lcp_ms": 30645,
+    "cls_value": 0.0026,
+    "user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1",
+    "created_at": "2026-05-29T17:31:06.033534+00:00"
+  },
+  {
+    "id": 358,
+    "user_id": null,
+    "page_path": "/login.html",
+    "ttfb_ms": 367,
+    "lcp_ms": 1129,
+    "cls_value": 0.0012,
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+    "created_at": "2026-05-29T17:31:07.758983+00:00"
+  },
+  {
+    "id": 359,
+    "user_id": null,
+    "page_path": "/",
+    "ttfb_ms": 329,
+    "lcp_ms": 2500,
+    "cls_value": 0,
+    "user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1",
+    "created_at": "2026-05-29T17:31:10.454392+00:00"
+  },
+  {
+    "id": 360,
+    "user_id": null,
+    "page_path": "/login.html",
+    "ttfb_ms": 558,
+    "lcp_ms": 6160,
+    "cls_value": 0.0045,
+    "user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1",
+    "created_at": "2026-05-29T17:31:25.732718+00:00"
+  },
+  {
+    "id": 361,
+    "user_id": null,
+    "page_path": "/login.html",
+    "ttfb_ms": 6224,
+    "lcp_ms": 6753,
+    "cls_value": 0.0034,
+    "user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1",
+    "created_at": "2026-05-29T17:31:35.541221+00:00"
+  },
+  {
+    "id": 362,
+    "user_id": null,
+    "page_path": "/login.html",
+    "ttfb_ms": 375,
+    "lcp_ms": 988,
+    "cls_value": 0.001,
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+    "created_at": "2026-05-29T17:31:39.817067+00:00"
+  },
+  {
+    "id": 363,
+    "user_id": null,
+    "page_path": "/login.html",
+    "ttfb_ms": 310,
+    "lcp_ms": 745,
+    "cls_value": 0.0037,
+    "user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1",
+    "created_at": "2026-05-29T17:31:58.090974+00:00"
+  },
+  {
+    "id": 364,
+    "user_id": null,
+    "page_path": "/login.html",
+    "ttfb_ms": 563,
+    "lcp_ms": 1033,
+    "cls_value": 0.003,
+    "user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1",
+    "created_at": "2026-05-29T17:32:09.352679+00:00"
+  },
+  {
+    "id": 365,
+    "user_id": null,
+    "page_path": "/login.html",
+    "ttfb_ms": 367,
+    "lcp_ms": 1022,
+    "cls_value": 0.0016,
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+    "created_at": "2026-05-29T17:32:11.476402+00:00"
+  },
+  {
+    "id": 366,
+    "user_id": null,
+    "page_path": "/login.html",
+    "ttfb_ms": 300,
+    "lcp_ms": 770,
+    "cls_value": 0.0033,
+    "user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1",
+    "created_at": "2026-05-29T17:32:20.98289+00:00"
+  },
+  {
+    "id": 367,
+    "user_id": null,
+    "page_path": "/login.html",
+    "ttfb_ms": 435,
+    "lcp_ms": 9388,
+    "cls_value": 0.0006,
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+    "created_at": "2026-05-29T17:32:25.701713+00:00"
+  },
+  {
+    "id": 368,
+    "user_id": null,
+    "page_path": "/login.html",
+    "ttfb_ms": 384,
+    "lcp_ms": 1100,
+    "cls_value": 0.0012,
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+    "created_at": "2026-05-29T17:32:40.269716+00:00"
+  },
+  {
+    "id": 369,
+    "user_id": null,
+    "page_path": "/login.html",
+    "ttfb_ms": 302,
+    "lcp_ms": 707,
+    "cls_value": 0.0033,
+    "user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1",
+    "created_at": "2026-05-29T17:32:49.060127+00:00"
+  },
+  {
+    "id": 370,
+    "user_id": null,
+    "page_path": "/login.html",
+    "ttfb_ms": 547,
+    "lcp_ms": 915,
+    "cls_value": 0.0045,
+    "user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1",
+    "created_at": "2026-05-29T17:33:14.475929+00:00"
+  },
+  {
+    "id": 371,
+    "user_id": null,
+    "page_path": "/login.html",
+    "ttfb_ms": 461,
+    "lcp_ms": 870,
+    "cls_value": 0.0035,
+    "user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1",
+    "created_at": "2026-05-29T17:33:28.341565+00:00"
+  },
+  {
+    "id": 372,
+    "user_id": null,
+    "page_path": "/login.html",
+    "ttfb_ms": 389,
+    "lcp_ms": 8684,
+    "cls_value": 0.0006,
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+    "created_at": "2026-05-29T17:33:51.238406+00:00"
   }
 ]

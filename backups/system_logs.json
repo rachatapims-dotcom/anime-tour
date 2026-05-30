@@ -1568,5 +1568,845 @@
       "timestamp_ms": 1779981464314
     },
     "created_at": "2026-05-28T15:18:05.512895+00:00"
+  },
+  {
+    "id": 177,
+    "user_id": null,
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /",
+    "metadata": {
+      "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
+      "url": "https://animetourserver.dev/",
+      "path": "/",
+      "timestamp_ms": 1780063869721
+    },
+    "created_at": "2026-05-29T14:11:13.689883+00:00"
+  },
+  {
+    "id": 178,
+    "user_id": null,
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+      "url": "https://animetourserver.dev/",
+      "path": "/",
+      "timestamp_ms": 1780063896496
+    },
+    "created_at": "2026-05-29T14:11:38.350739+00:00"
+  },
+  {
+    "id": 179,
+    "user_id": null,
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+      "url": "https://animetourserver.dev/",
+      "path": "/",
+      "timestamp_ms": 1780063897261
+    },
+    "created_at": "2026-05-29T14:11:38.659996+00:00"
+  },
+  {
+    "id": 180,
+    "user_id": null,
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+      "url": "https://animetourserver.dev/",
+      "path": "/",
+      "timestamp_ms": 1780063903531
+    },
+    "created_at": "2026-05-29T14:11:44.600369+00:00"
+  },
+  {
+    "id": 181,
+    "user_id": null,
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+      "url": "https://animetourserver.dev/",
+      "path": "/",
+      "timestamp_ms": 1780063909177
+    },
+    "created_at": "2026-05-29T14:11:49.513809+00:00"
+  },
+  {
+    "id": 182,
+    "user_id": null,
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /",
+    "metadata": {
+      "ua": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1",
+      "url": "https://animetourserver.dev/",
+      "path": "/",
+      "timestamp_ms": 1780063909663
+    },
+    "created_at": "2026-05-29T14:11:56.000114+00:00"
+  },
+  {
+    "id": 183,
+    "user_id": null,
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+      "url": "https://animetourserver.dev/",
+      "path": "/",
+      "timestamp_ms": 1780063916291
+    },
+    "created_at": "2026-05-29T14:11:57.02664+00:00"
+  },
+  {
+    "id": 184,
+    "user_id": null,
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /",
+    "metadata": {
+      "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
+      "url": "https://animetourserver.dev/",
+      "path": "/",
+      "timestamp_ms": 1780063925782
+    },
+    "created_at": "2026-05-29T14:12:07.625242+00:00"
+  },
+  {
+    "id": 185,
+    "user_id": null,
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /",
+    "metadata": {
+      "ua": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1",
+      "url": "https://animetourserver.dev/",
+      "path": "/",
+      "timestamp_ms": 1780063925999
+    },
+    "created_at": "2026-05-29T14:12:09.591813+00:00"
+  },
+  {
+    "id": 186,
+    "user_id": null,
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /",
+    "metadata": {
+      "ua": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1",
+      "url": "https://animetourserver.dev/",
+      "path": "/",
+      "timestamp_ms": 1780063933436
+    },
+    "created_at": "2026-05-29T14:12:13.800433+00:00"
+  },
+  {
+    "id": 187,
+    "user_id": null,
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+      "url": "https://animetourserver.dev/",
+      "path": "/",
+      "timestamp_ms": 1780063941694
+    },
+    "created_at": "2026-05-29T14:12:22.033766+00:00"
+  },
+  {
+    "id": 188,
+    "user_id": null,
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.5938.132 Safari/537.36",
+      "url": "https://animetourserver.dev/",
+      "path": "/",
+      "timestamp_ms": 1780063947195
+    },
+    "created_at": "2026-05-29T14:12:28.037845+00:00"
+  },
+  {
+    "id": 189,
+    "user_id": null,
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+      "url": "https://animetourserver.dev/",
+      "path": "/",
+      "timestamp_ms": 1780063956444
+    },
+    "created_at": "2026-05-29T14:12:36.734772+00:00"
+  },
+  {
+    "id": 190,
+    "user_id": null,
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+      "url": "https://animetourserver.dev/",
+      "path": "/",
+      "timestamp_ms": 1780063998332
+    },
+    "created_at": "2026-05-29T14:13:18.822139+00:00"
+  },
+  {
+    "id": 191,
+    "user_id": null,
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /",
+    "metadata": {
+      "ua": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1",
+      "url": "https://animetourserver.dev/",
+      "path": "/",
+      "timestamp_ms": 1780064003517
+    },
+    "created_at": "2026-05-29T14:13:24.577339+00:00"
+  },
+  {
+    "id": 192,
+    "user_id": null,
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+      "url": "https://animetourserver.dev/",
+      "path": "/",
+      "timestamp_ms": 1780064034457
+    },
+    "created_at": "2026-05-29T14:13:54.841608+00:00"
+  },
+  {
+    "id": 193,
+    "user_id": null,
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+      "url": "https://animetourserver.dev/",
+      "path": "/",
+      "timestamp_ms": 1780064046311
+    },
+    "created_at": "2026-05-29T14:14:06.508689+00:00"
+  },
+  {
+    "id": 194,
+    "user_id": null,
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /",
+    "metadata": {
+      "ua": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1",
+      "url": "https://animetourserver.dev/",
+      "path": "/",
+      "timestamp_ms": 1780064051782
+    },
+    "created_at": "2026-05-29T14:14:12.242247+00:00"
+  },
+  {
+    "id": 195,
+    "user_id": null,
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+      "url": "https://animetourserver.dev/",
+      "path": "/",
+      "timestamp_ms": 1780064094828
+    },
+    "created_at": "2026-05-29T14:14:55.136453+00:00"
+  },
+  {
+    "id": 196,
+    "user_id": null,
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /",
+    "metadata": {
+      "ua": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1",
+      "url": "https://animetourserver.dev/",
+      "path": "/",
+      "timestamp_ms": 1780064108634
+    },
+    "created_at": "2026-05-29T14:15:08.921881+00:00"
+  },
+  {
+    "id": 197,
+    "user_id": null,
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /",
+    "metadata": {
+      "ua": "Mozilla/5.0 (compatible; AhrefsBot/7.0; +http://ahrefs.com/robot/)",
+      "url": "https://animetourserver.dev/",
+      "path": "/",
+      "timestamp_ms": 1780065386494
+    },
+    "created_at": "2026-05-29T14:36:27.60276+00:00"
+  },
+  {
+    "id": 198,
+    "user_id": null,
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+      "url": "https://animetourserver.dev/",
+      "path": "/",
+      "timestamp_ms": 1780069319580
+    },
+    "created_at": "2026-05-29T15:42:00.976923+00:00"
+  },
+  {
+    "id": 199,
+    "user_id": null,
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+      "url": "https://animetourserver.dev/",
+      "path": "/",
+      "timestamp_ms": 1780069322896
+    },
+    "created_at": "2026-05-29T15:42:04.167069+00:00"
+  },
+  {
+    "id": 200,
+    "user_id": null,
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+      "url": "https://animetourserver.dev/",
+      "path": "/",
+      "timestamp_ms": 1780069324671
+    },
+    "created_at": "2026-05-29T15:42:05.623685+00:00"
+  },
+  {
+    "id": 201,
+    "user_id": null,
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+      "url": "https://animetourserver.dev/",
+      "path": "/",
+      "timestamp_ms": 1780069328655
+    },
+    "created_at": "2026-05-29T15:42:08.912992+00:00"
+  },
+  {
+    "id": 202,
+    "user_id": null,
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /",
+    "metadata": {
+      "ua": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1",
+      "url": "https://animetourserver.dev/",
+      "path": "/",
+      "timestamp_ms": 1780069326054
+    },
+    "created_at": "2026-05-29T15:42:09.181492+00:00"
+  },
+  {
+    "id": 203,
+    "user_id": null,
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+      "url": "https://animetourserver.dev/",
+      "path": "/",
+      "timestamp_ms": 1780069329376
+    },
+    "created_at": "2026-05-29T15:42:10.047147+00:00"
+  },
+  {
+    "id": 204,
+    "user_id": null,
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+      "url": "https://animetourserver.dev/",
+      "path": "/",
+      "timestamp_ms": 1780069341825
+    },
+    "created_at": "2026-05-29T15:42:22.098794+00:00"
+  },
+  {
+    "id": 205,
+    "user_id": null,
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /",
+    "metadata": {
+      "ua": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1",
+      "url": "https://animetourserver.dev/",
+      "path": "/",
+      "timestamp_ms": 1780069341941
+    },
+    "created_at": "2026-05-29T15:42:29.568086+00:00"
+  },
+  {
+    "id": 206,
+    "user_id": null,
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /",
+    "metadata": {
+      "ua": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1",
+      "url": "https://animetourserver.dev/",
+      "path": "/",
+      "timestamp_ms": 1780069352703
+    },
+    "created_at": "2026-05-29T15:42:33.332705+00:00"
+  },
+  {
+    "id": 207,
+    "user_id": null,
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+      "url": "https://animetourserver.dev/",
+      "path": "/",
+      "timestamp_ms": 1780069362552
+    },
+    "created_at": "2026-05-29T15:42:42.812007+00:00"
+  },
+  {
+    "id": 208,
+    "user_id": null,
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /",
+    "metadata": {
+      "ua": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1",
+      "url": "https://animetourserver.dev/",
+      "path": "/",
+      "timestamp_ms": 1780069387822
+    },
+    "created_at": "2026-05-29T15:43:08.056038+00:00"
+  },
+  {
+    "id": 209,
+    "user_id": null,
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+      "url": "https://animetourserver.dev/",
+      "path": "/",
+      "timestamp_ms": 1780069392512
+    },
+    "created_at": "2026-05-29T15:43:12.788975+00:00"
+  },
+  {
+    "id": 210,
+    "user_id": null,
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+      "url": "https://animetourserver.dev/",
+      "path": "/",
+      "timestamp_ms": 1780069424717
+    },
+    "created_at": "2026-05-29T15:43:45.23208+00:00"
+  },
+  {
+    "id": 211,
+    "user_id": null,
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /",
+    "metadata": {
+      "ua": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1",
+      "url": "https://animetourserver.dev/",
+      "path": "/",
+      "timestamp_ms": 1780069433202
+    },
+    "created_at": "2026-05-29T15:43:53.458069+00:00"
+  },
+  {
+    "id": 212,
+    "user_id": null,
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+      "url": "https://animetourserver.dev/",
+      "path": "/",
+      "timestamp_ms": 1780069434549
+    },
+    "created_at": "2026-05-29T15:43:54.913828+00:00"
+  },
+  {
+    "id": 213,
+    "user_id": null,
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+      "url": "https://animetourserver.dev/",
+      "path": "/",
+      "timestamp_ms": 1780069464069
+    },
+    "created_at": "2026-05-29T15:44:24.375716+00:00"
+  },
+  {
+    "id": 214,
+    "user_id": null,
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /",
+    "metadata": {
+      "ua": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1",
+      "url": "https://animetourserver.dev/",
+      "path": "/",
+      "timestamp_ms": 1780069474101
+    },
+    "created_at": "2026-05-29T15:44:34.350351+00:00"
+  },
+  {
+    "id": 215,
+    "user_id": null,
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+      "url": "https://animetourserver.dev/",
+      "path": "/",
+      "timestamp_ms": 1780069483344
+    },
+    "created_at": "2026-05-29T15:44:43.664264+00:00"
+  },
+  {
+    "id": 216,
+    "user_id": null,
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+      "url": "https://animetourserver.dev/",
+      "path": "/",
+      "timestamp_ms": 1780069491068
+    },
+    "created_at": "2026-05-29T15:44:51.36794+00:00"
+  },
+  {
+    "id": 217,
+    "user_id": null,
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /",
+    "metadata": {
+      "ua": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1",
+      "url": "https://animetourserver.dev/",
+      "path": "/",
+      "timestamp_ms": 1780069516381
+    },
+    "created_at": "2026-05-29T15:45:16.591006+00:00"
+  },
+  {
+    "id": 218,
+    "user_id": null,
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+      "url": "https://animetourserver.dev/",
+      "path": "/",
+      "timestamp_ms": 1780069518100
+    },
+    "created_at": "2026-05-29T15:45:18.353088+00:00"
+  },
+  {
+    "id": 219,
+    "user_id": null,
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+      "url": "https://animetourserver.dev/",
+      "path": "/",
+      "timestamp_ms": 1780075805419
+    },
+    "created_at": "2026-05-29T17:30:07.214109+00:00"
+  },
+  {
+    "id": 220,
+    "user_id": null,
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+      "url": "https://animetourserver.dev/",
+      "path": "/",
+      "timestamp_ms": 1780075813341
+    },
+    "created_at": "2026-05-29T17:30:14.098032+00:00"
+  },
+  {
+    "id": 221,
+    "user_id": null,
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+      "url": "https://animetourserver.dev/",
+      "path": "/",
+      "timestamp_ms": 1780075817423
+    },
+    "created_at": "2026-05-29T17:30:17.67594+00:00"
+  },
+  {
+    "id": 222,
+    "user_id": null,
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+      "url": "https://animetourserver.dev/",
+      "path": "/",
+      "timestamp_ms": 1780075817855
+    },
+    "created_at": "2026-05-29T17:30:19.206353+00:00"
+  },
+  {
+    "id": 223,
+    "user_id": null,
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+      "url": "https://animetourserver.dev/",
+      "path": "/",
+      "timestamp_ms": 1780075832949
+    },
+    "created_at": "2026-05-29T17:30:36.904306+00:00"
+  },
+  {
+    "id": 224,
+    "user_id": null,
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+      "url": "https://animetourserver.dev/",
+      "path": "/",
+      "timestamp_ms": 1780075853882
+    },
+    "created_at": "2026-05-29T17:30:54.181052+00:00"
+  },
+  {
+    "id": 225,
+    "user_id": null,
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+      "url": "https://animetourserver.dev/",
+      "path": "/",
+      "timestamp_ms": 1780075861465
+    },
+    "created_at": "2026-05-29T17:31:01.886068+00:00"
+  },
+  {
+    "id": 226,
+    "user_id": null,
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /",
+    "metadata": {
+      "ua": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1",
+      "url": "https://animetourserver.dev/",
+      "path": "/",
+      "timestamp_ms": 1780075851754
+    },
+    "created_at": "2026-05-29T17:31:03.256211+00:00"
+  },
+  {
+    "id": 227,
+    "user_id": null,
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /",
+    "metadata": {
+      "ua": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1",
+      "url": "https://animetourserver.dev/",
+      "path": "/",
+      "timestamp_ms": 1780075866782
+    },
+    "created_at": "2026-05-29T17:31:07.072278+00:00"
+  },
+  {
+    "id": 228,
+    "user_id": null,
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+      "url": "https://animetourserver.dev/",
+      "path": "/",
+      "timestamp_ms": 1780075885735
+    },
+    "created_at": "2026-05-29T17:31:26.020107+00:00"
+  },
+  {
+    "id": 229,
+    "user_id": null,
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /",
+    "metadata": {
+      "ua": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1",
+      "url": "https://animetourserver.dev/",
+      "path": "/",
+      "timestamp_ms": 1780075908952
+    },
+    "created_at": "2026-05-29T17:31:49.25341+00:00"
+  },
+  {
+    "id": 230,
+    "user_id": null,
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+      "url": "https://animetourserver.dev/",
+      "path": "/",
+      "timestamp_ms": 1780075917879
+    },
+    "created_at": "2026-05-29T17:31:58.251941+00:00"
+  },
+  {
+    "id": 231,
+    "user_id": null,
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+      "url": "https://animetourserver.dev/",
+      "path": "/",
+      "timestamp_ms": 1780075949517
+    },
+    "created_at": "2026-05-29T17:32:29.768005+00:00"
+  },
+  {
+    "id": 232,
+    "user_id": null,
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+      "url": "https://animetourserver.dev/",
+      "path": "/",
+      "timestamp_ms": 1780075956351
+    },
+    "created_at": "2026-05-29T17:32:36.701465+00:00"
+  },
+  {
+    "id": 233,
+    "user_id": null,
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /",
+    "metadata": {
+      "ua": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1",
+      "url": "https://animetourserver.dev/",
+      "path": "/",
+      "timestamp_ms": 1780075958164
+    },
+    "created_at": "2026-05-29T17:32:38.44194+00:00"
+  },
+  {
+    "id": 234,
+    "user_id": null,
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+      "url": "https://animetourserver.dev/",
+      "path": "/",
+      "timestamp_ms": 1780075979006
+    },
+    "created_at": "2026-05-29T17:32:59.251983+00:00"
+  },
+  {
+    "id": 235,
+    "user_id": null,
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /",
+    "metadata": {
+      "ua": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1",
+      "url": "https://animetourserver.dev/",
+      "path": "/",
+      "timestamp_ms": 1780075987250
+    },
+    "created_at": "2026-05-29T17:33:07.64025+00:00"
+  },
+  {
+    "id": 236,
+    "user_id": null,
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /",
+    "metadata": {
+      "ua": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1",
+      "url": "https://animetourserver.dev/",
+      "path": "/",
+      "timestamp_ms": 1780076026248
+    },
+    "created_at": "2026-05-29T17:33:46.529967+00:00"
   }
 ]
