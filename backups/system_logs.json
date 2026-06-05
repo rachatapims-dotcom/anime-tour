@@ -2478,5 +2478,19 @@
       "timestamp_ms": 1780512764467
     },
     "created_at": "2026-06-03T18:52:46.121312+00:00"
+  },
+  {
+    "id": 242,
+    "user_id": null,
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /",
+    "metadata": {
+      "ua": "Mozilla/5.0 (compatible; AhrefsBot/7.0; +http://ahrefs.com/robot/)",
+      "url": "https://animetourserver.dev/",
+      "path": "/",
+      "timestamp_ms": 1780582142973
+    },
+    "created_at": "2026-06-04T14:09:04.244512+00:00"
   }
 ]
