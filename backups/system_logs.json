@@ -2492,5 +2492,327 @@
       "timestamp_ms": 1780582142973
     },
     "created_at": "2026-06-04T14:09:04.244512+00:00"
+  },
+  {
+    "id": 243,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /public/login.html",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+      "url": "http://127.0.0.1:5500/public/login.html",
+      "path": "/public/login.html",
+      "timestamp_ms": 1780958050259
+    },
+    "created_at": "2026-06-08T22:34:14.375543+00:00"
+  },
+  {
+    "id": 244,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /public/index.html",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+      "url": "http://127.0.0.1:5500/public/index.html",
+      "path": "/public/index.html",
+      "timestamp_ms": 1780958054302
+    },
+    "created_at": "2026-06-08T22:34:15.691107+00:00"
+  },
+  {
+    "id": 245,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /public/packages.html",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+      "url": "http://127.0.0.1:5500/public/packages.html",
+      "path": "/public/packages.html",
+      "timestamp_ms": 1780958072715
+    },
+    "created_at": "2026-06-08T22:34:34.087681+00:00"
+  },
+  {
+    "id": 246,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /public/contact.html",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+      "url": "http://127.0.0.1:5500/public/contact.html?package=one-piece",
+      "path": "/public/contact.html",
+      "timestamp_ms": 1780958076141
+    },
+    "created_at": "2026-06-08T22:34:37.485891+00:00"
+  },
+  {
+    "id": 247,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /public/packages.html",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+      "url": "http://127.0.0.1:5500/public/packages.html",
+      "path": "/public/packages.html",
+      "timestamp_ms": 1780958109999
+    },
+    "created_at": "2026-06-08T22:35:11.712648+00:00"
+  },
+  {
+    "id": 248,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /public/index.html",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+      "url": "http://127.0.0.1:5500/public/index.html",
+      "path": "/public/index.html",
+      "timestamp_ms": 1780958112035
+    },
+    "created_at": "2026-06-08T22:35:13.488261+00:00"
+  },
+  {
+    "id": 250,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /public/gallery.html",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+      "url": "http://127.0.0.1:5500/public/gallery.html",
+      "path": "/public/gallery.html",
+      "timestamp_ms": 1780958169350
+    },
+    "created_at": "2026-06-08T22:36:11.10549+00:00"
+  },
+  {
+    "id": 249,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /public/packages.html",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+      "url": "http://127.0.0.1:5500/public/packages.html",
+      "path": "/public/packages.html",
+      "timestamp_ms": 1780958168988
+    },
+    "created_at": "2026-06-08T22:36:10.946514+00:00"
+  },
+  {
+    "id": 251,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /public/contact.html",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+      "url": "http://127.0.0.1:5500/public/contact.html",
+      "path": "/public/contact.html",
+      "timestamp_ms": 1780958169724
+    },
+    "created_at": "2026-06-08T22:36:11.243878+00:00"
+  },
+  {
+    "id": 252,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /public/index.html",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+      "url": "http://127.0.0.1:5500/public/index.html",
+      "path": "/public/index.html",
+      "timestamp_ms": 1780958170381
+    },
+    "created_at": "2026-06-08T22:36:11.718899+00:00"
+  },
+  {
+    "id": 258,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /public/index.html",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+      "url": "http://127.0.0.1:5500/public/index.html",
+      "path": "/public/index.html",
+      "timestamp_ms": 1780958178109
+    },
+    "created_at": "2026-06-08T22:36:19.452282+00:00"
+  },
+  {
+    "id": 253,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /public/packages.html",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+      "url": "http://127.0.0.1:5500/public/packages.html",
+      "path": "/public/packages.html",
+      "timestamp_ms": 1780958174083
+    },
+    "created_at": "2026-06-08T22:36:15.437194+00:00"
+  },
+  {
+    "id": 256,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /public/team.html",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+      "url": "http://127.0.0.1:5500/public/team.html",
+      "path": "/public/team.html",
+      "timestamp_ms": 1780958176539
+    },
+    "created_at": "2026-06-08T22:36:17.879174+00:00"
+  },
+  {
+    "id": 254,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /public/gallery.html",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+      "url": "http://127.0.0.1:5500/public/gallery.html",
+      "path": "/public/gallery.html",
+      "timestamp_ms": 1780958174766
+    },
+    "created_at": "2026-06-08T22:36:16.106558+00:00"
+  },
+  {
+    "id": 255,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /public/contact.html",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+      "url": "http://127.0.0.1:5500/public/contact.html",
+      "path": "/public/contact.html",
+      "timestamp_ms": 1780958175979
+    },
+    "created_at": "2026-06-08T22:36:17.317144+00:00"
+  },
+  {
+    "id": 257,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /public/packages.html",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+      "url": "http://127.0.0.1:5500/public/packages.html",
+      "path": "/public/packages.html",
+      "timestamp_ms": 1780958177066
+    },
+    "created_at": "2026-06-08T22:36:18.411249+00:00"
+  },
+  {
+    "id": 259,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /public/gallery.html",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+      "url": "http://127.0.0.1:5500/public/gallery.html",
+      "path": "/public/gallery.html",
+      "timestamp_ms": 1780958183208
+    },
+    "created_at": "2026-06-08T22:36:24.549801+00:00"
+  },
+  {
+    "id": 260,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /public/packages.html",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+      "url": "http://127.0.0.1:5500/public/packages.html",
+      "path": "/public/packages.html",
+      "timestamp_ms": 1780958183547
+    },
+    "created_at": "2026-06-08T22:36:24.884608+00:00"
+  },
+  {
+    "id": 261,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /public/contact.html",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+      "url": "http://127.0.0.1:5500/public/contact.html",
+      "path": "/public/contact.html",
+      "timestamp_ms": 1780958184190
+    },
+    "created_at": "2026-06-08T22:36:25.526866+00:00"
+  },
+  {
+    "id": 262,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /public/gallery.html",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+      "url": "http://127.0.0.1:5500/public/gallery.html",
+      "path": "/public/gallery.html",
+      "timestamp_ms": 1780958184532
+    },
+    "created_at": "2026-06-08T22:36:25.87207+00:00"
+  },
+  {
+    "id": 263,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /public/packages.html",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+      "url": "http://127.0.0.1:5500/public/packages.html",
+      "path": "/public/packages.html",
+      "timestamp_ms": 1780958184875
+    },
+    "created_at": "2026-06-08T22:36:26.21393+00:00"
+  },
+  {
+    "id": 264,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /public/contact.html",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+      "url": "http://127.0.0.1:5500/public/contact.html?package=one-piece",
+      "path": "/public/contact.html",
+      "timestamp_ms": 1780958185730
+    },
+    "created_at": "2026-06-08T22:36:27.072921+00:00"
+  },
+  {
+    "id": 265,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "event_type": "page.view",
+    "level": "info",
+    "message": "Visited /public/packages.html",
+    "metadata": {
+      "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+      "url": "http://127.0.0.1:5500/public/packages.html",
+      "path": "/public/packages.html",
+      "timestamp_ms": 1780958187550
+    },
+    "created_at": "2026-06-08T22:36:28.901227+00:00"
   }
 ]

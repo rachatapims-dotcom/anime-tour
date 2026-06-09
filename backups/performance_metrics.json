@@ -3038,5 +3038,85 @@
     "cls_value": 0.0029,
     "user_agent": "Mozilla/5.0 (compatible; Dataprovider.com)",
     "created_at": "2026-06-03T18:52:48.526402+00:00"
+  },
+  {
+    "id": 376,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "page_path": "/public/login.html",
+    "ttfb_ms": 26,
+    "lcp_ms": 256,
+    "cls_value": 0.0038,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "created_at": "2026-06-08T22:34:15.63842+00:00"
+  },
+  {
+    "id": 377,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "page_path": "/public/index.html",
+    "ttfb_ms": 15,
+    "lcp_ms": 84,
+    "cls_value": 0.0032,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "created_at": "2026-06-08T22:34:18.896545+00:00"
+  },
+  {
+    "id": 378,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "page_path": "/public/packages.html",
+    "ttfb_ms": 14,
+    "lcp_ms": 120,
+    "cls_value": 0.0033,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "created_at": "2026-06-08T22:34:37.383289+00:00"
+  },
+  {
+    "id": 379,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "page_path": "/public/contact.html",
+    "ttfb_ms": 24,
+    "lcp_ms": 124,
+    "cls_value": 0.0033,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "created_at": "2026-06-08T22:34:41.760411+00:00"
+  },
+  {
+    "id": 380,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "page_path": "/public/index.html",
+    "ttfb_ms": 1,
+    "lcp_ms": 52,
+    "cls_value": 0.0032,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "created_at": "2026-06-08T22:35:16.753334+00:00"
+  },
+  {
+    "id": 381,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "page_path": "/public/index.html",
+    "ttfb_ms": 1,
+    "lcp_ms": 44,
+    "cls_value": 0.0032,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "created_at": "2026-06-08T22:36:14.943721+00:00"
+  },
+  {
+    "id": 382,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "page_path": "/public/index.html",
+    "ttfb_ms": 1,
+    "lcp_ms": 48,
+    "cls_value": 0.0032,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "created_at": "2026-06-08T22:36:22.761208+00:00"
+  },
+  {
+    "id": 383,
+    "user_id": "e0f3d788-c44f-481f-9e83-44945d7f5af3",
+    "page_path": "/public/packages.html",
+    "ttfb_ms": 0,
+    "lcp_ms": 88,
+    "cls_value": 0,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "created_at": "2026-06-08T22:36:32.754832+00:00"
   }
 ]
